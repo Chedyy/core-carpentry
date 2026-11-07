@@ -153,3 +153,48 @@
     color: var(--color-foreground);
   }
 }
+
+/* site-import tokens: begin (generated; re-import replaces this block) */
+/* Imported clone roles use prefixed Tailwind utilities
+   (bg-site-import-primary, text-site-import-foreground, …); edit the
+   --site-import-* variables to restyle the clone. Unprefixed roles theme new UI. */
+:root {
+  --background: oklch(0.98156 0.00264 106.45);
+  --site-import-background: oklch(0.98156 0.00264 106.45);
+  --foreground: oklch(0.16842 0 0);
+  --site-import-foreground: oklch(0.16842 0 0);
+  --primary: oklch(0.67099 0.08181 64.42);
+  --site-import-primary: oklch(0.67099 0.08181 64.42);
+  --primary-foreground: oklch(0.985 0 0);
+  --site-import-primary-foreground: oklch(0.985 0 0);
+  --accent: oklch(0.67099 0.08181 64.42 / 0.4);
+  --site-import-accent: oklch(0.67099 0.08181 64.42 / 0.4);
+  --border: oklch(1 0 0 / 0.15);
+  --site-import-border: oklch(1 0 0 / 0.15);
+  --card: oklch(1 0 0 / 0.2);
+  --site-import-card: oklch(1 0 0 / 0.2);
+}
+/* Design tokens captured from the imported site, registered as Tailwind
+   utilities (bg-<name>, text-<name>, font-<name>). var() values live in
+   the imported stylesheet's :root. */
+@theme inline {
+  --font-sans: Inter, ui-sans-serif, system-ui, sans-serif;
+  --font-heading: Manrope, ui-sans-serif, system-ui, sans-serif;
+  --color-site-import-background: var(--site-import-background);
+  --color-site-import-foreground: var(--site-import-foreground);
+  --color-site-import-primary: var(--site-import-primary);
+  --color-site-import-primary-foreground: var(--site-import-primary-foreground);
+  --color-site-import-accent: var(--site-import-accent);
+  --color-site-import-border: var(--site-import-border);
+  --color-site-import-card: var(--site-import-card);
+  --color-alabaster: var(--alabaster);
+  --color-cedar: var(--cedar);
+  --color-graphite: var(--graphite);
+  --color-void: var(--void);
+}
+@theme reference {
+  --font-body: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Manrope", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+/* site-import tokens: end */
