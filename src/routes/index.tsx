@@ -1056,7 +1056,7 @@ function usePointer() {
   const [pointer, setPointer] = useState({ x: -100, y: -100, px: 50, py: 40, hover: false, active: false });
   useEffect(() => {
     const onMove = (event: PointerEvent) => {
-      if (event.pointerType && event.pointerType !== "mouse") return;
+      if (event.pointerType !== "mouse" || !window.matchMedia("(pointer: fine)").matches) return;
       const target = event.target instanceof Element ? event.target : null;
       setPointer({
         x: event.clientX,
