@@ -28,3 +28,8 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+## Project rules
+
+- The home page is an imported copy of core-carpentry.com: keep its markup and interactions in `src/routes/index.tsx` and its retained source styles in `src/styles/site.css`, so the import's structure and class names stay comparable with the original.
+- `src/styles/site.css` carries the source site's Tailwind v3 transform rules; when a class there also exists as a Tailwind v4 utility (translate/scale/rotate), cancel the v4 property in site.css so transforms are not applied twice.

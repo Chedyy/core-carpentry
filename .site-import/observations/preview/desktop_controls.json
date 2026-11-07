@@ -1,0 +1,54 @@
+{
+ "cursor": "translateX(-100px) translateY(-100px)",
+ "spot": "radial-gradient(circle at 50% 40%, rgba(255, ",
+ "cursor_hover": true,
+ "nav_projects": [
+  "http://localhost:8080/#projects",
+  -0.0
+ ],
+ "hero_parallax": [
+  "translateY(7.33333%)",
+  "0.607843"
+ ],
+ "filter_custom": [
+  "Vaulted Ceiling Reframe",
+  "Walnut Live-Edge Table"
+ ],
+ "filter_all": 6,
+ "dialog_title": "Crown Moulding & Trim",
+ "dialog_img_loaded": true,
+ "dialog_close_btn": true,
+ "dialog_backdrop": true,
+ "dialog_escape": true,
+ "review_visible_0": [
+  [
+   "\u201cWe hired Core Carpentry for a new backyard deck and the cra",
+   "1"
+  ]
+ ],
+ "review_next": [
+  [
+   "\u201cExcellent communication from start to finish. Every detail ",
+   "1"
+  ]
+ ],
+ "review_dot4": [
+  [
+   "\u201cOur trim and finishing work looks incredible. The attention",
+   "1"
+  ]
+ ],
+ "review_autoplay": [
+  [
+   "\u201cCore Carpentry completely transformed our basement. Profess",
+   "1"
+  ]
+ ],
+ "process_line": "scaleY(0.376063)",
+ "form_2fields": "40%",
+ "form_type": [
+  "60%",
+  "true"
+ ],
+ "errors": []
+}
