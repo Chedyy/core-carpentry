@@ -2258,3 +2258,8 @@ body { background-color: hsl(var(--background)); font-family: var(--font-body); 
 @media (prefers-reduced-motion: reduce) {
   .site-scroll-cue { animation: none; }
 }
+
+/* The source transform rules above already apply these; stop Tailwind v4's separate translate/scale/rotate from doubling them. */
+.-translate-x-1\/2 { translate: none; }
+.scale-110, .scale-125, .scale-150, .group:hover .group-hover\:scale-\[1\.04\] { scale: none; }
+.group:hover .group-hover\:rotate-\[360deg\] { rotate: none; }
