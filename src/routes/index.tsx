@@ -4,22 +4,27 @@ import { createFileRoute } from "@tanstack/react-router";
 import capturedCSS from "../styles/site.css?raw";
 
 export const Route = createFileRoute("/")({
-  head: () => ({ meta: [{ title: "Core Carpentry — Built on Craftsmanship. Driven by Quality." }] }),
+  head: () => ({
+    meta: [
+      { title: "Core Carpentry — Built on Craftsmanship. Driven by Quality." },
+      { name: "description", content: "High-quality residential carpentry, renovations, framing, finish work, decks and custom projects across Southern California." },
+      { property: "og:title", content: "Core Carpentry — Built with Precision. Crafted to Last." },
+      { property: "og:description", content: "Residential carpentry, renovations, framing, finish work, decks and custom builds in Southern California." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+  }),
   staticData: { importedDocument: { html: { "lang": "en" }, body: {  } } },
   component: Index,
 });
 
 function Index() {
   useImportedLayout();
-  const pointer = usePointer();
-  const ctaParallax = useScrollValue<HTMLElement>((rect, vh) => clamp((vh - rect.top) / (vh + rect.height)), true);
   return (
     <>
       <style>{capturedCSS}</style>
       <div id="root">
-        <div className="[@media(pointer:fine)]:pointer-events-none [@media(pointer:fine)]:fixed [@media(pointer:fine)]:[left:0px] [@media(pointer:fine)]:[top:0px] [@media(pointer:fine)]:[z-index:9999]" style={{ transform: `translateX(${pointer.x}px) translateY(${pointer.y}px)` }}>
-          <div className={"cursor-crosshair [@media(pointer:fine)]:[transition:width_0.25s,height_0.25s]" + (pointer.hover ? " is-hover" : "")} />
-        </div>
+        <ImportedCursor />
         <ImportedHeader />
         <main>
           <ImportedSectionBuiltWithPrecisionCrafted />
@@ -29,30 +34,7 @@ function Index() {
           <ImportedSectionTheStandardIsThe />
           <ImportedSection />
           <ImportedSectionHowWeBuild />
-          <section ref={ctaParallax.ref} className={"relative h-[80vh] w-full \x62g-[#\x30F0F0F] [&]:min-h-[520px] [overflow:hidden]"}>
-            <div className={"absolute \x73cale-110 [inset:0px]"} style={{ transform: `translateY(${ctaParallax.value === null ? -15 : -15 + 30 * ctaParallax.value}%)` }}>
-              <img className={"h-full w-full [&]:object-cover"} src="/site-assets/2f1d4afd7235a23a.png" alt="Modern custom home at dusk" />
-            </div>
-            <div className={"absolute \x62g-gradient-to-t \x66rom-[#\x30F0F0F] \x76ia-[#\x30F0F0F]/\x355 \x74o-[#\x30F0F0F]/\x340 [inset:0px]"} />
-            <div className={"relative flex h-full flex-col items-center \x70x-[\x36vw] [&]:justify-center [&]:text-center [z-index:10]"}>
-              <div style={{ opacity: "1", transform: "none" }}>
-                <span className={"label-tech \x74ext-[#\x4298B5F]"}>Start Your Project</span>
-              </div>
-              <div style={{ opacity: "1", transform: "none" }}>
-                <h2 className={"display-heading mt-5 \x74ext-[#\x469F9F7] \x74ext-5xl \x6dd:\x74ext-8xl [max-width:56rem]"}>Ready to build something <span className={"\x74ext-[#\x4298B5F]"}>great</span>?</h2>
-              </div>
-              <div style={{ opacity: "1", transform: "none" }}>
-                <p className={"mt-6 \x74ext-[#\x469F9F7]/\x365 \x6ceading-relaxed [max-width:36rem]"}>Tell us about your project and we'll provide a clear, honest estimate — no pressure, no inflated promises.</p>
-              </div>
-              <div style={{ opacity: "1", transform: "none" }}>
-                <div className="mt-9">
-                  <a className={"btn-ghost \x70y-5 label-tech \x74ext-[#\x30F0F0F] \x62g-[#\x4298B5F] \x62order-[#\x4298B5F] [padding-left:2.5rem] [padding-right:2.5rem]"} style={{ transform: "none" }} href="#contact">
-                    <span>Request a Free Estimate</span>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </section>
+          <ImportedSectionStartYourProject />
           <ImportedSectionRequestAFreeEstimate />
         </main>
         <ImportedFooter />
@@ -61,6 +43,45 @@ function Index() {
         </div>
       </div>
     </>
+  );
+}
+
+function ImportedCursor() {
+  const pointer = usePointer();
+  return (
+    <div className="[@media(pointer:fine)]:pointer-events-none [@media(pointer:fine)]:fixed [@media(pointer:fine)]:[left:0px] [@media(pointer:fine)]:[top:0px] [@media(pointer:fine)]:[z-index:9999]" style={{ transform: `translateX(${pointer.x}px) translateY(${pointer.y}px)` }}>
+      <div className={"cursor-crosshair [@media(pointer:fine)]:[transition:width_0.25s,height_0.25s]" + (pointer.hover ? " is-hover" : "")} />
+    </div>
+  );
+}
+
+function ImportedSectionStartYourProject() {
+  const ctaParallax = useScrollValue<HTMLElement>((rect, vh) => clamp((vh - rect.top) / (vh + rect.height)), true);
+  return (
+    <section ref={ctaParallax.ref} className={"relative h-[80vh] w-full \x62g-[#\x30F0F0F] [&]:min-h-[520px] [overflow:hidden]"}>
+      <div className={"absolute \x73cale-110 [inset:0px]"} style={{ transform: `translateY(${ctaParallax.value === null ? -15 : -15 + 30 * ctaParallax.value}%)` }}>
+        <img className={"h-full w-full [&]:object-cover"} src="/site-assets/2f1d4afd7235a23a.png" alt="Modern custom home at dusk" />
+      </div>
+      <div className={"absolute \x62g-gradient-to-t \x66rom-[#\x30F0F0F] \x76ia-[#\x30F0F0F]/\x355 \x74o-[#\x30F0F0F]/\x340 [inset:0px]"} />
+      <div className={"relative flex h-full flex-col items-center \x70x-[\x36vw] [&]:justify-center [&]:text-center [z-index:10]"}>
+        <div style={{ opacity: "1", transform: "none" }}>
+          <span className={"label-tech \x74ext-[#\x4298B5F]"}>Start Your Project</span>
+        </div>
+        <div style={{ opacity: "1", transform: "none" }}>
+          <h2 className={"display-heading mt-5 \x74ext-[#\x469F9F7] \x74ext-5xl \x6dd:\x74ext-8xl [max-width:56rem]"}>Ready to build something <span className={"\x74ext-[#\x4298B5F]"}>great</span>?</h2>
+        </div>
+        <div style={{ opacity: "1", transform: "none" }}>
+          <p className={"mt-6 \x74ext-[#\x469F9F7]/\x365 \x6ceading-relaxed [max-width:36rem]"}>Tell us about your project and we'll provide a clear, honest estimate — no pressure, no inflated promises.</p>
+        </div>
+        <div style={{ opacity: "1", transform: "none" }}>
+          <div className="mt-9">
+            <a className={"btn-ghost \x70y-5 label-tech \x74ext-[#\x30F0F0F] \x62g-[#\x4298B5F] \x62order-[#\x4298B5F] [padding-left:2.5rem] [padding-right:2.5rem]"} style={{ transform: "none" }} href="#contact">
+              <span>Request a Free Estimate</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }
 
