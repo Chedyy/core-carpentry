@@ -655,7 +655,7 @@ function ImportedSectionTheStandardIsThe() {
 
 function ImportedSection() {
   const [reviewIndex, setReviewIndex] = useState(0);
-  const review = REVIEWS[reviewIndex];
+  const review = REVIEWS[reviewIndex] ?? REVIEWS[0]!;
   useEffect(() => {
     const timer = window.setTimeout(() => setReviewIndex((index) => (index + 1) % REVIEWS.length), 6000);
     return () => window.clearTimeout(timer);
