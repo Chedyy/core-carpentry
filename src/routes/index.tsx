@@ -1,5 +1,5 @@
 import type { CSSProperties } from "react";
-import { useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import capturedCSS from "../styles/site.css?raw";
 
@@ -11,12 +11,14 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   useImportedLayout();
+  const pointer = usePointer();
+  const ctaParallax = useScrollValue<HTMLElement>((rect, vh) => clamp((vh - rect.top) / (vh + rect.height)), true);
   return (
     <>
       <style>{capturedCSS}</style>
       <div id="root">
-        <div className="[@media(pointer:fine)]:pointer-events-none [@media(pointer:fine)]:fixed [@media(pointer:fine)]:[left:0px] [@media(pointer:fine)]:[top:0px] [@media(pointer:fine)]:[z-index:9999]" style={{ transform: "translateX(768px) translateY(432px)" }}>
-          <div className="cursor-crosshair [@media(pointer:fine)]:[transition:width_0.25s,height_0.25s]" />
+        <div className="[@media(pointer:fine)]:pointer-events-none [@media(pointer:fine)]:fixed [@media(pointer:fine)]:[left:0px] [@media(pointer:fine)]:[top:0px] [@media(pointer:fine)]:[z-index:9999]" style={{ transform: `translateX(${pointer.x}px) translateY(${pointer.y}px)` }}>
+          <div className={"cursor-crosshair [@media(pointer:fine)]:[transition:width_0.25s,height_0.25s]" + (pointer.hover ? " is-hover" : "")} />
         </div>
         <ImportedHeader />
         <main>
@@ -27,8 +29,8 @@ function Index() {
           <ImportedSectionTheStandardIsThe />
           <ImportedSection />
           <ImportedSectionHowWeBuild />
-          <section className={"relative h-[80vh] w-full \x62g-[#\x30F0F0F] [&]:min-h-[520px] [overflow:hidden]"}>
-            <div className={"absolute \x73cale-110 [inset:0px]"} style={{ transform: "translateY(-15%)" }}>
+          <section ref={ctaParallax.ref} className={"relative h-[80vh] w-full \x62g-[#\x30F0F0F] [&]:min-h-[520px] [overflow:hidden]"}>
+            <div className={"absolute \x73cale-110 [inset:0px]"} style={{ transform: `translateY(${ctaParallax.value === null ? -15 : -15 + 30 * ctaParallax.value}%)` }}>
               <img className={"h-full w-full [&]:object-cover"} src="/site-assets/2f1d4afd7235a23a.png" alt="Modern custom home at dusk" />
             </div>
             <div className={"absolute \x62g-gradient-to-t \x66rom-[#\x30F0F0F] \x76ia-[#\x30F0F0F]/\x355 \x74o-[#\x30F0F0F]/\x340 [inset:0px]"} />
@@ -63,7 +65,39 @@ function Index() {
 }
 
 function ImportedHeader() {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const openButtonRef = useRef<HTMLButtonElement>(null);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const wasOpen = useRef(false);
+  useEffect(() => {
+    if (!menuOpen) {
+      if (wasOpen.current) openButtonRef.current?.focus();
+      wasOpen.current = false;
+      return;
+    }
+    wasOpen.current = true;
+    closeButtonRef.current?.focus();
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setMenuOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", onKey);
+    };
+  }, [menuOpen]);
+  const menuLinks = [
+    ["#about", "About"],
+    ["#services", "Services"],
+    ["#projects", "Projects"],
+    ["#process", "Process"],
+    ["#reviews", "Reviews"],
+    ["#contact", "Contact"],
+  ];
   return (
+    <>
     <header className={"fixed top-0 left-0 right-0 z-[200] transition-all \x64uration-500 bg-transparent \x70y-6"} style={{ transform: "none" }} data-site-import-scroll-header={"{\"desktop\":{\"added\":[\"bg-[#0F0F0F]/90\",\"backdrop-blur-md\",\"border-b\",\"border-white/5\",\"py-3\"],\"removed\":[\"bg-transparent\",\"py-6\"],\"threshold\":648},\"mobile\":{\"added\":[\"bg-[#0F0F0F]/90\",\"backdrop-blur-md\",\"border-b\",\"border-white/5\",\"py-3\"],\"removed\":[\"bg-transparent\",\"py-6\"],\"threshold\":633}}"}>
       <div className={"\x6dx-auto flex max-w-[1400px] items-center justify-between \x70x-[\x36vw]"}>
         <a className={"flex items-center gap-2.5 \x74ext-[#\x469F9F7]"} href="#top">
@@ -81,7 +115,7 @@ function ImportedHeader() {
         <a className={"hidden \x6dd:\x69nline-flex btn-ghost \x70x-6 \x70y-3 \x74ext-[#\x30F0F0F] \x62g-[#\x4298B5F] \x62order-[#\x4298B5F] label-tech \x66ont-semibold"} href="#contact">
           <span>Get a Quote</span>
         </a>
-        <button className={"\x6dd:\x68idden \x74ext-[#\x469F9F7]"} aria-label="Open menu">
+        <button ref={openButtonRef} className={"\x6dd:\x68idden \x74ext-[#\x469F9F7]"} aria-label="Open menu" aria-expanded={menuOpen} aria-controls="mobile-menu" onClick={() => setMenuOpen(true)}>
           <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <line x1="4" x2="20" y1="12" y2="12" />
             <line x1="4" x2="20" y1="6" y2="6" />
@@ -90,16 +124,41 @@ function ImportedHeader() {
         </button>
       </div>
     </header>
+    {menuOpen && (
+      <div id="mobile-menu" role="dialog" aria-modal="true" aria-label="Menu" className="fixed inset-0 z-[300] bg-[#0F0F0F] grain flex flex-col animate-in fade-in duration-300">
+        <div className="flex items-center justify-between px-[6vw] py-6">
+          <span className="display-heading text-[#F9F9F7] text-lg">CORE <span className="text-[#B98B5F]">CARPENTRY</span></span>
+          <button ref={closeButtonRef} className="text-[#F9F9F7]" aria-label="Close menu" onClick={() => setMenuOpen(false)}>
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M18 6 6 18" />
+              <path d="m6 6 12 12" />
+            </svg>
+          </button>
+        </div>
+        <nav className="flex flex-1 flex-col items-center justify-center gap-7">
+          {menuLinks.map(([href, label]) => (
+            <a key={label} href={href} className="display-heading text-3xl text-[#F9F9F7] hover:text-[#B98B5F] transition-colors" onClick={() => setMenuOpen(false)}>{label}</a>
+          ))}
+          <a href="#contact" className="mt-4 btn-ghost px-7 py-3 text-[#B98B5F] border-[#B98B5F] label-tech" onClick={() => setMenuOpen(false)}>
+            <span>Get a Free Quote</span>
+          </a>
+        </nav>
+      </div>
+    )}
+    </>
   );
 }
 
 function ImportedSectionBuiltWithPrecisionCrafted() {
+  const pointer = usePointer();
+  const hero = useScrollValue<HTMLElement>((rect) => clamp(-rect.top / rect.height), true);
+  const progress = hero.value ?? 0;
   return (
-    <section className={"relative h-screen w-full \x62g-[#\x30F0F0F] grain [&]:min-h-[640px] [overflow:hidden]"} id="top">
-      <div className="absolute [inset:0px]" style={{ transform: "none" }}>
+    <section ref={hero.ref} className={"relative h-screen w-full \x62g-[#\x30F0F0F] grain [&]:min-h-[640px] [overflow:hidden]"} id="top">
+      <div className="absolute [inset:0px]" style={{ transform: progress > 0 ? `translateY(${22 * progress}%)` : "none" }}>
         <img className={"h-full w-full [&]:object-cover"} src="/site-assets/76a96acaede8317f.png" alt="Custom-framed vaulted wood ceiling" />
       </div>
-      <div className={"absolute transition-all \x64uration-200 [animation-duration:0.2s] [inset:0px]"} style={{ background: "radial-gradient(circle at 50% 40%, rgba(255, 255, 255, 0.16), rgba(15, 15, 15, 0.55) 38%, rgba(15, 15, 15, 0.94) 100%)" }} />
+      <div className={"absolute transition-all \x64uration-200 [animation-duration:0.2s] [inset:0px]"} style={{ background: `radial-gradient(circle at ${pointer.active ? pointer.px : 50}% ${pointer.active ? pointer.py : 40}%, rgba(255, 255, 255, 0.16), rgba(15, 15, 15, 0.55) 38%, rgba(15, 15, 15, 0.94) 100%)` }} />
       <span className={"absolute rounded-full \x62g-[#\x4298B5F]/\x340 [bottom:0px] left-[46.6944%] [animation:15.3307s_linear_2.06403s_infinite_normal_none_running_float-up]"} style={{ width: "3.49241px", height: "3.49241px" }} />
       <span className={"absolute rounded-full \x62g-[#\x4298B5F]/\x340 [bottom:0px] left-[41.6065%] [animation:21.9855s_linear_4.30927s_infinite_normal_none_running_float-up]"} style={{ width: "4.15852px", height: "4.15852px" }} />
       <span className={"absolute rounded-full \x62g-[#\x4298B5F]/\x340 [bottom:0px] left-[96.1689%] [animation:23.3975s_linear_4.37896s_infinite_normal_none_running_float-up]"} style={{ width: "3.90289px", height: "3.90289px" }} />
@@ -118,7 +177,7 @@ function ImportedSectionBuiltWithPrecisionCrafted() {
       <span className={"absolute rounded-full \x62g-[#\x4298B5F]/\x340 [bottom:0px] left-[65.1234%] [animation:14.9492s_linear_5.31265s_infinite_normal_none_running_float-up]"} style={{ width: "2.14111px", height: "2.14111px" }} />
       <span className={"absolute rounded-full \x62g-[#\x4298B5F]/\x340 [bottom:0px] left-[74.0689%] [animation:19.0528s_linear_0.209055s_infinite_normal_none_running_float-up]"} style={{ width: "3.2864px", height: "3.2864px" }} />
       <span className={"absolute rounded-full \x62g-[#\x4298B5F]/\x340 [bottom:0px] left-[49.9939%] [animation:20.0841s_linear_0.0413123s_infinite_normal_none_running_float-up]"} style={{ width: "4.94888px", height: "4.94888px" }} />
-      <div className={"relative flex h-full flex-col pb-[14vh] \x70x-[\x36vw] [&]:justify-end [z-index:10]"} style={{ opacity: "1", transform: "none" }}>
+      <div className={"relative flex h-full flex-col pb-[14vh] \x70x-[\x36vw] [&]:justify-end [z-index:10]"} style={{ opacity: Math.max(0, 1 - progress / 0.85), transform: progress > 0 ? `translateY(${40 * progress}%)` : "none" }}>
         <span className={"label-tech \x74ext-[#\x4298B5F] mb-6 flex items-center [gap:0.75rem]"} style={{ opacity: "1", transform: "none" }}><span className={"h-px w-10 \x62g-[#\x4298B5F]"} /> Core Carpentry — Residential Specialists</span>
         <h1 className={"display-heading \x74ext-[#\x469F9F7] text-[2rem] \x73m:\x74ext-5xl \x6dd:\x74ext-6xl \x6cg:\x74ext-7xl \x78l:\x74ext-[\x35rem] \x6ceading-[\x31.\x302] \x74racking-tight [max-width:56rem]"}>
           <span className="block" style={{ opacity: "1", transform: "none" }}>Built with Precision.</span>
@@ -136,7 +195,7 @@ function ImportedSectionBuiltWithPrecisionCrafted() {
       </div>
       <div className={"absolute \x2dtranslate-x-1/\x32 flex flex-col items-center [bottom:2rem] [gap:0.5rem] [left:50%] [z-index:10]"} style={{ opacity: "1" }}>
         <span className={"label-tech \x74ext-[#\x469F9F7]/\x350"}>Scroll</span>
-        <div className={"h-8 w-px \x62g-gradient-to-b \x66rom-[#\x4298B5F] \x74o-transparent"} style={{ transform: "translateY(6.7828px)" }} />
+        <div className={"h-8 w-px \x62g-gradient-to-b \x66rom-[#\x4298B5F] \x74o-transparent site-scroll-cue"} />
       </div>
     </section>
   );
@@ -670,6 +729,7 @@ function ImportedSection() {
 }
 
 function ImportedSectionHowWeBuild() {
+  const timeline = useScrollValue<HTMLDivElement>((rect, vh) => clamp((vh / 2 - rect.top) / rect.height));
   return (
     <section className={"relative \x62g-[#\x469F9F7] \x70y-24 \x6dd:\x70y-36"} id="process">
       <div className={"\x6dx-auto max-w-[1400px] \x70x-[\x36vw]"}>
@@ -681,9 +741,9 @@ function ImportedSectionHowWeBuild() {
             <h2 className={"display-heading mt-5 \x74ext-4xl \x6dd:\x74ext-6xl \x74ext-[#\x30F0F0F]"}>How we build.</h2>
           </div>
         </div>
-        <div className="relative mt-20">
+        <div ref={timeline.ref} className="relative mt-20">
           <div className={"absolute left-8 \x6dd:\x6ceft-1/\x32 top-0 w-px \x62g-[#\x30F0F0F]/\x310 \x6dd:\x2dtranslate-x-1/\x32 [bottom:0px]"} />
-          <div className={"absolute left-8 \x6dd:\x6ceft-1/\x32 top-0 w-px \x6frigin-top \x62g-[#\x4298B5F] \x6dd:\x2dtranslate-x-1/\x32 [bottom:0px]"} style={{ transform: "scaleY(0)" }} />
+          <div className={"absolute left-8 \x6dd:\x6ceft-1/\x32 top-0 w-px \x6frigin-top \x62g-[#\x4298B5F] \x6dd:\x2dtranslate-x-1/\x32 [bottom:0px]"} style={{ transform: timeline.value === null || timeline.value < 1 ? `scaleY(${timeline.value ?? 0})` : "none" }} />
           <div className={"\x73pace-y-14 \x6dd:\x73pace-y-24"}>
             <div className={"relative flex items-center gap-8 \x6dd:\x67ap-0 pl-20 \x6dd:\x70l-0 \x6dd:\x66lex-row"} style={{ opacity: "1", transform: "none" }}>
               <div className={"\x6dd:\x77-1/\x32 [@media(min-width:768px)]:[padding-left:3rem] [@media(min-width:768px)]:[padding-right:3rem]"}>
