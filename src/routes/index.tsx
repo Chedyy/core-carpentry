@@ -445,6 +445,26 @@ function ImportedSectionExpertiseInEveryJoint() {
 }
 
 function ImportedSectionFeaturedProjects() {
+  const [activeFilter, setActiveFilter] = useState<(typeof PROJECT_FILTERS)[number]>("All");
+  const [activeProject, setActiveProject] = useState<Project | null>(null);
+  const cardTrigger = useRef<HTMLButtonElement | null>(null);
+  const dialogClose = useRef<HTMLButtonElement>(null);
+  const visibleProjects = activeFilter === "All" ? PROJECTS : PROJECTS.filter((project) => project.category === activeFilter);
+  useEffect(() => {
+    if (!activeProject) return;
+    dialogClose.current?.focus();
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setActiveProject(null);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", onKey);
+      cardTrigger.current?.focus();
+    };
+  }, [activeProject]);
   return (
     <section className={"relative \x62g-[#\x469F9F7] \x70y-24 \x6dd:\x70y-36"} id="projects">
       <div className={"\x6dx-auto max-w-[1400px] \x70x-[\x36vw]"}>
@@ -459,96 +479,64 @@ function ImportedSectionFeaturedProjects() {
           </div>
           <div style={{ opacity: "1", transform: "none" }}>
             <div className={"flex [&]:flex-wrap [gap:0.5rem]"}>
-              <button className={"label-tech \x70x-4 \x70y-2 \x62order transition-colors \x64uration-300 \x62g-[#\x30F0F0F] \x74ext-[#\x469F9F7] \x62order-[#\x30F0F0F]"}>All</button>
-              <button className={"label-tech \x70x-4 \x70y-2 \x62order transition-colors \x64uration-300 \x74ext-[#\x3333] \x62order-[#\x30F0F0F]/\x315 \x68over:\x62order-[#\x4298B5F] \x68over:\x74ext-[#\x4298B5F]"}>Renovations</button>
-              <button className={"label-tech \x70x-4 \x70y-2 \x62order transition-colors \x64uration-300 \x74ext-[#\x3333] \x62order-[#\x30F0F0F]/\x315 \x68over:\x62order-[#\x4298B5F] \x68over:\x74ext-[#\x4298B5F]"}>Decks</button>
-              <button className={"label-tech \x70x-4 \x70y-2 \x62order transition-colors \x64uration-300 \x74ext-[#\x3333] \x62order-[#\x30F0F0F]/\x315 \x68over:\x62order-[#\x4298B5F] \x68over:\x74ext-[#\x4298B5F]"}>Interior</button>
-              <button className={"label-tech \x70x-4 \x70y-2 \x62order transition-colors \x64uration-300 \x74ext-[#\x3333] \x62order-[#\x30F0F0F]/\x315 \x68over:\x62order-[#\x4298B5F] \x68over:\x74ext-[#\x4298B5F]"}>Exterior</button>
-              <button className={"label-tech \x70x-4 \x70y-2 \x62order transition-colors \x64uration-300 \x74ext-[#\x3333] \x62order-[#\x30F0F0F]/\x315 \x68over:\x62order-[#\x4298B5F] \x68over:\x74ext-[#\x4298B5F]"}>Custom Builds</button>
+              {PROJECT_FILTERS.map((filter) => (
+                <button key={filter} className={filter === activeFilter ? "label-tech \x70x-4 \x70y-2 \x62order transition-colors \x64uration-300 \x62g-[#\x30F0F0F] \x74ext-[#\x469F9F7] \x62order-[#\x30F0F0F]" : "label-tech \x70x-4 \x70y-2 \x62order transition-colors \x64uration-300 \x74ext-[#\x3333] \x62order-[#\x30F0F0F]/\x315 \x68over:\x62order-[#\x4298B5F] \x68over:\x74ext-[#\x4298B5F]"} aria-pressed={filter === activeFilter} onClick={() => setActiveFilter(filter)}>{filter}</button>
+              ))}
             </div>
           </div>
         </div>
         <div className={"mt-14 \x63olumns-1 \x73m:\x63olumns-2 \x6cg:\x63olumns-3 [&>*]:\x6db-5 [gap:1.25rem]"}>
-          <button className={"group relative block w-full [&]:text-left [overflow:hidden]"} style={{ opacity: "1", transform: "none" }}>
-            <div className={"[&]:will-change-transform"} style={{ transform: "none" }}>
-              <img className={"w-full transition-all \x64uration-700 \x67roup-hover:\x73cale-[\x31.\x304] [&]:aspect-[3/4] [&]:object-cover [animation-duration:0.7s]"} src="/site-assets/76a96acaede8317f.png" alt="Vaulted Ceiling Reframe" />
-            </div>
-            <div className={"absolute \x62g-gradient-to-t \x66rom-[#\x30F0F0F]/\x385 \x76ia-[#\x30F0F0F]/\x310 \x74o-transparent opacity-80 \x74ransition-opacity \x64uration-500 \x67roup-hover:\x6fpacity-95 [inset:0px] [transition-property:opacity] [transition-timing-function:cubic-bezier(0.4,0,0.2,1)]"} />
-            <div className={"absolute flex flex-col p-6 [&]:justify-end [inset:0px]"}>
-              <span className={"label-tech \x74ext-[#\x4298B5F]"}>Custom Builds</span>
-              <h3 className={"mt-2 font-heading \x74ext-xl \x66ont-bold \x74ext-[#\x469F9F7]"}>Vaulted Ceiling Reframe</h3>
-              <div className={"mt-3 max-h-0 opacity-0 transition-all \x64uration-500 \x67roup-hover:\x6dax-h-24 \x67roup-hover:\x6fpacity-100 [overflow:hidden]"}>
-                <p className={"\x74ext-xs \x74ext-[#\x469F9F7]/\x370 \x6ceading-relaxed"}>Engineered LVL, Douglas Fir, Custom Steel Joinery</p>
+          {visibleProjects.map((project) => (
+            <button key={project.title} className={"group relative block w-full [&]:text-left [overflow:hidden] animate-in fade-in duration-500"} style={{ opacity: "1", transform: "none" }} aria-haspopup="dialog" onClick={(event) => { cardTrigger.current = event.currentTarget; setActiveProject(project); }}>
+              <div className={"[&]:will-change-transform"} style={{ transform: "none" }}>
+                <img className={"w-full transition-all \x64uration-700 \x67roup-hover:\x73cale-[\x31.\x304] " + (project.aspect === "3/4" ? "[&]:aspect-[3/4]" : "[&]:aspect-[4/3]") + " [&]:object-cover [animation-duration:0.7s]"} src={project.image} alt={project.title} />
               </div>
-            </div>
-          </button>
-          <button className={"group relative block w-full [&]:text-left [overflow:hidden]"} style={{ opacity: "1", transform: "none" }}>
-            <div className={"[&]:will-change-transform"} style={{ transform: "none" }}>
-              <img className={"w-full transition-all \x64uration-700 \x67roup-hover:\x73cale-[\x31.\x304] [&]:aspect-[3/4] [&]:object-cover [animation-duration:0.7s]"} src="/site-assets/9dd489fe344217ff.png" alt={"Cedar Deck & Pergola"} />
-            </div>
-            <div className={"absolute \x62g-gradient-to-t \x66rom-[#\x30F0F0F]/\x385 \x76ia-[#\x30F0F0F]/\x310 \x74o-transparent opacity-80 \x74ransition-opacity \x64uration-500 \x67roup-hover:\x6fpacity-95 [inset:0px] [transition-property:opacity] [transition-timing-function:cubic-bezier(0.4,0,0.2,1)]"} />
-            <div className={"absolute flex flex-col p-6 [&]:justify-end [inset:0px]"}>
-              <span className={"label-tech \x74ext-[#\x4298B5F]"}>Decks</span>
-              <h3 className={"mt-2 font-heading \x74ext-xl \x66ont-bold \x74ext-[#\x469F9F7]"}>Cedar Deck &amp; Pergola</h3>
-              <div className={"mt-3 max-h-0 opacity-0 transition-all \x64uration-500 \x67roup-hover:\x6dax-h-24 \x67roup-hover:\x6fpacity-100 [overflow:hidden]"}>
-                <p className={"\x74ext-xs \x74ext-[#\x469F9F7]/\x370 \x6ceading-relaxed"}>Western Red Cedar, Hidden Fasteners</p>
+              <div className={"absolute \x62g-gradient-to-t \x66rom-[#\x30F0F0F]/\x385 \x76ia-[#\x30F0F0F]/\x310 \x74o-transparent opacity-80 \x74ransition-opacity \x64uration-500 \x67roup-hover:\x6fpacity-95 [inset:0px] [transition-property:opacity] [transition-timing-function:cubic-bezier(0.4,0,0.2,1)]"} />
+              <div className={"absolute flex flex-col p-6 [&]:justify-end [inset:0px]"}>
+                <span className={"label-tech \x74ext-[#\x4298B5F]"}>{project.category}</span>
+                <h3 className={"mt-2 font-heading \x74ext-xl \x66ont-bold \x74ext-[#\x469F9F7]"}>{project.title}</h3>
+                <div className={"mt-3 max-h-0 opacity-0 transition-all \x64uration-500 \x67roup-hover:\x6dax-h-24 \x67roup-hover:\x6fpacity-100 [overflow:hidden]"}>
+                  <p className={"\x74ext-xs \x74ext-[#\x469F9F7]/\x370 \x6ceading-relaxed"}>{project.materials}</p>
+                </div>
               </div>
-            </div>
-          </button>
-          <button className={"group relative block w-full [&]:text-left [overflow:hidden]"} style={{ opacity: "1", transform: "none" }}>
-            <div className={"[&]:will-change-transform"} style={{ transform: "none" }}>
-              <img className={"w-full transition-all \x64uration-700 \x67roup-hover:\x73cale-[\x31.\x304] [&]:aspect-[4/3] [&]:object-cover [animation-duration:0.7s]"} src="/site-assets/3ec039348be6ff5b.png" alt={"Crown Moulding & Trim"} />
-            </div>
-            <div className={"absolute \x62g-gradient-to-t \x66rom-[#\x30F0F0F]/\x385 \x76ia-[#\x30F0F0F]/\x310 \x74o-transparent opacity-80 \x74ransition-opacity \x64uration-500 \x67roup-hover:\x6fpacity-95 [inset:0px] [transition-property:opacity] [transition-timing-function:cubic-bezier(0.4,0,0.2,1)]"} />
-            <div className={"absolute flex flex-col p-6 [&]:justify-end [inset:0px]"}>
-              <span className={"label-tech \x74ext-[#\x4298B5F]"}>Interior</span>
-              <h3 className={"mt-2 font-heading \x74ext-xl \x66ont-bold \x74ext-[#\x469F9F7]"}>Crown Moulding &amp; Trim</h3>
-              <div className={"mt-3 max-h-0 opacity-0 transition-all \x64uration-500 \x67roup-hover:\x6dax-h-24 \x67roup-hover:\x6fpacity-100 [overflow:hidden]"}>
-                <p className={"\x74ext-xs \x74ext-[#\x469F9F7]/\x370 \x6ceading-relaxed"}>Primed MDF, Solid Oak Accents</p>
-              </div>
-            </div>
-          </button>
-          <button className={"group relative block w-full [&]:text-left [overflow:hidden]"} style={{ opacity: "1", transform: "none" }}>
-            <div className={"[&]:will-change-transform"} style={{ transform: "none" }}>
-              <img className={"w-full transition-all \x64uration-700 \x67roup-hover:\x73cale-[\x31.\x304] [&]:aspect-[3/4] [&]:object-cover [animation-duration:0.7s]"} src="/site-assets/ebcd63dbc1a6540e.png" alt="Walnut Live-Edge Table" />
-            </div>
-            <div className={"absolute \x62g-gradient-to-t \x66rom-[#\x30F0F0F]/\x385 \x76ia-[#\x30F0F0F]/\x310 \x74o-transparent opacity-80 \x74ransition-opacity \x64uration-500 \x67roup-hover:\x6fpacity-95 [inset:0px] [transition-property:opacity] [transition-timing-function:cubic-bezier(0.4,0,0.2,1)]"} />
-            <div className={"absolute flex flex-col p-6 [&]:justify-end [inset:0px]"}>
-              <span className={"label-tech \x74ext-[#\x4298B5F]"}>Custom Builds</span>
-              <h3 className={"mt-2 font-heading \x74ext-xl \x66ont-bold \x74ext-[#\x469F9F7]"}>Walnut Live-Edge Table</h3>
-              <div className={"mt-3 max-h-0 opacity-0 transition-all \x64uration-500 \x67roup-hover:\x6dax-h-24 \x67roup-hover:\x6fpacity-100 [overflow:hidden]"}>
-                <p className={"\x74ext-xs \x74ext-[#\x469F9F7]/\x370 \x6ceading-relaxed"}>Black Walnut, Hand-Rubbed Oil Finish</p>
-              </div>
-            </div>
-          </button>
-          <button className={"group relative block w-full [&]:text-left [overflow:hidden]"} style={{ opacity: "1", transform: "none" }}>
-            <div className={"[&]:will-change-transform"} style={{ transform: "none" }}>
-              <img className={"w-full transition-all \x64uration-700 \x67roup-hover:\x73cale-[\x31.\x304] [&]:aspect-[4/3] [&]:object-cover [animation-duration:0.7s]"} src="/site-assets/6e9119e130799143.png" alt="Kitchen Renovation" />
-            </div>
-            <div className={"absolute \x62g-gradient-to-t \x66rom-[#\x30F0F0F]/\x385 \x76ia-[#\x30F0F0F]/\x310 \x74o-transparent opacity-80 \x74ransition-opacity \x64uration-500 \x67roup-hover:\x6fpacity-95 [inset:0px] [transition-property:opacity] [transition-timing-function:cubic-bezier(0.4,0,0.2,1)]"} />
-            <div className={"absolute flex flex-col p-6 [&]:justify-end [inset:0px]"}>
-              <span className={"label-tech \x74ext-[#\x4298B5F]"}>Renovations</span>
-              <h3 className={"mt-2 font-heading \x74ext-xl \x66ont-bold \x74ext-[#\x469F9F7]"}>Kitchen Renovation</h3>
-              <div className={"mt-3 max-h-0 opacity-0 transition-all \x64uration-500 \x67roup-hover:\x6dax-h-24 \x67roup-hover:\x6fpacity-100 [overflow:hidden]"}>
-                <p className={"\x74ext-xs \x74ext-[#\x469F9F7]/\x370 \x6ceading-relaxed"}>White Oak Cabinetry, Stone Counters</p>
-              </div>
-            </div>
-          </button>
-          <button className={"group relative block w-full [&]:text-left [overflow:hidden]"} style={{ opacity: "1", transform: "none" }}>
-            <div className={"[&]:will-change-transform"} style={{ transform: "none" }}>
-              <img className={"w-full transition-all \x64uration-700 \x67roup-hover:\x73cale-[\x31.\x304] [&]:aspect-[4/3] [&]:object-cover [animation-duration:0.7s]"} src="/site-assets/2f1d4afd7235a23a.png" alt="Whole-Home Exterior Trim" />
-            </div>
-            <div className={"absolute \x62g-gradient-to-t \x66rom-[#\x30F0F0F]/\x385 \x76ia-[#\x30F0F0F]/\x310 \x74o-transparent opacity-80 \x74ransition-opacity \x64uration-500 \x67roup-hover:\x6fpacity-95 [inset:0px] [transition-property:opacity] [transition-timing-function:cubic-bezier(0.4,0,0.2,1)]"} />
-            <div className={"absolute flex flex-col p-6 [&]:justify-end [inset:0px]"}>
-              <span className={"label-tech \x74ext-[#\x4298B5F]"}>Exterior</span>
-              <h3 className={"mt-2 font-heading \x74ext-xl \x66ont-bold \x74ext-[#\x469F9F7]"}>Whole-Home Exterior Trim</h3>
-              <div className={"mt-3 max-h-0 opacity-0 transition-all \x64uration-500 \x67roup-hover:\x6dax-h-24 \x67roup-hover:\x6fpacity-100 [overflow:hidden]"}>
-                <p className={"\x74ext-xs \x74ext-[#\x469F9F7]/\x370 \x6ceading-relaxed"}>Cellular PVC, Cedar Fascia</p>
-              </div>
-            </div>
-          </button>
+            </button>
+          ))}
         </div>
       </div>
+      {activeProject && (
+        <div className="fixed inset-0 z-[400] flex items-center justify-center bg-[#0F0F0F]/90 backdrop-blur-sm p-[6vw] animate-in fade-in duration-300" onClick={() => setActiveProject(null)}>
+          <div role="dialog" aria-modal="true" aria-labelledby="project-dialog-title" className="relative grid max-h-[90vh] w-full max-w-5xl overflow-hidden bg-[#F9F9F7] md:grid-cols-2 animate-in zoom-in-95 duration-300" onClick={(event) => event.stopPropagation()}>
+            <div className="relative h-64 md:h-auto">
+              <img src={activeProject.image} alt={activeProject.title} className="h-full w-full object-cover" />
+            </div>
+            <div className="overflow-y-auto p-8 md:p-12">
+              <span className="label-tech text-[#B98B5F]">{activeProject.category}</span>
+              <h3 id="project-dialog-title" className="mt-3 display-heading text-3xl md:text-4xl text-[#0F0F0F]">{activeProject.title}</h3>
+              <p className="mt-5 text-[#333] leading-relaxed">{activeProject.description}</p>
+              <div className="mt-7 space-y-4 border-t border-[#0F0F0F]/10 pt-6">
+                <div>
+                  <div className="label-tech text-[#0F0F0F]/40">Scope of Work</div>
+                  <p className="mt-1 text-sm text-[#333]">{activeProject.scope}</p>
+                </div>
+                <div>
+                  <div className="label-tech text-[#0F0F0F]/40">Materials Used</div>
+                  <p className="mt-1 text-sm text-[#333]">{activeProject.materials}</p>
+                </div>
+                <div>
+                  <div className="label-tech text-[#0F0F0F]/40">Duration</div>
+                  <p className="mt-1 text-sm text-[#333]">{activeProject.duration}</p>
+                </div>
+              </div>
+            </div>
+            <button ref={dialogClose} className="absolute right-4 top-4 flex h-10 w-10 items-center justify-center bg-[#0F0F0F] text-[#F9F9F7] hover:bg-[#B98B5F] transition-colors" aria-label="Close" onClick={() => setActiveProject(null)}>
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M18 6 6 18" />
+                <path d="m6 6 12 12" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      )}
     </section>
   );
 }
@@ -645,6 +633,12 @@ function ImportedSectionTheStandardIsThe() {
 }
 
 function ImportedSection() {
+  const [reviewIndex, setReviewIndex] = useState(0);
+  const review = REVIEWS[reviewIndex];
+  useEffect(() => {
+    const timer = window.setTimeout(() => setReviewIndex((index) => (index + 1) % REVIEWS.length), 6000);
+    return () => window.clearTimeout(timer);
+  }, [reviewIndex]);
   return (
     <section className={"relative \x62g-[#\x30F0F0F] grain \x70y-24 \x6dd:\x70y-36 \x74ext-[#\x469F9F7] [overflow:hidden]"} id="reviews">
       <div className={"absolute h-72 w-72 rounded-full \x62g-[#\x4298B5F]/\x35 \x62lur-3xl [filter:var(--tw-blur)_var(--tw-brightness)_var(--tw-contrast)_var(--tw-grayscale)_var(--tw-hue-rotate)_var(--tw-invert)_var(--tw-saturate)_var(--tw-sepia)_var(--tw-drop-shadow)] [left:-5rem] [top:33.3333%]"} />
@@ -654,7 +648,7 @@ function ImportedSection() {
           <span className={"label-tech \x74ext-[#\x4298B5F] flex items-center [&]:justify-center [gap:0.75rem]"}><span className={"h-px w-8 \x62g-[#\x4298B5F]"} /> Client Reviews</span>
         </div>
         <div className={"relative mt-10 min-h-[260px] \x6dd:\x6din-h-[\x3220px]"} data-site-import-desktop-variant="">
-          <div className={"absolute flex flex-col items-center [&]:justify-center [inset:0px]"} style={{ opacity: "1", transform: "none" }}>
+          <div className={"absolute flex flex-col items-center [&]:justify-center [inset:0px] animate-in fade-in slide-in-from-right-8 duration-500"} key={reviewIndex} style={{ opacity: "1", transform: "none" }}>
             <div className="flex mb-6 [gap:0.25rem]">
               <svg className={"\x74ext-[#\x4298B5F] [fill:rgb(185,139,95)]"} xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z" />
@@ -672,15 +666,15 @@ function ImportedSection() {
                 <path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z" />
               </svg>
             </div>
-            <p className={"font-heading \x74ext-2xl \x6dd:\x74ext-3xl \x66ont-medium \x6ceading-snug \x74racking-tight [max-width:42rem]"}>“Core Carpentry completely transformed our basement. Professional, punctual, and the quality exceeded our expectations. We couldn't be happier.”</p>
+            <p className={"font-heading \x74ext-2xl \x6dd:\x74ext-3xl \x66ont-medium \x6ceading-snug \x74racking-tight [max-width:42rem]"}>“{review.quote}”</p>
             <div className="mt-7">
-              <p className={"label-tech \x74ext-[#\x4298B5F]"}>— Sarah M.</p>
-              <p className={"mt-1.5 \x74ext-sm \x74ext-[#\x469F9F7]/\x340"}>Reseda, CA</p>
+              <p className={"label-tech \x74ext-[#\x4298B5F]"}>— {review.name}</p>
+              <p className={"mt-1.5 \x74ext-sm \x74ext-[#\x469F9F7]/\x340"}>{review.location}</p>
             </div>
           </div>
         </div>
         <div className={"relative mt-10 min-h-[260px] \x6dd:\x6din-h-[\x3220px]"} style={{ "--site-import-responsive-display": "block" } as CSSProperties} data-site-import-mobile-variant="">
-          <div className={"absolute flex flex-col items-center [&]:justify-center [inset:0px]"} style={{ opacity: "0", transform: "translateX(0.162547px)" }}>
+          <div className={"absolute flex flex-col items-center [&]:justify-center [inset:0px] animate-in fade-in slide-in-from-right-8 duration-500"} key={reviewIndex} style={{ opacity: "1", transform: "none" }}>
             <div className="flex mb-6 [gap:0.25rem]">
               <svg className={"\x74ext-[#\x4298B5F] [fill:rgb(185,139,95)]"} xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z" />
@@ -698,26 +692,25 @@ function ImportedSection() {
                 <path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z" />
               </svg>
             </div>
-            <p className={"font-heading \x74ext-2xl \x6dd:\x74ext-3xl \x66ont-medium \x6ceading-snug \x74racking-tight [max-width:42rem]"}>“Core Carpentry completely transformed our basement. Professional, punctual, and the quality exceeded our expectations. We couldn't be happier.”</p>
+            <p className={"font-heading \x74ext-2xl \x6dd:\x74ext-3xl \x66ont-medium \x6ceading-snug \x74racking-tight [max-width:42rem]"}>“{review.quote}”</p>
             <div className="mt-7">
-              <p className={"label-tech \x74ext-[#\x4298B5F]"}>— Sarah M.</p>
-              <p className={"mt-1.5 \x74ext-sm \x74ext-[#\x469F9F7]/\x340"}>Reseda, CA</p>
+              <p className={"label-tech \x74ext-[#\x4298B5F]"}>— {review.name}</p>
+              <p className={"mt-1.5 \x74ext-sm \x74ext-[#\x469F9F7]/\x340"}>{review.location}</p>
             </div>
           </div>
         </div>
         <div className={"mt-10 flex items-center [&]:justify-center [gap:1.5rem]"}>
-          <button className={"flex h-11 w-11 items-center \x62order \x62order-white/\x315 \x74ext-[#\x469F9F7]/\x370 \x68over:\x62order-[#\x4298B5F] \x68over:\x74ext-[#\x4298B5F] transition-colors [&]:justify-center"} aria-label="Previous">
+          <button className={"flex h-11 w-11 items-center \x62order \x62order-white/\x315 \x74ext-[#\x469F9F7]/\x370 \x68over:\x62order-[#\x4298B5F] \x68over:\x74ext-[#\x4298B5F] transition-colors [&]:justify-center"} aria-label="Previous" onClick={() => setReviewIndex((index) => (index - 1 + REVIEWS.length) % REVIEWS.length)}>
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <path d="m15 18-6-6 6-6" />
             </svg>
           </button>
           <div className="flex [gap:0.5rem]">
-            <button className={"h-1.5 transition-all \x64uration-300 w-8 \x62g-[#\x4298B5F]"} aria-label="Review 1" />
-            <button className={"h-1.5 transition-all \x64uration-300 w-1.5 \x62g-white/\x320"} aria-label="Review 2" />
-            <button className={"h-1.5 transition-all \x64uration-300 w-1.5 \x62g-white/\x320"} aria-label="Review 3" />
-            <button className={"h-1.5 transition-all \x64uration-300 w-1.5 \x62g-white/\x320"} aria-label="Review 4" />
+            {REVIEWS.map((item, index) => (
+              <button key={item.name} className={index === reviewIndex ? "h-1.5 transition-all \x64uration-300 w-8 \x62g-[#\x4298B5F]" : "h-1.5 transition-all \x64uration-300 w-1.5 \x62g-white/\x320"} aria-label={`Review ${index + 1}`} aria-current={index === reviewIndex} onClick={() => setReviewIndex(index)} />
+            ))}
           </div>
-          <button className={"flex h-11 w-11 items-center \x62order \x62order-white/\x315 \x74ext-[#\x469F9F7]/\x370 \x68over:\x62order-[#\x4298B5F] \x68over:\x74ext-[#\x4298B5F] transition-colors [&]:justify-center"} aria-label="Next">
+          <button className={"flex h-11 w-11 items-center \x62order \x62order-white/\x315 \x74ext-[#\x469F9F7]/\x370 \x68over:\x62order-[#\x4298B5F] \x68over:\x74ext-[#\x4298B5F] transition-colors [&]:justify-center"} aria-label="Next" onClick={() => setReviewIndex((index) => (index + 1) % REVIEWS.length)}>
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <path d="m9 18 6-6-6-6" />
             </svg>
@@ -841,6 +834,10 @@ function ImportedSectionHowWeBuild() {
 }
 
 function ImportedSectionRequestAFreeEstimate() {
+  const [form, setForm] = useState({ name: "", phone: "", email: "", details: "" });
+  const [projectType, setProjectType] = useState<string | null>(null);
+  const completed = [form.name, form.phone, form.email, projectType, form.details].filter((value) => value && value.trim()).length;
+  const update = (field: keyof typeof form) => (event: { target: { value: string } }) => setForm((current) => ({ ...current, [field]: event.target.value }));
   return (
     <section className={"relative \x62g-[#\x469F9F7] \x70y-24 \x6dd:\x70y-36"} id="contact">
       <div className={"\x6dx-auto grid max-w-[1400px] \x70x-[\x36vw] [gap:0px] [@media(min-width:1024px)]:[grid-template-columns:repeat(2,minmax(0px,1fr))]"}>
@@ -859,39 +856,36 @@ function ImportedSectionRequestAFreeEstimate() {
           <div style={{ opacity: "1", transform: "none" }}>
             <h2 className={"display-heading mt-5 \x74ext-4xl \x6dd:\x74ext-5xl"}>Request a free estimate.</h2>
           </div>
-          <form className={"mt-8 \x73pace-y-5"} style={{ opacity: "1" }}>
+          <form className={"mt-8 \x73pace-y-5"} style={{ opacity: "1" }} onSubmit={(event) => event.preventDefault()}>
             <div className={"grid \x73m:\x67rid-cols-2 [gap:1.25rem]"}>
               <label className="block">
                 <span className={"label-tech \x74ext-[#\x469F9F7]/\x350 mb-2 block"}>Name</span>
-                <input className="cc-input [transition:border-color_0.3s]" required placeholder="Jane Doe" defaultValue="" />
+                <input className="cc-input [transition:border-color_0.3s]" required placeholder="Jane Doe" value={form.name} onChange={update("name")} />
               </label>
               <label className="block">
                 <span className={"label-tech \x74ext-[#\x469F9F7]/\x350 mb-2 block"}>Phone</span>
-                <input className="cc-input [transition:border-color_0.3s]" placeholder="(555) 000-0000" defaultValue="" />
+                <input className="cc-input [transition:border-color_0.3s]" placeholder="(555) 000-0000" value={form.phone} onChange={update("phone")} />
               </label>
             </div>
             <label className="block">
               <span className={"label-tech \x74ext-[#\x469F9F7]/\x350 mb-2 block"}>Email</span>
-              <input className="cc-input [transition:border-color_0.3s]" required type="email" placeholder="jane@email.com" defaultValue="" />
+              <input className="cc-input [transition:border-color_0.3s]" required type="email" placeholder="jane@email.com" value={form.email} onChange={update("email")} />
             </label>
             <label className="block">
               <span className={"label-tech \x74ext-[#\x469F9F7]/\x350 mb-2 block"}>Project Type</span>
               <div className={"flex [&]:flex-wrap [gap:0.5rem]"}>
-                <button className={"label-tech \x70x-3 \x70y-2 \x62order transition-colors \x62order-white/\x315 \x74ext-[#\x469F9F7]/\x360 \x68over:\x62order-[#\x4298B5F]/\x360"} type="button">Framing</button>
-                <button className={"label-tech \x70x-3 \x70y-2 \x62order transition-colors \x62order-white/\x315 \x74ext-[#\x469F9F7]/\x360 \x68over:\x62order-[#\x4298B5F]/\x360"} type="button">Deck</button>
-                <button className={"label-tech \x70x-3 \x70y-2 \x62order transition-colors \x62order-white/\x315 \x74ext-[#\x469F9F7]/\x360 \x68over:\x62order-[#\x4298B5F]/\x360"} type="button">Renovation</button>
-                <button className={"label-tech \x70x-3 \x70y-2 \x62order transition-colors \x62order-white/\x315 \x74ext-[#\x469F9F7]/\x360 \x68over:\x62order-[#\x4298B5F]/\x360"} type="button">Trim &amp; Moulding</button>
-                <button className={"label-tech \x70x-3 \x70y-2 \x62order transition-colors \x62order-white/\x315 \x74ext-[#\x469F9F7]/\x360 \x68over:\x62order-[#\x4298B5F]/\x360"} type="button">Custom Woodworking</button>
-                <button className={"label-tech \x70x-3 \x70y-2 \x62order transition-colors \x62order-white/\x315 \x74ext-[#\x469F9F7]/\x360 \x68over:\x62order-[#\x4298B5F]/\x360"} type="button">Repair</button>
+                {PROJECT_TYPES.map((type) => (
+                  <button key={type} className={type === projectType ? "label-tech px-3 py-2 border transition-colors border-[#B98B5F] bg-[#B98B5F] text-[#0F0F0F]" : "label-tech \x70x-3 \x70y-2 \x62order transition-colors \x62order-white/\x315 \x74ext-[#\x469F9F7]/\x360 \x68over:\x62order-[#\x4298B5F]/\x360"} type="button" aria-pressed={type === projectType} onClick={() => setProjectType(type)}>{type}</button>
+                ))}
               </div>
             </label>
             <label className="block">
               <span className={"label-tech \x74ext-[#\x469F9F7]/\x350 mb-2 block"}>Project Details</span>
-              <textarea className={"cc-input [&]:resize-none [transition:border-color_0.3s]"} required rows={3} placeholder="Tell us about your project..." />
+              <textarea className={"cc-input [&]:resize-none [transition:border-color_0.3s]"} required rows={3} placeholder="Tell us about your project..." value={form.details} onChange={update("details")} />
             </label>
             <div className="pt-2">
               <div className={"mb-3 h-1 w-full \x62g-white/\x310 [overflow:hidden]"}>
-                <div className={"h-full \x62g-[#\x4298B5F]"} style={{ width: "0px" }} />
+                <div className={"h-full \x62g-[#\x4298B5F] transition-all duration-500"} style={{ width: completed ? `${completed * 20}%` : "0px" }} />
               </div>
               <button className={"group relative flex w-full items-center \x62g-[#\x4298B5F] \x70x-6 \x70y-4 label-tech \x74ext-[#\x30F0F0F] transition-colors \x68over:\x62g-[#\x6187a4f] disabled:opacity-80 [&]:justify-center [gap:0.75rem] [overflow:hidden]"} type="submit">Send Build Request<svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z" /><path d="m21.854 2.147-10.94 10.939" /></svg></button>
             </div>
@@ -1000,6 +994,91 @@ function ImportedFooter() {
   );
 }
 
+
+type Project = {
+  title: string;
+  category: "Renovations" | "Decks" | "Interior" | "Exterior" | "Custom Builds";
+  image: string;
+  aspect: "3/4" | "4/3";
+  materials: string;
+  description: string;
+  scope: string;
+  duration: string;
+};
+
+const PROJECT_FILTERS = ["All", "Renovations", "Decks", "Interior", "Exterior", "Custom Builds"] as const;
+
+const PROJECTS: Project[] = [
+  { title: "Vaulted Ceiling Reframe", category: "Custom Builds", image: "/site-assets/76a96acaede8317f.png", aspect: "3/4", materials: "Engineered LVL, Douglas Fir, Custom Steel Joinery", description: "A complete reframe of a vaulted ceiling, replacing compromised framing with precision-cut engineered timber and exposed fir beams.", scope: "Structural reframing of a vaulted great-room ceiling", duration: "5 Weeks" },
+  { title: "Cedar Deck & Pergola", category: "Decks", image: "/site-assets/9dd489fe344217ff.png", aspect: "3/4", materials: "Western Red Cedar, Hidden Fasteners", description: "A spacious backyard deck with a custom cedar pergola, built for longevity and seamless outdoor living.", scope: "Multi-tier deck with integrated cedar pergola", duration: "3 Weeks" },
+  { title: "Crown Moulding & Trim", category: "Interior", image: "/site-assets/3ec039348be6ff5b.png", aspect: "4/3", materials: "Primed MDF, Solid Oak Accents", description: "Crisp mitered crown and base trim throughout the home, with solid oak accents at openings and transitions.", scope: "Whole-home crown, base, and casing installation", duration: "2 Weeks" },
+  { title: "Walnut Live-Edge Table", category: "Custom Builds", image: "/site-assets/ebcd63dbc1a6540e.png", aspect: "3/4", materials: "Black Walnut, Hand-Rubbed Oil Finish", description: "A furniture-grade live-edge walnut table, hand-finished with dovetailed base joinery.", scope: "Bespoke dining table from a single live-edge slab", duration: "4 Weeks" },
+  { title: "Kitchen Renovation", category: "Renovations", image: "/site-assets/6e9119e130799143.png", aspect: "4/3", materials: "White Oak Cabinetry, Stone Counters", description: "A full kitchen renovation featuring custom white oak cabinetry, precise trim, and integrated detail work.", scope: "Full kitchen remodel with custom cabinetry", duration: "6 Weeks" },
+  { title: "Whole-Home Exterior Trim", category: "Exterior", image: "/site-assets/2f1d4afd7235a23a.png", aspect: "4/3", materials: "Cellular PVC, Cedar Fascia", description: "A complete exterior trim package with weather-resistant PVC detailing and cedar fascia accents.", scope: "Exterior fascia, soffit, and window trim package", duration: "3 Weeks" },
+];
+
+const REVIEWS = [
+  { quote: "Core Carpentry completely transformed our basement. Professional, punctual, and the quality exceeded our expectations. We couldn't be happier.", name: "Sarah M.", location: "Reseda, CA" },
+  { quote: "We hired Core Carpentry for a new backyard deck and the craftsmanship was outstanding. Everything was completed on schedule.", name: "Michael R.", location: "Pasadena, CA" },
+  { quote: "Excellent communication from start to finish. Every detail was completed perfectly.", name: "Jennifer L.", location: "Los Angeles, CA" },
+  { quote: "Our trim and finishing work looks incredible. The attention to detail really shows.", name: "David P.", location: "Highland Park, CA" },
+];
+
+const PROJECT_TYPES = ["Framing", "Deck", "Renovation", "Trim & Moulding", "Custom Woodworking", "Repair"];
+
+function clamp(value: number) {
+  return Math.min(1, Math.max(0, value));
+}
+
+// Tracks the mouse for the custom crosshair cursor and the hero spotlight.
+function usePointer() {
+  const [pointer, setPointer] = useState({ x: -100, y: -100, px: 50, py: 40, hover: false, active: false });
+  useEffect(() => {
+    const onMove = (event: PointerEvent) => {
+      if (event.pointerType && event.pointerType !== "mouse") return;
+      const target = event.target instanceof Element ? event.target : null;
+      setPointer({
+        x: event.clientX,
+        y: event.clientY,
+        px: (event.clientX / window.innerWidth) * 100,
+        py: (event.clientY / window.innerHeight) * 100,
+        hover: !!target?.closest("a, button, input, textarea, select, label"),
+        active: true,
+      });
+    };
+    window.addEventListener("pointermove", onMove, { passive: true });
+    return () => window.removeEventListener("pointermove", onMove);
+  }, []);
+  return pointer;
+}
+
+// Recomputes a 0..1 value from an element's position while the page scrolls.
+function useScrollValue<T extends HTMLElement>(compute: (rect: DOMRect, viewportHeight: number) => number, decorative = false) {
+  const ref = useRef<T>(null);
+  const [value, setValue] = useState<number | null>(null);
+  const computeRef = useRef(compute);
+  computeRef.current = compute;
+  useEffect(() => {
+    if (decorative && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    let frame = 0;
+    const update = () => {
+      frame = 0;
+      if (ref.current) setValue(computeRef.current(ref.current.getBoundingClientRect(), window.innerHeight));
+    };
+    const schedule = () => {
+      if (!frame) frame = requestAnimationFrame(update);
+    };
+    update();
+    window.addEventListener("scroll", schedule, { passive: true });
+    window.addEventListener("resize", schedule);
+    return () => {
+      cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", schedule);
+      window.removeEventListener("resize", schedule);
+    };
+  }, [decorative]);
+  return { ref, value };
+}
 
 function useImportedLayout() {
   useEffect(() => {

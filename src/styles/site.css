@@ -2245,3 +2245,16 @@ body { background-color: hsl(var(--background)); font-family: var(--font-body); 
   }
 }
 
+
+/* Restored interactions: crosshair hover size and the hero scroll cue. */
+@media (pointer:fine) {
+  .cursor-crosshair.is-hover { width: 52px; height: 52px; }
+}
+@keyframes site-scroll-cue {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(8px); }
+}
+.site-scroll-cue { animation: site-scroll-cue 1.6s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) {
+  .site-scroll-cue { animation: none; }
+}
