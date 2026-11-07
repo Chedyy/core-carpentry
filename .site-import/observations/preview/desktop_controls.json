@@ -1,14 +1,14 @@
 {
- "cursor": "translateX(300px) translateY(200px)",
- "spot": "radial-gradient(circle at 23.4375% 22.2222%, ",
+ "cursor": "translateX(-100px) translateY(-100px)",
+ "spot": "radial-gradient(circle at 50% 40%, rgba(255, ",
  "cursor_hover": true,
  "nav_projects": [
   "http://localhost:8080/#projects",
   -0.0
  ],
  "hero_parallax": [
-  "translateY(21.6333%)",
-  "0"
+  "translateY(7.33333%)",
+  "0.607843"
  ],
  "filter_custom": [
   "Vaulted Ceiling Reframe",
@@ -44,7 +44,7 @@
    "1"
   ]
  ],
- "process_line": "scaleY(0.378936)",
+ "process_line": "scaleY(0.376063)",
  "form_2fields": "40%",
  "form_type": [
   "60%",
