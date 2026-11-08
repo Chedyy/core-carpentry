@@ -32,4 +32,6 @@ use the editor.
 ## Project rules
 
 - The home page is an imported copy of core-carpentry.com: keep its markup and interactions in `src/routes/index.tsx` and its retained source styles in `src/styles/site.css`, so the import's structure and class names stay comparable with the original.
+- Home page copy, business details and content lists live in `src/data/mockData.ts`; `src/routes/index.tsx` only maps over them, keeping the markup file small.
+- Scroll fade-ins use a `data-reveal` attribute plus one IntersectionObserver hook; content stays visible without JS or with reduced motion.
 - `src/styles/site.css` carries the source site's Tailwind v3 transform rules; when a class there also exists as a Tailwind v4 utility (translate/scale/rotate), cancel the v4 property in site.css so transforms are not applied twice.
