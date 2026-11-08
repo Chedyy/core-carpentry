@@ -30,8 +30,8 @@ export const SEO = {
 
 export const HERO = {
   eyebrow: "Built with Precision. Crafted to Last.",
-  headlineLead: "Wood Core Carpentry —",
-  headlineAccent: "Stamford, CT",
+  headlineLead: "Wood Core Carpentry",
+  headlineAccent: "— Stamford, CT",
   subheadline:
     "High-quality residential carpentry, custom framing, finish work, decks, and home renovations delivered with precision and care.",
 };
