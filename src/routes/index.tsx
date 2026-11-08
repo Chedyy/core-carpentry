@@ -292,6 +292,9 @@ function ImportedSectionExpertiseInEveryJoint() {
               <span className={"absolute left-0 top-0 h-0 w-px \x62g-[#\x4298B5F] transition-all \x64uration-500 \x67roup-hover:\x68-full"} />
               <span className={"absolute right-0 h-0 w-px \x62g-[#\x4298B5F] transition-all \x64uration-500 \x67roup-hover:\x68-full [bottom:0px]"} />
               <div className="relative">
+                <div className="-mx-8 -mt-8 mb-8 aspect-[16/10] overflow-hidden md:-mx-10 md:-mt-10">
+                  <img className="h-full w-full object-cover opacity-80 transition-all duration-700 group-hover:scale-105 group-hover:opacity-100" src={service.image} alt={service.title} loading="lazy" />
+                </div>
                 <svg className={"\x74ext-[#\x4298B5F] \x74ransition-transform \x64uration-500 \x67roup-hover:\x72otate-[\x3360deg] [transition-property:transform] [transition-timing-function:cubic-bezier(0.4,0,0.2,1)]"} xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round">
                   {SERVICE_ICONS[index]}
                 </svg>
@@ -352,7 +355,7 @@ function ImportedSectionFeaturedProjects() {
           {visibleProjects.map((project) => (
             <button key={project.title} className={"group relative block w-full [&]:text-left [overflow:hidden] animate-in fade-in duration-500"} style={{ opacity: "1", transform: "none" }} aria-haspopup="dialog" onClick={(event) => { cardTrigger.current = event.currentTarget; setActiveProject(project); }}>
               <div className={"[&]:will-change-transform"} style={{ transform: "none" }}>
-                <img className={"w-full transition-all \x64uration-700 \x67roup-hover:\x73cale-[\x31.\x304] " + (project.aspect === "3/4" ? "[&]:aspect-[3/4]" : "[&]:aspect-[4/3]") + " [&]:object-cover [animation-duration:0.7s]"} src={project.image} alt={project.title} />
+                <img className={"w-full transition-all \x64uration-700 \x67roup-hover:\x73cale-[\x31.\x304] " + (project.aspect === "3/4" ? "[&]:aspect-[3/4]" : project.aspect === "1/1" ? "[&]:aspect-square" : "[&]:aspect-[4/3]") + " [&]:object-cover [animation-duration:0.7s]"} src={project.image} alt={project.title} />
               </div>
               <div className={"absolute \x62g-gradient-to-t \x66rom-[#\x30F0F0F]/\x385 \x76ia-[#\x30F0F0F]/\x310 \x74o-transparent opacity-80 \x74ransition-opacity \x64uration-500 \x67roup-hover:\x6fpacity-95 [inset:0px] [transition-property:opacity] [transition-timing-function:cubic-bezier(0.4,0,0.2,1)]"} />
               <div className={"absolute flex flex-col p-6 [&]:justify-end [inset:0px]"}>

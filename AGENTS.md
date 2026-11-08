@@ -35,3 +35,4 @@ use the editor.
 - Home page copy, business details and content lists live in `src/data/mockData.ts`; `src/routes/index.tsx` only maps over them, keeping the markup file small.
 - Scroll fade-ins use a `data-reveal` attribute plus one IntersectionObserver hook; content stays visible without JS or with reduced motion.
 - `src/styles/site.css` carries the source site's Tailwind v3 transform rules; when a class there also exists as a Tailwind v4 utility (translate/scale/rotate), cancel the v4 property in site.css so transforms are not applied twice.
+- Project and service photos are plain files at the `public/` root (e.g. `/project1.jpg`, `/service3.jpg`) referenced by path from `src/data/mockData.ts`, so a photo can be swapped by replacing the file with the same name.

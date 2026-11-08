@@ -61,22 +61,22 @@ export const SERVICES_INTRO = {
 };
 
 export const SERVICES = [
-  { number: "01", title: "Residential Framing", description: "Structural framing for walls, additions, and load-bearing changes — built square, plumb, and true." },
-  { number: "02", title: "Finish Carpentry", description: "Custom trim, crown moulding, and baseboards fitted with clean joinery and seamless transitions." },
-  { number: "03", title: "Custom Decks & Pergolas", description: "Composite and natural wood decks and pergolas engineered to stand up to Connecticut winters." },
-  { number: "04", title: "Home Renovations", description: "Full interior, kitchen, and basement remodels managed end-to-end with honest timelines." },
-  { number: "05", title: "Custom Woodworking", description: "Bespoke built-ins, mantels, and live-edge tables crafted to your exact specifications." },
-  { number: "06", title: "Interior Trim & Moulding", description: "Crisp miters, wainscoting, and door and window casing with tight, even reveals." },
-  { number: "07", title: "Basement Finishing", description: "Transforming lower levels into warm, finished living spaces — framing, trim, and detail work." },
-  { number: "08", title: "Door & Window Installation", description: "Weather-sealed, properly fitted installations that operate smoothly through every season." },
-  { number: "09", title: "General Carpentry Repairs", description: "Rot repairs, structural fixes, and deck repair handled with the same care as a new build." },
+  { number: "01", title: "Residential Framing", description: "Structural framing for walls, additions, and load-bearing changes — built square, plumb, and true.", image: "/service1.jpg" },
+  { number: "02", title: "Finish Carpentry", description: "Custom trim, crown moulding, and baseboards fitted with clean joinery and seamless transitions.", image: "/service2.jpg" },
+  { number: "03", title: "Custom Decks & Pergolas", description: "Composite and natural wood decks and pergolas engineered to stand up to Connecticut winters.", image: "/service3.jpg" },
+  { number: "04", title: "Home Renovations", description: "Full interior, kitchen, and basement remodels managed end-to-end with honest timelines.", image: "/service4.jpg" },
+  { number: "05", title: "Custom Woodworking", description: "Bespoke built-ins, mantels, and live-edge tables crafted to your exact specifications.", image: "/service5.jpg" },
+  { number: "06", title: "Interior Trim & Moulding", description: "Crisp miters, wainscoting, and door and window casing with tight, even reveals.", image: "/service6.jpg" },
+  { number: "07", title: "Basement Finishing", description: "Transforming lower levels into warm, finished living spaces — framing, trim, and detail work.", image: "/service7.jpg" },
+  { number: "08", title: "Door & Window Installation", description: "Weather-sealed, properly fitted installations that operate smoothly through every season.", image: "/service8.jpg" },
+  { number: "09", title: "General Carpentry Repairs", description: "Rot repairs, structural fixes, and deck repair handled with the same care as a new build.", image: "/service9.jpg" },
 ];
 
 export type Project = {
   title: string;
   category: "Renovations" | "Decks" | "Interior" | "Exterior" | "Custom Builds";
   image: string;
-  aspect: "3/4" | "4/3";
+  aspect: "3/4" | "4/3" | "1/1";
   materials: string;
   description: string;
   scope: string;
@@ -86,12 +86,13 @@ export type Project = {
 export const PROJECT_FILTERS = ["All", "Renovations", "Decks", "Interior", "Exterior", "Custom Builds"] as const;
 
 export const PROJECTS: Project[] = [
-  { title: "Vaulted Ceiling Reframe — New Canaan", category: "Custom Builds", image: "/site-assets/76a96acaede8317f.png", aspect: "3/4", materials: "Engineered LVL, Douglas Fir, Custom Steel Joinery", description: "A complete reframe of a New Canaan great-room ceiling, replacing compromised framing with precision-cut engineered timber and exposed fir beams.", scope: "Structural reframing of a vaulted great-room ceiling", duration: "5 Weeks" },
-  { title: "Cedar Deck & Pergola — Darien", category: "Decks", image: "/site-assets/9dd489fe344217ff.png", aspect: "3/4", materials: "Western Red Cedar, Hidden Fasteners", description: "A spacious backyard deck with a custom cedar pergola, detailed for drainage and freeze-thaw cycles along the Connecticut shoreline.", scope: "Multi-tier deck with integrated cedar pergola", duration: "3 Weeks" },
-  { title: "Crown Moulding & Trim — Stamford", category: "Interior", image: "/site-assets/3ec039348be6ff5b.png", aspect: "4/3", materials: "Primed MDF, Solid Oak Accents", description: "Crisp mitered crown and base trim throughout a Stamford colonial, with solid oak accents at openings and transitions.", scope: "Whole-home crown, base, and casing installation", duration: "2 Weeks" },
-  { title: "Walnut Live-Edge Table — Greenwich", category: "Custom Builds", image: "/site-assets/ebcd63dbc1a6540e.png", aspect: "3/4", materials: "Black Walnut, Hand-Rubbed Oil Finish", description: "A furniture-grade live-edge walnut dining table for a Greenwich home, hand-finished with dovetailed base joinery.", scope: "Bespoke dining table from a single live-edge slab", duration: "4 Weeks" },
-  { title: "Kitchen Renovation — Norwalk", category: "Renovations", image: "/site-assets/6e9119e130799143.png", aspect: "4/3", materials: "White Oak Cabinetry, Stone Counters", description: "A full Norwalk kitchen renovation featuring custom white oak cabinetry, precise trim, and integrated detail work.", scope: "Full kitchen remodel with custom cabinetry", duration: "6 Weeks" },
-  { title: "Exterior Trim Package — Rye, NY", category: "Exterior", image: "/site-assets/2f1d4afd7235a23a.png", aspect: "4/3", materials: "Cellular PVC, Cedar Fascia", description: "A complete exterior trim package for a Westchester County home, with weather-resistant PVC detailing and cedar fascia accents.", scope: "Exterior fascia, soffit, and window trim package", duration: "3 Weeks" },
+  { title: "Fireplace Wall & Floating Shelves — Stamford", category: "Renovations", image: "/project1.jpg", aspect: "1/1", materials: "Stone-Look Tile Surround, Solid Wood Floating Shelves, Painted Base Cabinets", description: "A full living-room fireplace wall with a tiled surround, a solid wood mantel, flanking floating shelves, and built-in base cabinets.", scope: "Fireplace surround, mantel, shelving, and built-in cabinetry", duration: "3 Weeks" },
+  { title: "Cedar Deck & Pergola — Darien", category: "Decks", image: "/deck1.jpg", aspect: "3/4", materials: "Western Red Cedar, Hidden Fasteners", description: "A spacious backyard deck with a custom cedar pergola, detailed for drainage and freeze-thaw cycles along the Connecticut shoreline.", scope: "Multi-tier deck with integrated cedar pergola", duration: "3 Weeks" },
+  { title: "Built-In Bookcases — Greenwich", category: "Interior", image: "/project2.jpg", aspect: "1/1", materials: "Painted Hardwood Built-Ins, Brick Surround, Wood Mantel", description: "Floor-to-ceiling painted bookcases with lower cabinets framing a brick fireplace and a solid wood mantel.", scope: "Twin built-in bookcases with fireplace mantel", duration: "2 Weeks" },
+  { title: "Farmhouse Dining Table — New Canaan", category: "Custom Builds", image: "/project3.jpg", aspect: "1/1", materials: "Reclaimed Hardwood Top, Hand-Rubbed Finish", description: "A custom farmhouse dining table built from reclaimed hardwood, sized for the room and finished by hand.", scope: "Bespoke dining table", duration: "2 Weeks" },
+  { title: "Slatted Media Wall — Norwalk", category: "Interior", image: "/project4.jpg", aspect: "1/1", materials: "Wood Slat Panels, Integrated LED Lighting, Floating Console", description: "A modern feature wall with vertical wood slat panels, hidden lighting, and a low floating media console.", scope: "Feature wall, slat paneling, and floating console", duration: "2 Weeks" },
+  { title: "Exterior Trim Package — Rye, NY", category: "Exterior", image: "/project5.jpg", aspect: "4/3", materials: "Cellular PVC, Cedar Fascia", description: "A complete exterior trim package for a Westchester County home, with weather-resistant PVC detailing and cedar fascia accents.", scope: "Exterior fascia, soffit, and window trim package", duration: "3 Weeks" },
+  { title: "Live-Edge Floating Shelves — Darien", category: "Custom Builds", image: "/project6.jpg", aspect: "1/1", materials: "Live-Edge Hardwood Slabs, Concealed Steel Brackets", description: "Live-edge hardwood shelves mounted on concealed brackets to create a warm, natural retail display wall.", scope: "Custom live-edge display shelving", duration: "1 Week" },
 ];
 
 export const WHY_US = {
