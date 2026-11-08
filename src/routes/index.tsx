@@ -2,14 +2,15 @@ import type { CSSProperties } from "react";
 import { useEffect, useRef, useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import capturedCSS from "../styles/site.css?raw";
+import { ABOUT, BUSINESS, CTA, ESTIMATE_FORM, HERO, PROJECT_FILTERS, PROJECTS, PROJECT_TYPES, REVIEWS, SEO, SERVICES, SERVICES_INTRO, WHY_US, type Project } from "@/data/mockData";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Core Carpentry — Built on Craftsmanship. Driven by Quality." },
-      { name: "description", content: "High-quality residential carpentry, renovations, framing, finish work, decks and custom projects across Southern California." },
-      { property: "og:title", content: "Core Carpentry — Built with Precision. Crafted to Last." },
-      { property: "og:description", content: "Residential carpentry, renovations, framing, finish work, decks and custom builds in Southern California." },
+      { title: SEO.title },
+      { name: "description", content: SEO.description },
+      { property: "og:title", content: SEO.ogTitle },
+      { property: "og:description", content: SEO.ogDescription },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -20,6 +21,7 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   useImportedLayout();
+  useScrollReveal();
   return (
     <>
       <style>{capturedCSS}</style>
@@ -64,16 +66,16 @@ function ImportedSectionStartYourProject() {
       </div>
       <div className={"absolute \x62g-gradient-to-t \x66rom-[#\x30F0F0F] \x76ia-[#\x30F0F0F]/\x355 \x74o-[#\x30F0F0F]/\x340 [inset:0px]"} />
       <div className={"relative flex h-full flex-col items-center \x70x-[\x36vw] [&]:justify-center [&]:text-center [z-index:10]"}>
-        <div style={{ opacity: "1", transform: "none" }}>
-          <span className={"label-tech \x74ext-[#\x4298B5F]"}>Start Your Project</span>
+        <div data-reveal="">
+          <span className={"label-tech \x74ext-[#\x4298B5F]"}>{CTA.eyebrow}</span>
         </div>
-        <div style={{ opacity: "1", transform: "none" }}>
+        <div data-reveal="">
           <h2 className={"display-heading mt-5 \x74ext-[#\x469F9F7] \x74ext-5xl \x6dd:\x74ext-8xl [max-width:56rem]"}>Ready to build something <span className={"\x74ext-[#\x4298B5F]"}>great</span>?</h2>
         </div>
-        <div style={{ opacity: "1", transform: "none" }}>
-          <p className={"mt-6 \x74ext-[#\x469F9F7]/\x365 \x6ceading-relaxed [max-width:36rem]"}>Tell us about your project and we'll provide a clear, honest estimate — no pressure, no inflated promises.</p>
+        <div data-reveal="">
+          <p className={"mt-6 \x74ext-[#\x469F9F7]/\x365 \x6ceading-relaxed [max-width:36rem]"}>{CTA.body}</p>
         </div>
-        <div style={{ opacity: "1", transform: "none" }}>
+        <div data-reveal="">
           <div className="mt-9">
             <a className={"btn-ghost \x70y-5 label-tech \x74ext-[#\x30F0F0F] \x62g-[#\x4298B5F] \x62order-[#\x4298B5F] [padding-left:2.5rem] [padding-right:2.5rem]"} style={{ transform: "none" }} href="#contact">
               <span>Request a Free Estimate</span>
@@ -123,7 +125,7 @@ function ImportedHeader() {
       <div className={"\x6dx-auto flex max-w-[1400px] items-center justify-between \x70x-[\x36vw]"}>
         <a className={"flex items-center gap-2.5 \x74ext-[#\x469F9F7]"} href="#top">
           <span className={"plus-mark \x74ext-[#\x4298B5F] \x73cale-125"} />
-          <span className={"display-heading \x74ext-xl \x6dd:\x74ext-2xl \x74racking-tight \x66ont-extrabold"}>CORE <span className={"\x74ext-[#\x4298B5F]"}>CARPENTRY</span></span>
+          <span className={"display-heading \x74ext-xl \x6dd:\x74ext-2xl \x74racking-tight \x66ont-extrabold"}>{BUSINESS.logoLead} <span className={"\x74ext-[#\x4298B5F]"}>{BUSINESS.logoAccent}</span></span>
         </a>
         <nav className={"hidden \x6dd:\x66lex items-center gap-9"}>
           <a className={"label-tech \x74ext-[#\x469F9F7]/\x380 \x68over:\x74ext-[#\x4298B5F] transition-colors \x64uration-300 relative \x61fter:\x61bsolute \x61fter:\x2dbottom-1.\x35 \x61fter:\x6ceft-0 \x61fter:\x68-px \x61fter:\x77-0 \x61fter:\x62g-[#\x4298B5F] \x68over:\x61fter:\x77-full \x61fter:\x74ransition-all \x61fter:\x64uration-300"} href="#about">About</a>
@@ -148,7 +150,7 @@ function ImportedHeader() {
     {menuOpen && (
       <div id="mobile-menu" role="dialog" aria-modal="true" aria-label="Menu" className="fixed inset-0 z-[300] bg-[#0F0F0F] grain flex flex-col animate-in fade-in duration-300">
         <div className="flex items-center justify-between px-[6vw] py-6">
-          <span className="display-heading text-[#F9F9F7] text-lg">CORE <span className="text-[#B98B5F]">CARPENTRY</span></span>
+          <span className="display-heading text-[#F9F9F7] text-lg">{BUSINESS.logoLead} <span className="text-[#B98B5F]">{BUSINESS.logoAccent}</span></span>
           <button ref={closeButtonRef} className="text-[#F9F9F7]" aria-label="Close menu" onClick={() => setMenuOpen(false)}>
             <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <path d="M18 6 6 18" />
@@ -199,12 +201,12 @@ function ImportedSectionBuiltWithPrecisionCrafted() {
       <span className={"absolute rounded-full \x62g-[#\x4298B5F]/\x340 [bottom:0px] left-[74.0689%] [animation:19.0528s_linear_0.209055s_infinite_normal_none_running_float-up]"} style={{ width: "3.2864px", height: "3.2864px" }} />
       <span className={"absolute rounded-full \x62g-[#\x4298B5F]/\x340 [bottom:0px] left-[49.9939%] [animation:20.0841s_linear_0.0413123s_infinite_normal_none_running_float-up]"} style={{ width: "4.94888px", height: "4.94888px" }} />
       <div className={"relative flex h-full flex-col pb-[14vh] \x70x-[\x36vw] [&]:justify-end [z-index:10]"} style={{ opacity: Math.max(0, 1 - progress / 0.85), transform: progress > 0 ? `translateY(${40 * progress}%)` : "none" }}>
-        <span className={"label-tech \x74ext-[#\x4298B5F] mb-6 flex items-center [gap:0.75rem]"} style={{ opacity: "1", transform: "none" }}><span className={"h-px w-10 \x62g-[#\x4298B5F]"} /> Core Carpentry — Residential Specialists</span>
+        <span className={"label-tech \x74ext-[#\x4298B5F] mb-6 flex items-center [gap:0.75rem]"} style={{ opacity: "1", transform: "none" }}><span className={"h-px w-10 \x62g-[#\x4298B5F]"} /> {HERO.eyebrow}</span>
         <h1 className={"display-heading \x74ext-[#\x469F9F7] text-[2rem] \x73m:\x74ext-5xl \x6dd:\x74ext-6xl \x6cg:\x74ext-7xl \x78l:\x74ext-[\x35rem] \x6ceading-[\x31.\x302] \x74racking-tight [max-width:56rem]"}>
-          <span className="block" style={{ opacity: "1", transform: "none" }}>Built with Precision.</span>
-          <span className={"block \x74ext-[#\x4298B5F]"} style={{ opacity: "1", transform: "none" }}>Crafted to Last.</span>
+          <span className="block" style={{ opacity: "1", transform: "none" }}>{HERO.headlineLead}</span>
+          <span className={"block \x74ext-[#\x4298B5F]"} style={{ opacity: "1", transform: "none" }}>{HERO.headlineAccent}</span>
         </h1>
-        <p className={"mt-8 \x74ext-[#\x469F9F7]/\x365 \x74ext-base \x6dd:\x74ext-lg \x6ceading-relaxed [max-width:36rem]"} style={{ opacity: "1" }}>High-quality residential carpentry, renovations, framing, finish work, decks, and custom projects — delivered with exceptional attention to detail.</p>
+        <p className={"mt-8 \x74ext-[#\x469F9F7]/\x365 \x74ext-base \x6dd:\x74ext-lg \x6ceading-relaxed [max-width:36rem]"} style={{ opacity: "1" }}>{HERO.subheadline}</p>
         <div className={"mt-9 flex flex-col \x73m:\x66lex-row [gap:1rem]"} style={{ opacity: "1", transform: "none" }}>
           <a className={"btn-ghost \x70y-4 label-tech \x74ext-[#\x30F0F0F] \x62g-[#\x4298B5F] \x62order-[#\x4298B5F] \x68over:\x74ext-[#\x30F0F0F] [padding-left:2rem] [padding-right:2rem]"} style={{ transform: "none" }} href="#contact">
             <span>Get a Free Quote</span>
@@ -233,65 +235,31 @@ function ImportedSectionACommitmentToThe() {
           <div className={"absolute -top-3 -left-3 plus-mark \x74ext-[#\x4298B5F] \x73cale-150"} />
           <div className={"absolute -bottom-3 -right-3 plus-mark \x74ext-[#\x4298B5F] \x73cale-150"} />
           <div className={"absolute -bottom-6 right-6 \x62g-[#\x30F0F0F] \x70x-6 \x70y-4 grain"}>
-            <div className={"display-heading \x74ext-3xl \x74ext-[#\x4298B5F]"}>100%</div>
-            <div className={"label-tech \x74ext-[#\x469F9F7]/\x360 mt-1"}>Craftsmanship</div>
+            <div className={"display-heading \x74ext-3xl \x74ext-[#\x4298B5F]"}>{ABOUT.statValue}</div>
+            <div className={"label-tech \x74ext-[#\x469F9F7]/\x360 mt-1"}>{ABOUT.statLabel}</div>
           </div>
         </div>
         <div>
-          <div style={{ opacity: "1", transform: "none" }}>
-            <span className={"label-tech \x74ext-[#\x4298B5F] flex items-center [gap:0.75rem]"}><span className={"h-px w-8 \x62g-[#\x4298B5F]"} /> About the Studio</span>
+          <div data-reveal="">
+            <span className={"label-tech \x74ext-[#\x4298B5F] flex items-center [gap:0.75rem]"}><span className={"h-px w-8 \x62g-[#\x4298B5F]"} /> {ABOUT.eyebrow}</span>
           </div>
-          <div style={{ opacity: "1", transform: "none" }}>
-            <h2 className={"display-heading mt-5 \x74ext-4xl \x6dd:\x74ext-6xl \x74ext-[#\x30F0F0F]"}>A commitment to the craft.</h2>
+          <div data-reveal="">
+            <h2 className={"display-heading mt-5 \x74ext-4xl \x6dd:\x74ext-6xl \x74ext-[#\x30F0F0F]"}>{ABOUT.heading}</h2>
           </div>
-          <div style={{ opacity: "1", transform: "none" }}>
-            <p className={"mt-6 \x74ext-[#\x3333] \x74ext-lg \x6ceading-relaxed"}>Core Carpentry is committed to delivering exceptional craftsmanship, reliable service, and quality construction solutions. Whether it's a renovation, framing project, custom deck, trim work, or complete home improvement — every project is treated with precision and care.</p>
+          <div data-reveal="">
+            <p className={"mt-6 \x74ext-[#\x3333] \x74ext-lg \x6ceading-relaxed"}>{ABOUT.body}</p>
           </div>
           <div className={"mt-9 grid grid-cols-1 \x73m:\x67rid-cols-2 [column-gap:2rem] [row-gap:0.75rem]"}>
-            <div style={{ opacity: "1", transform: "none" }}>
-              <div className={"flex items-center \x74ext-[#\x30F0F0F] [gap:0.75rem]"}>
-                <span className={"plus-mark \x74ext-[#\x4298B5F]"} />
-                <span className={"\x74ext-sm \x66ont-medium"}>Quality workmanship</span>
+            {ABOUT.points.map((point) => (
+              <div key={point} data-reveal="">
+                <div className={"flex items-center \x74ext-[#\x30F0F0F] [gap:0.75rem]"}>
+                  <span className={"plus-mark \x74ext-[#\x4298B5F]"} />
+                  <span className={"\x74ext-sm \x66ont-medium"}>{point}</span>
+                </div>
               </div>
-            </div>
-            <div style={{ opacity: "1", transform: "none" }}>
-              <div className={"flex items-center \x74ext-[#\x30F0F0F] [gap:0.75rem]"}>
-                <span className={"plus-mark \x74ext-[#\x4298B5F]"} />
-                <span className={"\x74ext-sm \x66ont-medium"}>Honest communication</span>
-              </div>
-            </div>
-            <div style={{ opacity: "1", transform: "none" }}>
-              <div className={"flex items-center \x74ext-[#\x30F0F0F] [gap:0.75rem]"}>
-                <span className={"plus-mark \x74ext-[#\x4298B5F]"} />
-                <span className={"\x74ext-sm \x66ont-medium"}>Attention to detail</span>
-              </div>
-            </div>
-            <div style={{ opacity: "1", transform: "none" }}>
-              <div className={"flex items-center \x74ext-[#\x30F0F0F] [gap:0.75rem]"}>
-                <span className={"plus-mark \x74ext-[#\x4298B5F]"} />
-                <span className={"\x74ext-sm \x66ont-medium"}>Reliability</span>
-              </div>
-            </div>
-            <div style={{ opacity: "1", transform: "none" }}>
-              <div className={"flex items-center \x74ext-[#\x30F0F0F] [gap:0.75rem]"}>
-                <span className={"plus-mark \x74ext-[#\x4298B5F]"} />
-                <span className={"\x74ext-sm \x66ont-medium"}>Customer satisfaction</span>
-              </div>
-            </div>
-            <div style={{ opacity: "1", transform: "none" }}>
-              <div className={"flex items-center \x74ext-[#\x30F0F0F] [gap:0.75rem]"}>
-                <span className={"plus-mark \x74ext-[#\x4298B5F]"} />
-                <span className={"\x74ext-sm \x66ont-medium"}>Clean job sites</span>
-              </div>
-            </div>
-            <div style={{ opacity: "1", transform: "none" }}>
-              <div className={"flex items-center \x74ext-[#\x30F0F0F] [gap:0.75rem]"}>
-                <span className={"plus-mark \x74ext-[#\x4298B5F]"} />
-                <span className={"\x74ext-sm \x66ont-medium"}>Pride in every project</span>
-              </div>
-            </div>
+            ))}
           </div>
-          <div style={{ opacity: "1", transform: "none" }}>
+          <div data-reveal="">
             <div className={"mt-10 h-px w-full \x62g-[#\x30F0F0F]/\x310 \x6frigin-left [animation:1s_ease_0s_1_normal_forwards_running_draw-line]"} style={{ transform: "scaleX(1)" }} />
           </div>
         </div>
@@ -306,159 +274,33 @@ function ImportedSectionExpertiseInEveryJoint() {
       <div className={"\x6dx-auto max-w-[1400px] \x70x-[\x36vw]"}>
         <div className={"flex flex-col \x6dd:\x66lex-row [gap:1.5rem] [@media(min-width:768px)]:items-end [@media(min-width:768px)]:justify-between"}>
           <div>
-            <div style={{ opacity: "1", transform: "none" }}>
-              <span className={"label-tech \x74ext-[#\x4298B5F] flex items-center [gap:0.75rem]"}><span className={"h-px w-8 \x62g-[#\x4298B5F]"} /> The Service Anatomy</span>
+            <div data-reveal="">
+              <span className={"label-tech \x74ext-[#\x4298B5F] flex items-center [gap:0.75rem]"}><span className={"h-px w-8 \x62g-[#\x4298B5F]"} /> {SERVICES_INTRO.eyebrow}</span>
             </div>
-            <div style={{ opacity: "1", transform: "none" }}>
+            <div data-reveal="">
               <h2 className={"display-heading mt-5 \x74ext-4xl \x6dd:\x74ext-6xl [max-width:42rem]"}>Expertise, in every <span className={"\x74ext-[#\x4298B5F]"}>joint</span>.</h2>
             </div>
           </div>
-          <div style={{ opacity: "1", transform: "none" }}>
-            <p className={"\x74ext-[#\x469F9F7]/\x355 \x6ceading-relaxed [max-width:24rem]"}>Nine core disciplines — each carried out with the same standard of precision, material integrity, and clean professional finish.</p>
+          <div data-reveal="">
+            <p className={"\x74ext-[#\x469F9F7]/\x355 \x6ceading-relaxed [max-width:24rem]"}>{SERVICES_INTRO.body}</p>
           </div>
         </div>
         <div className={"mt-14 grid \x62g-white/\x35 \x73m:\x67rid-cols-2 \x6cg:\x67rid-cols-3 [gap:1px]"}>
-          <div className={"group relative \x62g-[#\x30F0F0F] p-8 \x6dd:\x70-10 transition-colors \x64uration-500 \x68over:\x62g-[#\x3161616] [overflow:hidden]"} style={{ opacity: "1", transform: "none" }}>
-            <span className={"absolute \x62order \x62order-transparent transition-colors \x64uration-500 \x67roup-hover:\x62order-[#\x4298B5F]/\x340 [&]:pointer-events-none [inset:0px]"} />
-            <span className={"absolute left-0 top-0 h-0 w-px \x62g-[#\x4298B5F] transition-all \x64uration-500 \x67roup-hover:\x68-full"} />
-            <span className={"absolute right-0 h-0 w-px \x62g-[#\x4298B5F] transition-all \x64uration-500 \x67roup-hover:\x68-full [bottom:0px]"} />
-            <div className="relative">
-              <svg className={"\x74ext-[#\x4298B5F] \x74ransition-transform \x64uration-500 \x67roup-hover:\x72otate-[\x3360deg] [transition-property:transform] [transition-timing-function:cubic-bezier(0.4,0,0.2,1)]"} xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83z" />
-                <path d="M2 12a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 12" />
-                <path d="M2 17a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 17" />
-              </svg>
-              <h3 className={"mt-6 font-heading \x74ext-xl \x66ont-bold \x74racking-tight"}>Residential Framing</h3>
-              <p className={"mt-3 \x74ext-sm \x74ext-[#\x469F9F7]/\x355 \x6ceading-relaxed"}>Precise structural framing built square, plumb, and true — the foundation of every great build.</p>
-              <span className={"mt-6 inline-block label-tech \x74ext-[#\x469F9F7]/\x330 \x67roup-hover:\x74ext-[#\x4298B5F] transition-colors"}>01</span>
+          {SERVICES.map((service, index) => (
+            <div key={service.number} className={"group relative \x62g-[#\x30F0F0F] p-8 \x6dd:\x70-10 transition-colors \x64uration-500 \x68over:\x62g-[#\x3161616] [overflow:hidden]"} data-reveal="">
+              <span className={"absolute \x62order \x62order-transparent transition-colors \x64uration-500 \x67roup-hover:\x62order-[#\x4298B5F]/\x340 [&]:pointer-events-none [inset:0px]"} />
+              <span className={"absolute left-0 top-0 h-0 w-px \x62g-[#\x4298B5F] transition-all \x64uration-500 \x67roup-hover:\x68-full"} />
+              <span className={"absolute right-0 h-0 w-px \x62g-[#\x4298B5F] transition-all \x64uration-500 \x67roup-hover:\x68-full [bottom:0px]"} />
+              <div className="relative">
+                <svg className={"\x74ext-[#\x4298B5F] \x74ransition-transform \x64uration-500 \x67roup-hover:\x72otate-[\x3360deg] [transition-property:transform] [transition-timing-function:cubic-bezier(0.4,0,0.2,1)]"} xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round">
+                  {SERVICE_ICONS[index]}
+                </svg>
+                <h3 className={"mt-6 font-heading \x74ext-xl \x66ont-bold \x74racking-tight"}>{service.title}</h3>
+                <p className={"mt-3 \x74ext-sm \x74ext-[#\x469F9F7]/\x355 \x6ceading-relaxed"}>{service.description}</p>
+                <span className={"mt-6 inline-block label-tech \x74ext-[#\x469F9F7]/\x330 \x67roup-hover:\x74ext-[#\x4298B5F] transition-colors"}>{service.number}</span>
+              </div>
             </div>
-          </div>
-          <div className={"group relative \x62g-[#\x30F0F0F] p-8 \x6dd:\x70-10 transition-colors \x64uration-500 \x68over:\x62g-[#\x3161616] [overflow:hidden]"} style={{ opacity: "1", transform: "none" }}>
-            <span className={"absolute \x62order \x62order-transparent transition-colors \x64uration-500 \x67roup-hover:\x62order-[#\x4298B5F]/\x340 [&]:pointer-events-none [inset:0px]"} />
-            <span className={"absolute left-0 top-0 h-0 w-px \x62g-[#\x4298B5F] transition-all \x64uration-500 \x67roup-hover:\x68-full"} />
-            <span className={"absolute right-0 h-0 w-px \x62g-[#\x4298B5F] transition-all \x64uration-500 \x67roup-hover:\x68-full [bottom:0px]"} />
-            <div className="relative">
-              <svg className={"\x74ext-[#\x4298B5F] \x74ransition-transform \x64uration-500 \x67roup-hover:\x72otate-[\x3360deg] [transition-property:transform] [transition-timing-function:cubic-bezier(0.4,0,0.2,1)]"} xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round">
-                <path d="m14.622 17.897-10.68-2.913" />
-                <path d="M18.376 2.622a1 1 0 1 1 3.002 3.002L17.36 9.643a.5.5 0 0 0 0 .707l.944.944a2.41 2.41 0 0 1 0 3.408l-.944.944a.5.5 0 0 1-.707 0L8.354 7.348a.5.5 0 0 1 0-.707l.944-.944a2.41 2.41 0 0 1 3.408 0l.944.944a.5.5 0 0 0 .707 0z" />
-                <path d="M9 8c-1.804 2.71-3.97 3.46-6.583 3.948a.507.507 0 0 0-.302.819l7.32 8.883a1 1 0 0 0 1.185.204C12.735 20.405 16 16.792 16 15" />
-              </svg>
-              <h3 className={"mt-6 font-heading \x74ext-xl \x66ont-bold \x74racking-tight"}>Finish Carpentry</h3>
-              <p className={"mt-3 \x74ext-sm \x74ext-[#\x469F9F7]/\x355 \x6ceading-relaxed"}>Refined finishing that elevates a space — clean joinery, seamless transitions, lasting detail.</p>
-              <span className={"mt-6 inline-block label-tech \x74ext-[#\x469F9F7]/\x330 \x67roup-hover:\x74ext-[#\x4298B5F] transition-colors"}>02</span>
-            </div>
-          </div>
-          <div className={"group relative \x62g-[#\x30F0F0F] p-8 \x6dd:\x70-10 transition-colors \x64uration-500 \x68over:\x62g-[#\x3161616] [overflow:hidden]"} style={{ opacity: "1", transform: "none" }}>
-            <span className={"absolute \x62order \x62order-transparent transition-colors \x64uration-500 \x67roup-hover:\x62order-[#\x4298B5F]/\x340 [&]:pointer-events-none [inset:0px]"} />
-            <span className={"absolute left-0 top-0 h-0 w-px \x62g-[#\x4298B5F] transition-all \x64uration-500 \x67roup-hover:\x68-full"} />
-            <span className={"absolute right-0 h-0 w-px \x62g-[#\x4298B5F] transition-all \x64uration-500 \x67roup-hover:\x68-full [bottom:0px]"} />
-            <div className="relative">
-              <svg className={"\x74ext-[#\x4298B5F] \x74ransition-transform \x64uration-500 \x67roup-hover:\x72otate-[\x3360deg] [transition-property:transform] [transition-timing-function:cubic-bezier(0.4,0,0.2,1)]"} xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M10 10v.2A3 3 0 0 1 8.9 16H5a3 3 0 0 1-1-5.8V10a3 3 0 0 1 6 0Z" />
-                <path d="M7 16v6" />
-                <path d="M13 19v3" />
-                <path d="M12 19h8.3a1 1 0 0 0 .7-1.7L18 14h.3a1 1 0 0 0 .7-1.7L16 9h.2a1 1 0 0 0 .8-1.7L13 3l-1.4 1.5" />
-              </svg>
-              <h3 className={"mt-6 font-heading \x74ext-xl \x66ont-bold \x74racking-tight"}>Deck Construction</h3>
-              <p className={"mt-3 \x74ext-sm \x74ext-[#\x469F9F7]/\x355 \x6ceading-relaxed"}>Custom decks engineered for longevity and designed for outdoor living at its finest.</p>
-              <span className={"mt-6 inline-block label-tech \x74ext-[#\x469F9F7]/\x330 \x67roup-hover:\x74ext-[#\x4298B5F] transition-colors"}>03</span>
-            </div>
-          </div>
-          <div className={"group relative \x62g-[#\x30F0F0F] p-8 \x6dd:\x70-10 transition-colors \x64uration-500 \x68over:\x62g-[#\x3161616] [overflow:hidden]"} style={{ opacity: "1", transform: "none" }}>
-            <span className={"absolute \x62order \x62order-transparent transition-colors \x64uration-500 \x67roup-hover:\x62order-[#\x4298B5F]/\x340 [&]:pointer-events-none [inset:0px]"} />
-            <span className={"absolute left-0 top-0 h-0 w-px \x62g-[#\x4298B5F] transition-all \x64uration-500 \x67roup-hover:\x68-full"} />
-            <span className={"absolute right-0 h-0 w-px \x62g-[#\x4298B5F] transition-all \x64uration-500 \x67roup-hover:\x68-full [bottom:0px]"} />
-            <div className="relative">
-              <svg className={"\x74ext-[#\x4298B5F] \x74ransition-transform \x64uration-500 \x67roup-hover:\x72otate-[\x3360deg] [transition-property:transform] [transition-timing-function:cubic-bezier(0.4,0,0.2,1)]"} xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8" />
-                <path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-              </svg>
-              <h3 className={"mt-6 font-heading \x74ext-xl \x66ont-bold \x74racking-tight"}>Home Renovations</h3>
-              <p className={"mt-3 \x74ext-sm \x74ext-[#\x469F9F7]/\x355 \x6ceading-relaxed"}>Full-home transformations managed end-to-end with honest timelines and meticulous execution.</p>
-              <span className={"mt-6 inline-block label-tech \x74ext-[#\x469F9F7]/\x330 \x67roup-hover:\x74ext-[#\x4298B5F] transition-colors"}>04</span>
-            </div>
-          </div>
-          <div className={"group relative \x62g-[#\x30F0F0F] p-8 \x6dd:\x70-10 transition-colors \x64uration-500 \x68over:\x62g-[#\x3161616] [overflow:hidden]"} style={{ opacity: "1", transform: "none" }}>
-            <span className={"absolute \x62order \x62order-transparent transition-colors \x64uration-500 \x67roup-hover:\x62order-[#\x4298B5F]/\x340 [&]:pointer-events-none [inset:0px]"} />
-            <span className={"absolute left-0 top-0 h-0 w-px \x62g-[#\x4298B5F] transition-all \x64uration-500 \x67roup-hover:\x68-full"} />
-            <span className={"absolute right-0 h-0 w-px \x62g-[#\x4298B5F] transition-all \x64uration-500 \x67roup-hover:\x68-full [bottom:0px]"} />
-            <div className="relative">
-              <svg className={"\x74ext-[#\x4298B5F] \x74ransition-transform \x64uration-500 \x67roup-hover:\x72otate-[\x3360deg] [transition-property:transform] [transition-timing-function:cubic-bezier(0.4,0,0.2,1)]"} xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M21.3 15.3a2.4 2.4 0 0 1 0 3.4l-2.6 2.6a2.4 2.4 0 0 1-3.4 0L2.7 8.7a2.41 2.41 0 0 1 0-3.4l2.6-2.6a2.41 2.41 0 0 1 3.4 0Z" />
-                <path d="m14.5 12.5 2-2" />
-                <path d="m11.5 9.5 2-2" />
-                <path d="m8.5 6.5 2-2" />
-                <path d="m17.5 15.5 2-2" />
-              </svg>
-              <h3 className={"mt-6 font-heading \x74ext-xl \x66ont-bold \x74racking-tight"}>Interior Trim &amp; Moulding</h3>
-              <p className={"mt-3 \x74ext-sm \x74ext-[#\x469F9F7]/\x355 \x6ceading-relaxed"}>Crown, base, casing, and wainscoting installed with crisp mitered corners and tight reveals.</p>
-              <span className={"mt-6 inline-block label-tech \x74ext-[#\x469F9F7]/\x330 \x67roup-hover:\x74ext-[#\x4298B5F] transition-colors"}>05</span>
-            </div>
-          </div>
-          <div className={"group relative \x62g-[#\x30F0F0F] p-8 \x6dd:\x70-10 transition-colors \x64uration-500 \x68over:\x62g-[#\x3161616] [overflow:hidden]"} style={{ opacity: "1", transform: "none" }}>
-            <span className={"absolute \x62order \x62order-transparent transition-colors \x64uration-500 \x67roup-hover:\x62order-[#\x4298B5F]/\x340 [&]:pointer-events-none [inset:0px]"} />
-            <span className={"absolute left-0 top-0 h-0 w-px \x62g-[#\x4298B5F] transition-all \x64uration-500 \x67roup-hover:\x68-full"} />
-            <span className={"absolute right-0 h-0 w-px \x62g-[#\x4298B5F] transition-all \x64uration-500 \x67roup-hover:\x68-full [bottom:0px]"} />
-            <div className="relative">
-              <svg className={"\x74ext-[#\x4298B5F] \x74ransition-transform \x64uration-500 \x67roup-hover:\x72otate-[\x3360deg] [transition-property:transform] [transition-timing-function:cubic-bezier(0.4,0,0.2,1)]"} xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round">
-                <path d="m15 12-8.373 8.373a1 1 0 1 1-3-3L12 9" />
-                <path d="m18 15 4-4" />
-                <path d="m21.5 11.5-1.914-1.914A2 2 0 0 1 19 8.172V7l-2.26-2.26a6 6 0 0 0-4.202-1.756L9 2.96l.92.82A6.18 6.18 0 0 1 12 8.4V10l2 2h1.172a2 2 0 0 1 1.414.586L18.5 14.5" />
-              </svg>
-              <h3 className={"mt-6 font-heading \x74ext-xl \x66ont-bold \x74racking-tight"}>Custom Woodworking</h3>
-              <p className={"mt-3 \x74ext-sm \x74ext-[#\x469F9F7]/\x355 \x6ceading-relaxed"}>Bespoke built-ins, shelving, and furniture-grade pieces crafted to your exact specifications.</p>
-              <span className={"mt-6 inline-block label-tech \x74ext-[#\x469F9F7]/\x330 \x67roup-hover:\x74ext-[#\x4298B5F] transition-colors"}>06</span>
-            </div>
-          </div>
-          <div className={"group relative \x62g-[#\x30F0F0F] p-8 \x6dd:\x70-10 transition-colors \x64uration-500 \x68over:\x62g-[#\x3161616] [overflow:hidden]"} style={{ opacity: "1", transform: "none" }}>
-            <span className={"absolute \x62order \x62order-transparent transition-colors \x64uration-500 \x67roup-hover:\x62order-[#\x4298B5F]/\x340 [&]:pointer-events-none [inset:0px]"} />
-            <span className={"absolute left-0 top-0 h-0 w-px \x62g-[#\x4298B5F] transition-all \x64uration-500 \x67roup-hover:\x68-full"} />
-            <span className={"absolute right-0 h-0 w-px \x62g-[#\x4298B5F] transition-all \x64uration-500 \x67roup-hover:\x68-full [bottom:0px]"} />
-            <div className="relative">
-              <svg className={"\x74ext-[#\x4298B5F] \x74ransition-transform \x64uration-500 \x67roup-hover:\x72otate-[\x3360deg] [transition-property:transform] [transition-timing-function:cubic-bezier(0.4,0,0.2,1)]"} xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z" />
-                <path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2" />
-                <path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2" />
-                <path d="M10 6h4" />
-                <path d="M10 10h4" />
-                <path d="M10 14h4" />
-                <path d="M10 18h4" />
-              </svg>
-              <h3 className={"mt-6 font-heading \x74ext-xl \x66ont-bold \x74racking-tight"}>Basement Finishing</h3>
-              <p className={"mt-3 \x74ext-sm \x74ext-[#\x469F9F7]/\x355 \x6ceading-relaxed"}>Lower levels reimagined — framing, trim, and detail work that turns basements into living space.</p>
-              <span className={"mt-6 inline-block label-tech \x74ext-[#\x469F9F7]/\x330 \x67roup-hover:\x74ext-[#\x4298B5F] transition-colors"}>07</span>
-            </div>
-          </div>
-          <div className={"group relative \x62g-[#\x30F0F0F] p-8 \x6dd:\x70-10 transition-colors \x64uration-500 \x68over:\x62g-[#\x3161616] [overflow:hidden]"} style={{ opacity: "1", transform: "none" }}>
-            <span className={"absolute \x62order \x62order-transparent transition-colors \x64uration-500 \x67roup-hover:\x62order-[#\x4298B5F]/\x340 [&]:pointer-events-none [inset:0px]"} />
-            <span className={"absolute left-0 top-0 h-0 w-px \x62g-[#\x4298B5F] transition-all \x64uration-500 \x67roup-hover:\x68-full"} />
-            <span className={"absolute right-0 h-0 w-px \x62g-[#\x4298B5F] transition-all \x64uration-500 \x67roup-hover:\x68-full [bottom:0px]"} />
-            <div className="relative">
-              <svg className={"\x74ext-[#\x4298B5F] \x74ransition-transform \x64uration-500 \x67roup-hover:\x72otate-[\x3360deg] [transition-property:transform] [transition-timing-function:cubic-bezier(0.4,0,0.2,1)]"} xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M13 4h3a2 2 0 0 1 2 2v14" />
-                <path d="M2 20h3" />
-                <path d="M13 20h9" />
-                <path d="M10 12v.01" />
-                <path d="M13 4.562v16.157a1 1 0 0 1-1.242.97L5 20V5.562a2 2 0 0 1 1.515-1.94l4-1A2 2 0 0 1 13 4.561Z" />
-              </svg>
-              <h3 className={"mt-6 font-heading \x74ext-xl \x66ont-bold \x74racking-tight"}>Door &amp; Window Installation</h3>
-              <p className={"mt-3 \x74ext-sm \x74ext-[#\x469F9F7]/\x355 \x6ceading-relaxed"}>Properly fitted, weather-sealed, and trimmed doors and windows that operate flawlessly.</p>
-              <span className={"mt-6 inline-block label-tech \x74ext-[#\x469F9F7]/\x330 \x67roup-hover:\x74ext-[#\x4298B5F] transition-colors"}>08</span>
-            </div>
-          </div>
-          <div className={"group relative \x62g-[#\x30F0F0F] p-8 \x6dd:\x70-10 transition-colors \x64uration-500 \x68over:\x62g-[#\x3161616] [overflow:hidden]"} style={{ opacity: "1", transform: "none" }}>
-            <span className={"absolute \x62order \x62order-transparent transition-colors \x64uration-500 \x67roup-hover:\x62order-[#\x4298B5F]/\x340 [&]:pointer-events-none [inset:0px]"} />
-            <span className={"absolute left-0 top-0 h-0 w-px \x62g-[#\x4298B5F] transition-all \x64uration-500 \x67roup-hover:\x68-full"} />
-            <span className={"absolute right-0 h-0 w-px \x62g-[#\x4298B5F] transition-all \x64uration-500 \x67roup-hover:\x68-full [bottom:0px]"} />
-            <div className="relative">
-              <svg className={"\x74ext-[#\x4298B5F] \x74ransition-transform \x64uration-500 \x67roup-hover:\x72otate-[\x3360deg] [transition-property:transform] [transition-timing-function:cubic-bezier(0.4,0,0.2,1)]"} xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
-              </svg>
-              <h3 className={"mt-6 font-heading \x74ext-xl \x66ont-bold \x74racking-tight"}>General Carpentry Repairs</h3>
-              <p className={"mt-3 \x74ext-sm \x74ext-[#\x469F9F7]/\x355 \x6ceading-relaxed"}>Restoration and repair work handled with the same care as a brand-new build.</p>
-              <span className={"mt-6 inline-block label-tech \x74ext-[#\x469F9F7]/\x330 \x67roup-hover:\x74ext-[#\x4298B5F] transition-colors"}>09</span>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </section>
@@ -491,14 +333,14 @@ function ImportedSectionFeaturedProjects() {
       <div className={"\x6dx-auto max-w-[1400px] \x70x-[\x36vw]"}>
         <div className={"flex flex-col \x6dd:\x66lex-row [gap:1.5rem] [@media(min-width:768px)]:items-end [@media(min-width:768px)]:justify-between"}>
           <div>
-            <div style={{ opacity: "1", transform: "none" }}>
+            <div data-reveal="">
               <span className={"label-tech \x74ext-[#\x4298B5F] flex items-center [gap:0.75rem]"}><span className={"h-px w-8 \x62g-[#\x4298B5F]"} /> The Archive</span>
             </div>
-            <div style={{ opacity: "1", transform: "none" }}>
+            <div data-reveal="">
               <h2 className={"display-heading mt-5 \x74ext-4xl \x6dd:\x74ext-6xl \x74ext-[#\x30F0F0F]"}>Featured projects.</h2>
             </div>
           </div>
-          <div style={{ opacity: "1", transform: "none" }}>
+          <div data-reveal="">
             <div className={"flex [&]:flex-wrap [gap:0.5rem]"}>
               {PROJECT_FILTERS.map((filter) => (
                 <button key={filter} className={filter === activeFilter ? "label-tech \x70x-4 \x70y-2 \x62order transition-colors \x64uration-300 \x62g-[#\x30F0F0F] \x74ext-[#\x469F9F7] \x62order-[#\x30F0F0F]" : "label-tech \x70x-4 \x70y-2 \x62order transition-colors \x64uration-300 \x74ext-[#\x3333] \x62order-[#\x30F0F0F]/\x315 \x68over:\x62order-[#\x4298B5F] \x68over:\x74ext-[#\x4298B5F]"} aria-pressed={filter === activeFilter} onClick={() => setActiveFilter(filter)}>{filter}</button>
@@ -567,44 +409,44 @@ function ImportedSectionTheStandardIsThe() {
     <section className={"relative \x62g-[#\x469F9F7] \x70y-24 \x6dd:\x70y-36"}>
       <div className={"\x6dx-auto max-w-[1400px] \x70x-[\x36vw]"}>
         <div className={"\x6dx-auto [&]:text-center [max-width:42rem]"}>
-          <div style={{ opacity: "1", transform: "none" }}>
-            <span className={"label-tech \x74ext-[#\x4298B5F] flex items-center [&]:justify-center [gap:0.75rem]"}><span className={"h-px w-8 \x62g-[#\x4298B5F]"} /> Why Core Carpentry</span>
+          <div data-reveal="">
+            <span className={"label-tech \x74ext-[#\x4298B5F] flex items-center [&]:justify-center [gap:0.75rem]"}><span className={"h-px w-8 \x62g-[#\x4298B5F]"} /> {WHY_US.eyebrow}</span>
           </div>
-          <div style={{ opacity: "1", transform: "none" }}>
+          <div data-reveal="">
             <h2 className={"display-heading mt-5 \x74ext-4xl \x6dd:\x74ext-6xl \x74ext-[#\x30F0F0F]"}>The standard is the <span className={"\x74ext-[#\x4298B5F]"}>work</span>.</h2>
           </div>
-          <div style={{ opacity: "1", transform: "none" }}>
-            <p className={"mt-5 \x74ext-[#\x3333] \x6ceading-relaxed"}>No inflated claims. Just consistent, dependable craftsmanship and the values behind it.</p>
+          <div data-reveal="">
+            <p className={"mt-5 \x74ext-[#\x3333] \x6ceading-relaxed"}>{WHY_US.body}</p>
           </div>
         </div>
         <div className={"mt-16 grid \x62g-[#\x30F0F0F]/\x310 \x73m:\x67rid-cols-2 \x6cg:\x67rid-cols-3 [gap:1px]"}>
-          <div className={"group relative \x62g-[#\x469F9F7] p-8 \x6dd:\x70-10"} style={{ opacity: "1", transform: "none" }}>
+          <div className={"group relative \x62g-[#\x469F9F7] p-8 \x6dd:\x70-10"} data-reveal="">
             <span className={"absolute left-0 top-0 h-0 w-px \x62g-[#\x4298B5F] transition-all \x64uration-500 \x67roup-hover:\x68-full"} />
             <svg className={"\x74ext-[#\x4298B5F]"} xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round">
               <path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z" />
               <path d="m9 12 2 2 4-4" />
             </svg>
-            <h3 className={"mt-5 font-heading \x74ext-lg \x66ont-bold \x74racking-tight \x74ext-[#\x30F0F0F]"}>Skilled Craftsmanship</h3>
-            <p className={"mt-2 \x74ext-sm \x74ext-[#\x3333] \x6ceading-relaxed"}>Years of refined technique behind every cut, joint, and finish.</p>
+            <h3 className={"mt-5 font-heading \x74ext-lg \x66ont-bold \x74racking-tight \x74ext-[#\x30F0F0F]"}>{WHY_US.items[0]!.title}</h3>
+            <p className={"mt-2 \x74ext-sm \x74ext-[#\x3333] \x6ceading-relaxed"}>{WHY_US.items[0]!.text}</p>
           </div>
-          <div className={"group relative \x62g-[#\x469F9F7] p-8 \x6dd:\x70-10"} style={{ opacity: "1", transform: "none" }}>
+          <div className={"group relative \x62g-[#\x469F9F7] p-8 \x6dd:\x70-10"} data-reveal="">
             <span className={"absolute left-0 top-0 h-0 w-px \x62g-[#\x4298B5F] transition-all \x64uration-500 \x67roup-hover:\x68-full"} />
             <svg className={"\x74ext-[#\x4298B5F]"} xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round">
               <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
             </svg>
-            <h3 className={"mt-5 font-heading \x74ext-lg \x66ont-bold \x74racking-tight \x74ext-[#\x30F0F0F]"}>Honest Communication</h3>
-            <p className={"mt-2 \x74ext-sm \x74ext-[#\x3333] \x6ceading-relaxed"}>Clear scope, transparent pricing, and straight answers — always.</p>
+            <h3 className={"mt-5 font-heading \x74ext-lg \x66ont-bold \x74racking-tight \x74ext-[#\x30F0F0F]"}>{WHY_US.items[1]!.title}</h3>
+            <p className={"mt-2 \x74ext-sm \x74ext-[#\x3333] \x6ceading-relaxed"}>{WHY_US.items[1]!.text}</p>
           </div>
-          <div className={"group relative \x62g-[#\x469F9F7] p-8 \x6dd:\x70-10"} style={{ opacity: "1", transform: "none" }}>
+          <div className={"group relative \x62g-[#\x469F9F7] p-8 \x6dd:\x70-10"} data-reveal="">
             <span className={"absolute left-0 top-0 h-0 w-px \x62g-[#\x4298B5F] transition-all \x64uration-500 \x67roup-hover:\x68-full"} />
             <svg className={"\x74ext-[#\x4298B5F]"} xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round">
               <path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0" />
               <circle cx="12" cy="12" r="3" />
             </svg>
-            <h3 className={"mt-5 font-heading \x74ext-lg \x66ont-bold \x74racking-tight \x74ext-[#\x30F0F0F]"}>Attention to Every Detail</h3>
-            <p className={"mt-2 \x74ext-sm \x74ext-[#\x3333] \x6ceading-relaxed"}>The small things are the big things. We sweat the reveals and miters.</p>
+            <h3 className={"mt-5 font-heading \x74ext-lg \x66ont-bold \x74racking-tight \x74ext-[#\x30F0F0F]"}>{WHY_US.items[2]!.title}</h3>
+            <p className={"mt-2 \x74ext-sm \x74ext-[#\x3333] \x6ceading-relaxed"}>{WHY_US.items[2]!.text}</p>
           </div>
-          <div className={"group relative \x62g-[#\x469F9F7] p-8 \x6dd:\x70-10"} style={{ opacity: "1", transform: "none" }}>
+          <div className={"group relative \x62g-[#\x469F9F7] p-8 \x6dd:\x70-10"} data-reveal="">
             <span className={"absolute left-0 top-0 h-0 w-px \x62g-[#\x4298B5F] transition-all \x64uration-500 \x67roup-hover:\x68-full"} />
             <svg className={"\x74ext-[#\x4298B5F]"} xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round">
               <path d="M8 2v4" />
@@ -613,10 +455,10 @@ function ImportedSectionTheStandardIsThe() {
               <path d="M3 10h18" />
               <path d="m9 16 2 2 4-4" />
             </svg>
-            <h3 className={"mt-5 font-heading \x74ext-lg \x66ont-bold \x74racking-tight \x74ext-[#\x30F0F0F]"}>Reliable Scheduling</h3>
-            <p className={"mt-2 \x74ext-sm \x74ext-[#\x3333] \x6ceading-relaxed"}>We show up when we say we will, and we finish on time.</p>
+            <h3 className={"mt-5 font-heading \x74ext-lg \x66ont-bold \x74racking-tight \x74ext-[#\x30F0F0F]"}>{WHY_US.items[3]!.title}</h3>
+            <p className={"mt-2 \x74ext-sm \x74ext-[#\x3333] \x6ceading-relaxed"}>{WHY_US.items[3]!.text}</p>
           </div>
-          <div className={"group relative \x62g-[#\x469F9F7] p-8 \x6dd:\x70-10"} style={{ opacity: "1", transform: "none" }}>
+          <div className={"group relative \x62g-[#\x469F9F7] p-8 \x6dd:\x70-10"} data-reveal="">
             <span className={"absolute left-0 top-0 h-0 w-px \x62g-[#\x4298B5F] transition-all \x64uration-500 \x67roup-hover:\x68-full"} />
             <svg className={"\x74ext-[#\x4298B5F]"} xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round">
               <path d="M2.97 12.92A2 2 0 0 0 2 14.63v3.24a2 2 0 0 0 .97 1.71l3 1.8a2 2 0 0 0 2.06 0L12 19v-5.5l-5-3-4.03 2.42Z" />
@@ -632,10 +474,10 @@ function ImportedSectionTheStandardIsThe() {
               <path d="m12 8 4.74-2.85" />
               <path d="M12 13.5V8" />
             </svg>
-            <h3 className={"mt-5 font-heading \x74ext-lg \x66ont-bold \x74racking-tight \x74ext-[#\x30F0F0F]"}>Quality Materials</h3>
-            <p className={"mt-2 \x74ext-sm \x74ext-[#\x3333] \x6ceading-relaxed"}>Built with material chosen for longevity, not just cost.</p>
+            <h3 className={"mt-5 font-heading \x74ext-lg \x66ont-bold \x74racking-tight \x74ext-[#\x30F0F0F]"}>{WHY_US.items[4]!.title}</h3>
+            <p className={"mt-2 \x74ext-sm \x74ext-[#\x3333] \x6ceading-relaxed"}>{WHY_US.items[4]!.text}</p>
           </div>
-          <div className={"group relative \x62g-[#\x469F9F7] p-8 \x6dd:\x70-10"} style={{ opacity: "1", transform: "none" }}>
+          <div className={"group relative \x62g-[#\x469F9F7] p-8 \x6dd:\x70-10"} data-reveal="">
             <span className={"absolute left-0 top-0 h-0 w-px \x62g-[#\x4298B5F] transition-all \x64uration-500 \x67roup-hover:\x68-full"} />
             <svg className={"\x74ext-[#\x4298B5F]"} xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round">
               <path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z" />
@@ -644,8 +486,8 @@ function ImportedSectionTheStandardIsThe() {
               <path d="M4 17v2" />
               <path d="M5 18H3" />
             </svg>
-            <h3 className={"mt-5 font-heading \x74ext-lg \x66ont-bold \x74racking-tight \x74ext-[#\x30F0F0F]"}>Clean Professional Finishes</h3>
-            <p className={"mt-2 \x74ext-sm \x74ext-[#\x3333] \x6ceading-relaxed"}>Crisp lines, tight joints, and job sites left spotless.</p>
+            <h3 className={"mt-5 font-heading \x74ext-lg \x66ont-bold \x74racking-tight \x74ext-[#\x30F0F0F]"}>{WHY_US.items[5]!.title}</h3>
+            <p className={"mt-2 \x74ext-sm \x74ext-[#\x3333] \x6ceading-relaxed"}>{WHY_US.items[5]!.text}</p>
           </div>
         </div>
       </div>
@@ -665,7 +507,7 @@ function ImportedSection() {
       <div className={"absolute h-72 w-72 rounded-full \x62g-[#\x4298B5F]/\x35 \x62lur-3xl [filter:var(--tw-blur)_var(--tw-brightness)_var(--tw-contrast)_var(--tw-grayscale)_var(--tw-hue-rotate)_var(--tw-invert)_var(--tw-saturate)_var(--tw-sepia)_var(--tw-drop-shadow)] [left:-5rem] [top:33.3333%]"} />
       <div className={"absolute h-72 w-72 rounded-full \x62g-[#\x4298B5F]/\x35 \x62lur-3xl [bottom:25%] [filter:var(--tw-blur)_var(--tw-brightness)_var(--tw-contrast)_var(--tw-grayscale)_var(--tw-hue-rotate)_var(--tw-invert)_var(--tw-saturate)_var(--tw-sepia)_var(--tw-drop-shadow)] [right:-5rem]"} />
       <div className={"\x6dx-auto \x70x-[\x36vw] [&]:text-center [max-width:56rem]"}>
-        <div style={{ opacity: "1", transform: "none" }}>
+        <div data-reveal="">
           <span className={"label-tech \x74ext-[#\x4298B5F] flex items-center [&]:justify-center [gap:0.75rem]"}><span className={"h-px w-8 \x62g-[#\x4298B5F]"} /> Client Reviews</span>
         </div>
         <div className={"relative mt-10 min-h-[260px] \x6dd:\x6din-h-[\x3220px]"} data-site-import-desktop-variant="">
@@ -748,10 +590,10 @@ function ImportedSectionHowWeBuild() {
     <section className={"relative \x62g-[#\x469F9F7] \x70y-24 \x6dd:\x70y-36"} id="process">
       <div className={"\x6dx-auto max-w-[1400px] \x70x-[\x36vw]"}>
         <div className={"\x6dx-auto [&]:text-center [max-width:42rem]"}>
-          <div style={{ opacity: "1", transform: "none" }}>
+          <div data-reveal="">
             <span className={"label-tech \x74ext-[#\x4298B5F] flex items-center [&]:justify-center [gap:0.75rem]"}><span className={"h-px w-8 \x62g-[#\x4298B5F]"} /> The Process</span>
           </div>
-          <div style={{ opacity: "1", transform: "none" }}>
+          <div data-reveal="">
             <h2 className={"display-heading mt-5 \x74ext-4xl \x6dd:\x74ext-6xl \x74ext-[#\x30F0F0F]"}>How we build.</h2>
           </div>
         </div>
@@ -759,7 +601,7 @@ function ImportedSectionHowWeBuild() {
           <div className={"absolute left-8 \x6dd:\x6ceft-1/\x32 top-0 w-px \x62g-[#\x30F0F0F]/\x310 \x6dd:\x2dtranslate-x-1/\x32 [bottom:0px]"} />
           <div className={"absolute left-8 \x6dd:\x6ceft-1/\x32 top-0 w-px \x6frigin-top \x62g-[#\x4298B5F] \x6dd:\x2dtranslate-x-1/\x32 [bottom:0px]"} style={{ transform: timeline.value === null || timeline.value < 1 ? `scaleY(${timeline.value ?? 0})` : "none" }} />
           <div className={"\x73pace-y-14 \x6dd:\x73pace-y-24"}>
-            <div className={"relative flex items-center gap-8 \x6dd:\x67ap-0 pl-20 \x6dd:\x70l-0 \x6dd:\x66lex-row"} style={{ opacity: "1", transform: "none" }}>
+            <div className={"relative flex items-center gap-8 \x6dd:\x67ap-0 pl-20 \x6dd:\x70l-0 \x6dd:\x66lex-row"} data-reveal="">
               <div className={"\x6dd:\x77-1/\x32 [@media(min-width:768px)]:[padding-left:3rem] [@media(min-width:768px)]:[padding-right:3rem]"}>
                 <div className="[@media(min-width:768px)]:text-right">
                   <span className={"label-tech \x74ext-[#\x4298B5F]"}>Step 01</span>
@@ -774,7 +616,7 @@ function ImportedSectionHowWeBuild() {
               </div>
               <div className={"hidden \x6dd:\x62lock \x6dd:\x77-1/\x32"} />
             </div>
-            <div className={"relative flex items-center gap-8 \x6dd:\x67ap-0 pl-20 \x6dd:\x70l-0 [@media(min-width:768px)]:flex-row-reverse"} style={{ opacity: "1", transform: "none" }}>
+            <div className={"relative flex items-center gap-8 \x6dd:\x67ap-0 pl-20 \x6dd:\x70l-0 [@media(min-width:768px)]:flex-row-reverse"} data-reveal="">
               <div className={"\x6dd:\x77-1/\x32 [@media(min-width:768px)]:[padding-left:3rem] [@media(min-width:768px)]:[padding-right:3rem]"}>
                 <div className="[@media(min-width:768px)]:text-left">
                   <span className={"label-tech \x74ext-[#\x4298B5F]"}>Step 02</span>
@@ -794,7 +636,7 @@ function ImportedSectionHowWeBuild() {
               </div>
               <div className={"hidden \x6dd:\x62lock \x6dd:\x77-1/\x32"} />
             </div>
-            <div className={"relative flex items-center gap-8 \x6dd:\x67ap-0 pl-20 \x6dd:\x70l-0 \x6dd:\x66lex-row"} style={{ opacity: "1", transform: "none" }}>
+            <div className={"relative flex items-center gap-8 \x6dd:\x67ap-0 pl-20 \x6dd:\x70l-0 \x6dd:\x66lex-row"} data-reveal="">
               <div className={"\x6dd:\x77-1/\x32 [@media(min-width:768px)]:[padding-left:3rem] [@media(min-width:768px)]:[padding-right:3rem]"}>
                 <div className="[@media(min-width:768px)]:text-right">
                   <span className={"label-tech \x74ext-[#\x4298B5F]"}>Step 03</span>
@@ -813,7 +655,7 @@ function ImportedSectionHowWeBuild() {
               </div>
               <div className={"hidden \x6dd:\x62lock \x6dd:\x77-1/\x32"} />
             </div>
-            <div className={"relative flex items-center gap-8 \x6dd:\x67ap-0 pl-20 \x6dd:\x70l-0 [@media(min-width:768px)]:flex-row-reverse"} style={{ opacity: "1", transform: "none" }}>
+            <div className={"relative flex items-center gap-8 \x6dd:\x67ap-0 pl-20 \x6dd:\x70l-0 [@media(min-width:768px)]:flex-row-reverse"} data-reveal="">
               <div className={"\x6dd:\x77-1/\x32 [@media(min-width:768px)]:[padding-left:3rem] [@media(min-width:768px)]:[padding-right:3rem]"}>
                 <div className="[@media(min-width:768px)]:text-left">
                   <span className={"label-tech \x74ext-[#\x4298B5F]"}>Step 04</span>
@@ -830,7 +672,7 @@ function ImportedSectionHowWeBuild() {
               </div>
               <div className={"hidden \x6dd:\x62lock \x6dd:\x77-1/\x32"} />
             </div>
-            <div className={"relative flex items-center gap-8 \x6dd:\x67ap-0 pl-20 \x6dd:\x70l-0 \x6dd:\x66lex-row"} style={{ opacity: "1", transform: "none" }}>
+            <div className={"relative flex items-center gap-8 \x6dd:\x67ap-0 pl-20 \x6dd:\x70l-0 \x6dd:\x66lex-row"} data-reveal="">
               <div className={"\x6dd:\x77-1/\x32 [@media(min-width:768px)]:[padding-left:3rem] [@media(min-width:768px)]:[padding-right:3rem]"}>
                 <div className="[@media(min-width:768px)]:text-right">
                   <span className={"label-tech \x74ext-[#\x4298B5F]"}>Step 05</span>
@@ -866,31 +708,31 @@ function ImportedSectionRequestAFreeEstimate() {
           <img className={"h-full w-full [&]:object-cover"} src="/site-assets/753acf21e27d8244.png" alt="Craftsman at work" />
           <div className={"absolute \x62g-gradient-to-t \x66rom-[#\x30F0F0F]/\x360 \x74o-transparent [inset:0px]"} />
           <div className="absolute [bottom:2.5rem] [left:2.5rem] [right:2.5rem]">
-            <span className={"label-tech \x74ext-[#\x4298B5F]"}>The Consultation Engine</span>
-            <h3 className={"mt-3 display-heading \x74ext-3xl \x74ext-[#\x469F9F7]"}>What is the heart of your project?</h3>
+            <span className={"label-tech \x74ext-[#\x4298B5F]"}>{ESTIMATE_FORM.imageLabel}</span>
+            <h3 className={"mt-3 display-heading \x74ext-3xl \x74ext-[#\x469F9F7]"}>{ESTIMATE_FORM.imageHeading}</h3>
           </div>
         </div>
         <div className={"\x62g-[#\x30F0F0F] grain \x74ext-[#\x469F9F7] p-8 \x6dd:\x70-12"}>
-          <div style={{ opacity: "1", transform: "none" }}>
-            <span className={"label-tech \x74ext-[#\x4298B5F] flex items-center [gap:0.75rem]"}><span className={"h-px w-8 \x62g-[#\x4298B5F]"} /> Build Request</span>
+          <div data-reveal="">
+            <span className={"label-tech \x74ext-[#\x4298B5F] flex items-center [gap:0.75rem]"}><span className={"h-px w-8 \x62g-[#\x4298B5F]"} /> {ESTIMATE_FORM.eyebrow}</span>
           </div>
-          <div style={{ opacity: "1", transform: "none" }}>
-            <h2 className={"display-heading mt-5 \x74ext-4xl \x6dd:\x74ext-5xl"}>Request a free estimate.</h2>
+          <div data-reveal="">
+            <h2 className={"display-heading mt-5 \x74ext-3xl \x6dd:\x74ext-5xl"}>{ESTIMATE_FORM.heading}</h2>
           </div>
-          <form className={"mt-8 \x73pace-y-5"} style={{ opacity: "1" }} onSubmit={(event) => event.preventDefault()}>
+          <form className={"mt-8 \x73pace-y-5"} data-reveal="" onSubmit={(event) => event.preventDefault()}>
             <div className={"grid \x73m:\x67rid-cols-2 [gap:1.25rem]"}>
               <label className="block">
                 <span className={"label-tech \x74ext-[#\x469F9F7]/\x350 mb-2 block"}>Name</span>
-                <input className="cc-input [transition:border-color_0.3s]" required placeholder="Jane Doe" value={form.name} onChange={update("name")} />
+                <input className="cc-input [transition:border-color_0.3s]" required placeholder={ESTIMATE_FORM.namePlaceholder} value={form.name} onChange={update("name")} />
               </label>
               <label className="block">
                 <span className={"label-tech \x74ext-[#\x469F9F7]/\x350 mb-2 block"}>Phone</span>
-                <input className="cc-input [transition:border-color_0.3s]" placeholder="(555) 000-0000" value={form.phone} onChange={update("phone")} />
+                <input className="cc-input [transition:border-color_0.3s]" placeholder={ESTIMATE_FORM.phonePlaceholder} value={form.phone} onChange={update("phone")} />
               </label>
             </div>
             <label className="block">
               <span className={"label-tech \x74ext-[#\x469F9F7]/\x350 mb-2 block"}>Email</span>
-              <input className="cc-input [transition:border-color_0.3s]" required type="email" placeholder="jane@email.com" value={form.email} onChange={update("email")} />
+              <input className="cc-input [transition:border-color_0.3s]" required type="email" placeholder={ESTIMATE_FORM.emailPlaceholder} value={form.email} onChange={update("email")} />
             </label>
             <label className="block">
               <span className={"label-tech \x74ext-[#\x469F9F7]/\x350 mb-2 block"}>Project Type</span>
@@ -902,7 +744,7 @@ function ImportedSectionRequestAFreeEstimate() {
             </label>
             <label className="block">
               <span className={"label-tech \x74ext-[#\x469F9F7]/\x350 mb-2 block"}>Project Details</span>
-              <textarea className={"cc-input [&]:resize-none [transition:border-color_0.3s]"} required rows={3} placeholder="Tell us about your project..." value={form.details} onChange={update("details")} />
+              <textarea className={"cc-input [&]:resize-none [transition:border-color_0.3s]"} required rows={3} placeholder={ESTIMATE_FORM.detailsPlaceholder} value={form.details} onChange={update("details")} />
             </label>
             <div className="pt-2">
               <div className={"mb-3 h-1 w-full \x62g-white/\x310 [overflow:hidden]"}>
@@ -915,28 +757,28 @@ function ImportedSectionRequestAFreeEstimate() {
       </div>
       <div className={"\x6dx-auto mt-16 max-w-[1400px] \x70x-[\x36vw]"}>
         <div className={"grid \x62g-[#\x30F0F0F]/\x310 [gap:1px] [@media(min-width:640px)]:[grid-template-columns:repeat(3,minmax(0px,1fr))]"}>
-          <div className={"\x62g-[#\x469F9F7] p-7"} style={{ opacity: "1", transform: "none" }}>
+          <div className={"\x62g-[#\x469F9F7] p-7"} data-reveal="">
             <svg className={"\x74ext-[#\x4298B5F]"} xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round">
               <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
             </svg>
             <div className={"mt-4 label-tech \x74ext-[#\x30F0F0F]/\x340"}>Phone</div>
-            <p className={"mt-1.5 \x74ext-[#\x30F0F0F] \x66ont-medium"}>747-238-8278</p>
+            <p className={"mt-1.5 \x74ext-[#\x30F0F0F] \x66ont-medium"}><a href={BUSINESS.phoneHref}>{BUSINESS.phone}</a></p>
           </div>
-          <div className={"\x62g-[#\x469F9F7] p-7"} style={{ opacity: "1", transform: "none" }}>
+          <div className={"\x62g-[#\x469F9F7] p-7"} data-reveal="">
             <svg className={"\x74ext-[#\x4298B5F]"} xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round">
               <rect width="20" height="16" x="2" y="4" rx="2" />
               <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
             </svg>
             <div className={"mt-4 label-tech \x74ext-[#\x30F0F0F]/\x340"}>Email</div>
-            <p className={"mt-1.5 \x74ext-[#\x30F0F0F] \x66ont-medium"}>info@core-carpentry.com</p>
+            <p className={"mt-1.5 \x74ext-[#\x30F0F0F] \x66ont-medium"}><a href={`mailto:${BUSINESS.email}`}>{BUSINESS.email}</a></p>
           </div>
-          <div className={"\x62g-[#\x469F9F7] p-7"} style={{ opacity: "1", transform: "none" }}>
+          <div className={"\x62g-[#\x469F9F7] p-7"} data-reveal="">
             <svg className={"\x74ext-[#\x4298B5F]"} xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round">
               <path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" />
               <circle cx="12" cy="10" r="3" />
             </svg>
-            <div className={"mt-4 label-tech \x74ext-[#\x30F0F0F]/\x340"}>Service Area</div>
-            <p className={"mt-1.5 \x74ext-[#\x30F0F0F] \x66ont-medium"}>Southern California</p>
+            <div className={"mt-4 label-tech \x74ext-[#\x30F0F0F]/\x340"}>Location</div>
+            <p className={"mt-1.5 \x74ext-[#\x30F0F0F] \x66ont-medium"}>{BUSINESS.address}</p>
           </div>
         </div>
         <div className={"relative mt-6 h-64 \x62order \x62order-[#\x30F0F0F]/\x310 \x62g-[#\x30F0F0F] [overflow:hidden]"}>
@@ -949,8 +791,8 @@ function ImportedSectionRequestAFreeEstimate() {
                 <circle cx="12" cy="10" r="3" />
               </svg>
             </div>
-            <p className={"mt-4 label-tech \x74ext-[#\x4298B5F]"}>Service Area</p>
-            <p className={"mt-1 \x74ext-[#\x469F9F7]/\x370 \x74ext-sm"}>Southern California</p>
+            <p className={"mt-4 label-tech \x74ext-[#\x4298B5F]"}>Service Area — {BUSINESS.city}</p>
+            <p className={"mt-1 \x74ext-[#\x469F9F7]/\x370 \x74ext-sm [max-width:28rem] [padding:0_1.5rem]"}>{BUSINESS.serviceAreaFull}</p>
           </div>
         </div>
       </div>
@@ -966,9 +808,9 @@ function ImportedFooter() {
           <div>
             <div className="flex items-center gap-2.5">
               <span className={"plus-mark \x74ext-[#\x4298B5F] \x73cale-125"} />
-              <span className={"display-heading \x74ext-xl"}>CORE <span className={"\x74ext-[#\x4298B5F]"}>CARPENTRY</span></span>
+              <span className={"display-heading \x74ext-xl"}>{BUSINESS.logoLead} <span className={"\x74ext-[#\x4298B5F]"}>{BUSINESS.logoAccent}</span></span>
             </div>
-            <p className={"mt-4 \x74ext-sm \x74ext-[#\x469F9F7]/\x355 \x6ceading-relaxed"}>Built on Craftsmanship. Driven by Quality. Residential carpentry and renovation specialists.</p>
+            <p className={"mt-4 \x74ext-sm \x74ext-[#\x469F9F7]/\x355 \x6ceading-relaxed"}>{BUSINESS.footerBlurb}</p>
           </div>
           <div>
             <h4 className={"label-tech \x74ext-[#\x4298B5F] mb-4"}>Navigation</h4>
@@ -996,14 +838,14 @@ function ImportedFooter() {
           <div>
             <h4 className={"label-tech \x74ext-[#\x4298B5F] mb-4"}>Contact</h4>
             <ul className={"\x73pace-y-3 \x74ext-sm \x74ext-[#\x469F9F7]/\x370"}>
-              <li className="flex items-center [gap:0.75rem]"><svg className={"\x74ext-[#\x4298B5F]"} xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" /></svg> 747-238-8278</li>
-              <li className="flex items-center [gap:0.75rem]"><svg className={"\x74ext-[#\x4298B5F]"} xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="16" x="2" y="4" rx="2" /><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" /></svg> info@core-carpentry.com</li>
-              <li className="flex items-center [gap:0.75rem]"><svg className={"\x74ext-[#\x4298B5F]"} xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" /><circle cx="12" cy="10" r="3" /></svg> Southern California</li>
+              <li className="flex items-center [gap:0.75rem]"><svg className={"\x74ext-[#\x4298B5F]"} xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" /></svg> <a href={BUSINESS.phoneHref}>{BUSINESS.phone}</a></li>
+              <li className="flex items-center [gap:0.75rem]"><svg className={"\x74ext-[#\x4298B5F]"} xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="16" x="2" y="4" rx="2" /><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" /></svg> <a href={`mailto:${BUSINESS.email}`}>{BUSINESS.email}</a></li>
+              <li className="flex items-center [gap:0.75rem]"><svg className={"\x74ext-[#\x4298B5F]"} xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" /><circle cx="12" cy="10" r="3" /></svg> {BUSINESS.address}</li>
             </ul>
           </div>
         </div>
         <div className={"mt-14 flex flex-col items-center justify-between \x62order-t \x62order-white/\x310 pt-8 \x6dd:\x66lex-row [gap:1rem]"}>
-          <p className={"\x74ext-xs \x74ext-[#\x469F9F7]/\x340"}>© 2026 Core Carpentry. All rights reserved.</p>
+          <p className={"\x74ext-xs \x74ext-[#\x469F9F7]/\x340"}>© 2026 {BUSINESS.name}. All rights reserved.</p>
           <div className={"flex \x74ext-xs \x74ext-[#\x469F9F7]/\x340 [gap:1.5rem]"}>
             <a className={"\x68over:\x74ext-[#\x4298B5F] transition-colors"} href="#">Privacy</a>
             <a className={"\x68over:\x74ext-[#\x4298B5F] transition-colors"} href="#">Terms</a>
@@ -1016,36 +858,42 @@ function ImportedFooter() {
 }
 
 
-type Project = {
-  title: string;
-  category: "Renovations" | "Decks" | "Interior" | "Exterior" | "Custom Builds";
-  image: string;
-  aspect: "3/4" | "4/3";
-  materials: string;
-  description: string;
-  scope: string;
-  duration: string;
-};
-
-const PROJECT_FILTERS = ["All", "Renovations", "Decks", "Interior", "Exterior", "Custom Builds"] as const;
-
-const PROJECTS: Project[] = [
-  { title: "Vaulted Ceiling Reframe", category: "Custom Builds", image: "/site-assets/76a96acaede8317f.png", aspect: "3/4", materials: "Engineered LVL, Douglas Fir, Custom Steel Joinery", description: "A complete reframe of a vaulted ceiling, replacing compromised framing with precision-cut engineered timber and exposed fir beams.", scope: "Structural reframing of a vaulted great-room ceiling", duration: "5 Weeks" },
-  { title: "Cedar Deck & Pergola", category: "Decks", image: "/site-assets/9dd489fe344217ff.png", aspect: "3/4", materials: "Western Red Cedar, Hidden Fasteners", description: "A spacious backyard deck with a custom cedar pergola, built for longevity and seamless outdoor living.", scope: "Multi-tier deck with integrated cedar pergola", duration: "3 Weeks" },
-  { title: "Crown Moulding & Trim", category: "Interior", image: "/site-assets/3ec039348be6ff5b.png", aspect: "4/3", materials: "Primed MDF, Solid Oak Accents", description: "Crisp mitered crown and base trim throughout the home, with solid oak accents at openings and transitions.", scope: "Whole-home crown, base, and casing installation", duration: "2 Weeks" },
-  { title: "Walnut Live-Edge Table", category: "Custom Builds", image: "/site-assets/ebcd63dbc1a6540e.png", aspect: "3/4", materials: "Black Walnut, Hand-Rubbed Oil Finish", description: "A furniture-grade live-edge walnut table, hand-finished with dovetailed base joinery.", scope: "Bespoke dining table from a single live-edge slab", duration: "4 Weeks" },
-  { title: "Kitchen Renovation", category: "Renovations", image: "/site-assets/6e9119e130799143.png", aspect: "4/3", materials: "White Oak Cabinetry, Stone Counters", description: "A full kitchen renovation featuring custom white oak cabinetry, precise trim, and integrated detail work.", scope: "Full kitchen remodel with custom cabinetry", duration: "6 Weeks" },
-  { title: "Whole-Home Exterior Trim", category: "Exterior", image: "/site-assets/2f1d4afd7235a23a.png", aspect: "4/3", materials: "Cellular PVC, Cedar Fascia", description: "A complete exterior trim package with weather-resistant PVC detailing and cedar fascia accents.", scope: "Exterior fascia, soffit, and window trim package", duration: "3 Weeks" },
+const SERVICE_ICONS = [
+  <><path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83z" /><path d="M2 12a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 12" /><path d="M2 17a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 17" /></>,
+  <><path d="m14.622 17.897-10.68-2.913" /><path d="M18.376 2.622a1 1 0 1 1 3.002 3.002L17.36 9.643a.5.5 0 0 0 0 .707l.944.944a2.41 2.41 0 0 1 0 3.408l-.944.944a.5.5 0 0 1-.707 0L8.354 7.348a.5.5 0 0 1 0-.707l.944-.944a2.41 2.41 0 0 1 3.408 0l.944.944a.5.5 0 0 0 .707 0z" /><path d="M9 8c-1.804 2.71-3.97 3.46-6.583 3.948a.507.507 0 0 0-.302.819l7.32 8.883a1 1 0 0 0 1.185.204C12.735 20.405 16 16.792 16 15" /></>,
+  <><path d="M10 10v.2A3 3 0 0 1 8.9 16H5a3 3 0 0 1-1-5.8V10a3 3 0 0 1 6 0Z" /><path d="M7 16v6" /><path d="M13 19v3" /><path d="M12 19h8.3a1 1 0 0 0 .7-1.7L18 14h.3a1 1 0 0 0 .7-1.7L16 9h.2a1 1 0 0 0 .8-1.7L13 3l-1.4 1.5" /></>,
+  <><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8" /><path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" /></>,
+  <><path d="m15 12-8.373 8.373a1 1 0 1 1-3-3L12 9" /><path d="m18 15 4-4" /><path d="m21.5 11.5-1.914-1.914A2 2 0 0 1 19 8.172V7l-2.26-2.26a6 6 0 0 0-4.202-1.756L9 2.96l.92.82A6.18 6.18 0 0 1 12 8.4V10l2 2h1.172a2 2 0 0 1 1.414.586L18.5 14.5" /></>,
+  <><path d="M21.3 15.3a2.4 2.4 0 0 1 0 3.4l-2.6 2.6a2.4 2.4 0 0 1-3.4 0L2.7 8.7a2.41 2.41 0 0 1 0-3.4l2.6-2.6a2.41 2.41 0 0 1 3.4 0Z" /><path d="m14.5 12.5 2-2" /><path d="m11.5 9.5 2-2" /><path d="m8.5 6.5 2-2" /><path d="m17.5 15.5 2-2" /></>,
+  <><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z" /><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2" /><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2" /><path d="M10 6h4" /><path d="M10 10h4" /><path d="M10 14h4" /><path d="M10 18h4" /></>,
+  <><path d="M13 4h3a2 2 0 0 1 2 2v14" /><path d="M2 20h3" /><path d="M13 20h9" /><path d="M10 12v.01" /><path d="M13 4.562v16.157a1 1 0 0 1-1.242.97L5 20V5.562a2 2 0 0 1 1.515-1.94l4-1A2 2 0 0 1 13 4.561Z" /></>,
+  <><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" /></>,
 ];
 
-const REVIEWS = [
-  { quote: "Core Carpentry completely transformed our basement. Professional, punctual, and the quality exceeded our expectations. We couldn't be happier.", name: "Sarah M.", location: "Reseda, CA" },
-  { quote: "We hired Core Carpentry for a new backyard deck and the craftsmanship was outstanding. Everything was completed on schedule.", name: "Michael R.", location: "Pasadena, CA" },
-  { quote: "Excellent communication from start to finish. Every detail was completed perfectly.", name: "Jennifer L.", location: "Los Angeles, CA" },
-  { quote: "Our trim and finishing work looks incredible. The attention to detail really shows.", name: "David P.", location: "Highland Park, CA" },
-];
-
-const PROJECT_TYPES = ["Framing", "Deck", "Renovation", "Trim & Moulding", "Custom Woodworking", "Repair"];
+// Fades [data-reveal] blocks in as they scroll into view. Content stays visible
+// without JavaScript or when the visitor prefers reduced motion.
+function useScrollReveal() {
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches || !("IntersectionObserver" in window)) return;
+    const root = document.documentElement;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (!entry.isIntersecting) continue;
+          entry.target.classList.add("is-revealed");
+          observer.unobserve(entry.target);
+        }
+      },
+      { threshold: 0.12, rootMargin: "0px 0px -8% 0px" },
+    );
+    document.querySelectorAll("[data-reveal]").forEach((node) => observer.observe(node));
+    root.classList.add("reveal-ready");
+    return () => {
+      observer.disconnect();
+      root.classList.remove("reveal-ready");
+    };
+  }, []);
+}
 
 function clamp(value: number) {
   return Math.min(1, Math.max(0, value));
