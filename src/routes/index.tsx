@@ -21,6 +21,7 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   useImportedLayout();
+  useScrollReveal();
   return (
     <>
       <style>{capturedCSS}</style>
@@ -868,6 +869,31 @@ const SERVICE_ICONS = [
   <><path d="M13 4h3a2 2 0 0 1 2 2v14" /><path d="M2 20h3" /><path d="M13 20h9" /><path d="M10 12v.01" /><path d="M13 4.562v16.157a1 1 0 0 1-1.242.97L5 20V5.562a2 2 0 0 1 1.515-1.94l4-1A2 2 0 0 1 13 4.561Z" /></>,
   <><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" /></>,
 ];
+
+// Fades [data-reveal] blocks in as they scroll into view. Content stays visible
+// without JavaScript or when the visitor prefers reduced motion.
+function useScrollReveal() {
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches || !("IntersectionObserver" in window)) return;
+    const root = document.documentElement;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (!entry.isIntersecting) continue;
+          entry.target.classList.add("is-revealed");
+          observer.unobserve(entry.target);
+        }
+      },
+      { threshold: 0.12, rootMargin: "0px 0px -8% 0px" },
+    );
+    document.querySelectorAll("[data-reveal]").forEach((node) => observer.observe(node));
+    root.classList.add("reveal-ready");
+    return () => {
+      observer.disconnect();
+      root.classList.remove("reveal-ready");
+    };
+  }, []);
+}
 
 function clamp(value: number) {
   return Math.min(1, Math.max(0, value));
