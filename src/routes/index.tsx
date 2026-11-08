@@ -318,147 +318,21 @@ function ImportedSectionExpertiseInEveryJoint() {
           </div>
         </div>
         <div className={"mt-14 grid \x62g-white/\x35 \x73m:\x67rid-cols-2 \x6cg:\x67rid-cols-3 [gap:1px]"}>
-          <div className={"group relative \x62g-[#\x30F0F0F] p-8 \x6dd:\x70-10 transition-colors \x64uration-500 \x68over:\x62g-[#\x3161616] [overflow:hidden]"} style={{ opacity: "1", transform: "none" }}>
-            <span className={"absolute \x62order \x62order-transparent transition-colors \x64uration-500 \x67roup-hover:\x62order-[#\x4298B5F]/\x340 [&]:pointer-events-none [inset:0px]"} />
-            <span className={"absolute left-0 top-0 h-0 w-px \x62g-[#\x4298B5F] transition-all \x64uration-500 \x67roup-hover:\x68-full"} />
-            <span className={"absolute right-0 h-0 w-px \x62g-[#\x4298B5F] transition-all \x64uration-500 \x67roup-hover:\x68-full [bottom:0px]"} />
-            <div className="relative">
-              <svg className={"\x74ext-[#\x4298B5F] \x74ransition-transform \x64uration-500 \x67roup-hover:\x72otate-[\x3360deg] [transition-property:transform] [transition-timing-function:cubic-bezier(0.4,0,0.2,1)]"} xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83z" />
-                <path d="M2 12a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 12" />
-                <path d="M2 17a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 17" />
-              </svg>
-              <h3 className={"mt-6 font-heading \x74ext-xl \x66ont-bold \x74racking-tight"}>Residential Framing</h3>
-              <p className={"mt-3 \x74ext-sm \x74ext-[#\x469F9F7]/\x355 \x6ceading-relaxed"}>Precise structural framing built square, plumb, and true — the foundation of every great build.</p>
-              <span className={"mt-6 inline-block label-tech \x74ext-[#\x469F9F7]/\x330 \x67roup-hover:\x74ext-[#\x4298B5F] transition-colors"}>01</span>
+          {SERVICES.map((service, index) => (
+            <div key={service.number} className={"group relative \x62g-[#\x30F0F0F] p-8 \x6dd:\x70-10 transition-colors \x64uration-500 \x68over:\x62g-[#\x3161616] [overflow:hidden]"} data-reveal="">
+              <span className={"absolute \x62order \x62order-transparent transition-colors \x64uration-500 \x67roup-hover:\x62order-[#\x4298B5F]/\x340 [&]:pointer-events-none [inset:0px]"} />
+              <span className={"absolute left-0 top-0 h-0 w-px \x62g-[#\x4298B5F] transition-all \x64uration-500 \x67roup-hover:\x68-full"} />
+              <span className={"absolute right-0 h-0 w-px \x62g-[#\x4298B5F] transition-all \x64uration-500 \x67roup-hover:\x68-full [bottom:0px]"} />
+              <div className="relative">
+                <svg className={"\x74ext-[#\x4298B5F] \x74ransition-transform \x64uration-500 \x67roup-hover:\x72otate-[\x3360deg] [transition-property:transform] [transition-timing-function:cubic-bezier(0.4,0,0.2,1)]"} xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round">
+                  {SERVICE_ICONS[index]}
+                </svg>
+                <h3 className={"mt-6 font-heading \x74ext-xl \x66ont-bold \x74racking-tight"}>{service.title}</h3>
+                <p className={"mt-3 \x74ext-sm \x74ext-[#\x469F9F7]/\x355 \x6ceading-relaxed"}>{service.description}</p>
+                <span className={"mt-6 inline-block label-tech \x74ext-[#\x469F9F7]/\x330 \x67roup-hover:\x74ext-[#\x4298B5F] transition-colors"}>{service.number}</span>
+              </div>
             </div>
-          </div>
-          <div className={"group relative \x62g-[#\x30F0F0F] p-8 \x6dd:\x70-10 transition-colors \x64uration-500 \x68over:\x62g-[#\x3161616] [overflow:hidden]"} style={{ opacity: "1", transform: "none" }}>
-            <span className={"absolute \x62order \x62order-transparent transition-colors \x64uration-500 \x67roup-hover:\x62order-[#\x4298B5F]/\x340 [&]:pointer-events-none [inset:0px]"} />
-            <span className={"absolute left-0 top-0 h-0 w-px \x62g-[#\x4298B5F] transition-all \x64uration-500 \x67roup-hover:\x68-full"} />
-            <span className={"absolute right-0 h-0 w-px \x62g-[#\x4298B5F] transition-all \x64uration-500 \x67roup-hover:\x68-full [bottom:0px]"} />
-            <div className="relative">
-              <svg className={"\x74ext-[#\x4298B5F] \x74ransition-transform \x64uration-500 \x67roup-hover:\x72otate-[\x3360deg] [transition-property:transform] [transition-timing-function:cubic-bezier(0.4,0,0.2,1)]"} xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round">
-                <path d="m14.622 17.897-10.68-2.913" />
-                <path d="M18.376 2.622a1 1 0 1 1 3.002 3.002L17.36 9.643a.5.5 0 0 0 0 .707l.944.944a2.41 2.41 0 0 1 0 3.408l-.944.944a.5.5 0 0 1-.707 0L8.354 7.348a.5.5 0 0 1 0-.707l.944-.944a2.41 2.41 0 0 1 3.408 0l.944.944a.5.5 0 0 0 .707 0z" />
-                <path d="M9 8c-1.804 2.71-3.97 3.46-6.583 3.948a.507.507 0 0 0-.302.819l7.32 8.883a1 1 0 0 0 1.185.204C12.735 20.405 16 16.792 16 15" />
-              </svg>
-              <h3 className={"mt-6 font-heading \x74ext-xl \x66ont-bold \x74racking-tight"}>Finish Carpentry</h3>
-              <p className={"mt-3 \x74ext-sm \x74ext-[#\x469F9F7]/\x355 \x6ceading-relaxed"}>Refined finishing that elevates a space — clean joinery, seamless transitions, lasting detail.</p>
-              <span className={"mt-6 inline-block label-tech \x74ext-[#\x469F9F7]/\x330 \x67roup-hover:\x74ext-[#\x4298B5F] transition-colors"}>02</span>
-            </div>
-          </div>
-          <div className={"group relative \x62g-[#\x30F0F0F] p-8 \x6dd:\x70-10 transition-colors \x64uration-500 \x68over:\x62g-[#\x3161616] [overflow:hidden]"} style={{ opacity: "1", transform: "none" }}>
-            <span className={"absolute \x62order \x62order-transparent transition-colors \x64uration-500 \x67roup-hover:\x62order-[#\x4298B5F]/\x340 [&]:pointer-events-none [inset:0px]"} />
-            <span className={"absolute left-0 top-0 h-0 w-px \x62g-[#\x4298B5F] transition-all \x64uration-500 \x67roup-hover:\x68-full"} />
-            <span className={"absolute right-0 h-0 w-px \x62g-[#\x4298B5F] transition-all \x64uration-500 \x67roup-hover:\x68-full [bottom:0px]"} />
-            <div className="relative">
-              <svg className={"\x74ext-[#\x4298B5F] \x74ransition-transform \x64uration-500 \x67roup-hover:\x72otate-[\x3360deg] [transition-property:transform] [transition-timing-function:cubic-bezier(0.4,0,0.2,1)]"} xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M10 10v.2A3 3 0 0 1 8.9 16H5a3 3 0 0 1-1-5.8V10a3 3 0 0 1 6 0Z" />
-                <path d="M7 16v6" />
-                <path d="M13 19v3" />
-                <path d="M12 19h8.3a1 1 0 0 0 .7-1.7L18 14h.3a1 1 0 0 0 .7-1.7L16 9h.2a1 1 0 0 0 .8-1.7L13 3l-1.4 1.5" />
-              </svg>
-              <h3 className={"mt-6 font-heading \x74ext-xl \x66ont-bold \x74racking-tight"}>Deck Construction</h3>
-              <p className={"mt-3 \x74ext-sm \x74ext-[#\x469F9F7]/\x355 \x6ceading-relaxed"}>Custom decks engineered for longevity and designed for outdoor living at its finest.</p>
-              <span className={"mt-6 inline-block label-tech \x74ext-[#\x469F9F7]/\x330 \x67roup-hover:\x74ext-[#\x4298B5F] transition-colors"}>03</span>
-            </div>
-          </div>
-          <div className={"group relative \x62g-[#\x30F0F0F] p-8 \x6dd:\x70-10 transition-colors \x64uration-500 \x68over:\x62g-[#\x3161616] [overflow:hidden]"} style={{ opacity: "1", transform: "none" }}>
-            <span className={"absolute \x62order \x62order-transparent transition-colors \x64uration-500 \x67roup-hover:\x62order-[#\x4298B5F]/\x340 [&]:pointer-events-none [inset:0px]"} />
-            <span className={"absolute left-0 top-0 h-0 w-px \x62g-[#\x4298B5F] transition-all \x64uration-500 \x67roup-hover:\x68-full"} />
-            <span className={"absolute right-0 h-0 w-px \x62g-[#\x4298B5F] transition-all \x64uration-500 \x67roup-hover:\x68-full [bottom:0px]"} />
-            <div className="relative">
-              <svg className={"\x74ext-[#\x4298B5F] \x74ransition-transform \x64uration-500 \x67roup-hover:\x72otate-[\x3360deg] [transition-property:transform] [transition-timing-function:cubic-bezier(0.4,0,0.2,1)]"} xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8" />
-                <path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-              </svg>
-              <h3 className={"mt-6 font-heading \x74ext-xl \x66ont-bold \x74racking-tight"}>Home Renovations</h3>
-              <p className={"mt-3 \x74ext-sm \x74ext-[#\x469F9F7]/\x355 \x6ceading-relaxed"}>Full-home transformations managed end-to-end with honest timelines and meticulous execution.</p>
-              <span className={"mt-6 inline-block label-tech \x74ext-[#\x469F9F7]/\x330 \x67roup-hover:\x74ext-[#\x4298B5F] transition-colors"}>04</span>
-            </div>
-          </div>
-          <div className={"group relative \x62g-[#\x30F0F0F] p-8 \x6dd:\x70-10 transition-colors \x64uration-500 \x68over:\x62g-[#\x3161616] [overflow:hidden]"} style={{ opacity: "1", transform: "none" }}>
-            <span className={"absolute \x62order \x62order-transparent transition-colors \x64uration-500 \x67roup-hover:\x62order-[#\x4298B5F]/\x340 [&]:pointer-events-none [inset:0px]"} />
-            <span className={"absolute left-0 top-0 h-0 w-px \x62g-[#\x4298B5F] transition-all \x64uration-500 \x67roup-hover:\x68-full"} />
-            <span className={"absolute right-0 h-0 w-px \x62g-[#\x4298B5F] transition-all \x64uration-500 \x67roup-hover:\x68-full [bottom:0px]"} />
-            <div className="relative">
-              <svg className={"\x74ext-[#\x4298B5F] \x74ransition-transform \x64uration-500 \x67roup-hover:\x72otate-[\x3360deg] [transition-property:transform] [transition-timing-function:cubic-bezier(0.4,0,0.2,1)]"} xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M21.3 15.3a2.4 2.4 0 0 1 0 3.4l-2.6 2.6a2.4 2.4 0 0 1-3.4 0L2.7 8.7a2.41 2.41 0 0 1 0-3.4l2.6-2.6a2.41 2.41 0 0 1 3.4 0Z" />
-                <path d="m14.5 12.5 2-2" />
-                <path d="m11.5 9.5 2-2" />
-                <path d="m8.5 6.5 2-2" />
-                <path d="m17.5 15.5 2-2" />
-              </svg>
-              <h3 className={"mt-6 font-heading \x74ext-xl \x66ont-bold \x74racking-tight"}>Interior Trim &amp; Moulding</h3>
-              <p className={"mt-3 \x74ext-sm \x74ext-[#\x469F9F7]/\x355 \x6ceading-relaxed"}>Crown, base, casing, and wainscoting installed with crisp mitered corners and tight reveals.</p>
-              <span className={"mt-6 inline-block label-tech \x74ext-[#\x469F9F7]/\x330 \x67roup-hover:\x74ext-[#\x4298B5F] transition-colors"}>05</span>
-            </div>
-          </div>
-          <div className={"group relative \x62g-[#\x30F0F0F] p-8 \x6dd:\x70-10 transition-colors \x64uration-500 \x68over:\x62g-[#\x3161616] [overflow:hidden]"} style={{ opacity: "1", transform: "none" }}>
-            <span className={"absolute \x62order \x62order-transparent transition-colors \x64uration-500 \x67roup-hover:\x62order-[#\x4298B5F]/\x340 [&]:pointer-events-none [inset:0px]"} />
-            <span className={"absolute left-0 top-0 h-0 w-px \x62g-[#\x4298B5F] transition-all \x64uration-500 \x67roup-hover:\x68-full"} />
-            <span className={"absolute right-0 h-0 w-px \x62g-[#\x4298B5F] transition-all \x64uration-500 \x67roup-hover:\x68-full [bottom:0px]"} />
-            <div className="relative">
-              <svg className={"\x74ext-[#\x4298B5F] \x74ransition-transform \x64uration-500 \x67roup-hover:\x72otate-[\x3360deg] [transition-property:transform] [transition-timing-function:cubic-bezier(0.4,0,0.2,1)]"} xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round">
-                <path d="m15 12-8.373 8.373a1 1 0 1 1-3-3L12 9" />
-                <path d="m18 15 4-4" />
-                <path d="m21.5 11.5-1.914-1.914A2 2 0 0 1 19 8.172V7l-2.26-2.26a6 6 0 0 0-4.202-1.756L9 2.96l.92.82A6.18 6.18 0 0 1 12 8.4V10l2 2h1.172a2 2 0 0 1 1.414.586L18.5 14.5" />
-              </svg>
-              <h3 className={"mt-6 font-heading \x74ext-xl \x66ont-bold \x74racking-tight"}>Custom Woodworking</h3>
-              <p className={"mt-3 \x74ext-sm \x74ext-[#\x469F9F7]/\x355 \x6ceading-relaxed"}>Bespoke built-ins, shelving, and furniture-grade pieces crafted to your exact specifications.</p>
-              <span className={"mt-6 inline-block label-tech \x74ext-[#\x469F9F7]/\x330 \x67roup-hover:\x74ext-[#\x4298B5F] transition-colors"}>06</span>
-            </div>
-          </div>
-          <div className={"group relative \x62g-[#\x30F0F0F] p-8 \x6dd:\x70-10 transition-colors \x64uration-500 \x68over:\x62g-[#\x3161616] [overflow:hidden]"} style={{ opacity: "1", transform: "none" }}>
-            <span className={"absolute \x62order \x62order-transparent transition-colors \x64uration-500 \x67roup-hover:\x62order-[#\x4298B5F]/\x340 [&]:pointer-events-none [inset:0px]"} />
-            <span className={"absolute left-0 top-0 h-0 w-px \x62g-[#\x4298B5F] transition-all \x64uration-500 \x67roup-hover:\x68-full"} />
-            <span className={"absolute right-0 h-0 w-px \x62g-[#\x4298B5F] transition-all \x64uration-500 \x67roup-hover:\x68-full [bottom:0px]"} />
-            <div className="relative">
-              <svg className={"\x74ext-[#\x4298B5F] \x74ransition-transform \x64uration-500 \x67roup-hover:\x72otate-[\x3360deg] [transition-property:transform] [transition-timing-function:cubic-bezier(0.4,0,0.2,1)]"} xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z" />
-                <path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2" />
-                <path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2" />
-                <path d="M10 6h4" />
-                <path d="M10 10h4" />
-                <path d="M10 14h4" />
-                <path d="M10 18h4" />
-              </svg>
-              <h3 className={"mt-6 font-heading \x74ext-xl \x66ont-bold \x74racking-tight"}>Basement Finishing</h3>
-              <p className={"mt-3 \x74ext-sm \x74ext-[#\x469F9F7]/\x355 \x6ceading-relaxed"}>Lower levels reimagined — framing, trim, and detail work that turns basements into living space.</p>
-              <span className={"mt-6 inline-block label-tech \x74ext-[#\x469F9F7]/\x330 \x67roup-hover:\x74ext-[#\x4298B5F] transition-colors"}>07</span>
-            </div>
-          </div>
-          <div className={"group relative \x62g-[#\x30F0F0F] p-8 \x6dd:\x70-10 transition-colors \x64uration-500 \x68over:\x62g-[#\x3161616] [overflow:hidden]"} style={{ opacity: "1", transform: "none" }}>
-            <span className={"absolute \x62order \x62order-transparent transition-colors \x64uration-500 \x67roup-hover:\x62order-[#\x4298B5F]/\x340 [&]:pointer-events-none [inset:0px]"} />
-            <span className={"absolute left-0 top-0 h-0 w-px \x62g-[#\x4298B5F] transition-all \x64uration-500 \x67roup-hover:\x68-full"} />
-            <span className={"absolute right-0 h-0 w-px \x62g-[#\x4298B5F] transition-all \x64uration-500 \x67roup-hover:\x68-full [bottom:0px]"} />
-            <div className="relative">
-              <svg className={"\x74ext-[#\x4298B5F] \x74ransition-transform \x64uration-500 \x67roup-hover:\x72otate-[\x3360deg] [transition-property:transform] [transition-timing-function:cubic-bezier(0.4,0,0.2,1)]"} xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M13 4h3a2 2 0 0 1 2 2v14" />
-                <path d="M2 20h3" />
-                <path d="M13 20h9" />
-                <path d="M10 12v.01" />
-                <path d="M13 4.562v16.157a1 1 0 0 1-1.242.97L5 20V5.562a2 2 0 0 1 1.515-1.94l4-1A2 2 0 0 1 13 4.561Z" />
-              </svg>
-              <h3 className={"mt-6 font-heading \x74ext-xl \x66ont-bold \x74racking-tight"}>Door &amp; Window Installation</h3>
-              <p className={"mt-3 \x74ext-sm \x74ext-[#\x469F9F7]/\x355 \x6ceading-relaxed"}>Properly fitted, weather-sealed, and trimmed doors and windows that operate flawlessly.</p>
-              <span className={"mt-6 inline-block label-tech \x74ext-[#\x469F9F7]/\x330 \x67roup-hover:\x74ext-[#\x4298B5F] transition-colors"}>08</span>
-            </div>
-          </div>
-          <div className={"group relative \x62g-[#\x30F0F0F] p-8 \x6dd:\x70-10 transition-colors \x64uration-500 \x68over:\x62g-[#\x3161616] [overflow:hidden]"} style={{ opacity: "1", transform: "none" }}>
-            <span className={"absolute \x62order \x62order-transparent transition-colors \x64uration-500 \x67roup-hover:\x62order-[#\x4298B5F]/\x340 [&]:pointer-events-none [inset:0px]"} />
-            <span className={"absolute left-0 top-0 h-0 w-px \x62g-[#\x4298B5F] transition-all \x64uration-500 \x67roup-hover:\x68-full"} />
-            <span className={"absolute right-0 h-0 w-px \x62g-[#\x4298B5F] transition-all \x64uration-500 \x67roup-hover:\x68-full [bottom:0px]"} />
-            <div className="relative">
-              <svg className={"\x74ext-[#\x4298B5F] \x74ransition-transform \x64uration-500 \x67roup-hover:\x72otate-[\x3360deg] [transition-property:transform] [transition-timing-function:cubic-bezier(0.4,0,0.2,1)]"} xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
-              </svg>
-              <h3 className={"mt-6 font-heading \x74ext-xl \x66ont-bold \x74racking-tight"}>General Carpentry Repairs</h3>
-              <p className={"mt-3 \x74ext-sm \x74ext-[#\x469F9F7]/\x355 \x6ceading-relaxed"}>Restoration and repair work handled with the same care as a brand-new build.</p>
-              <span className={"mt-6 inline-block label-tech \x74ext-[#\x469F9F7]/\x330 \x67roup-hover:\x74ext-[#\x4298B5F] transition-colors"}>09</span>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </section>
@@ -1016,36 +890,17 @@ function ImportedFooter() {
 }
 
 
-type Project = {
-  title: string;
-  category: "Renovations" | "Decks" | "Interior" | "Exterior" | "Custom Builds";
-  image: string;
-  aspect: "3/4" | "4/3";
-  materials: string;
-  description: string;
-  scope: string;
-  duration: string;
-};
-
-const PROJECT_FILTERS = ["All", "Renovations", "Decks", "Interior", "Exterior", "Custom Builds"] as const;
-
-const PROJECTS: Project[] = [
-  { title: "Vaulted Ceiling Reframe", category: "Custom Builds", image: "/site-assets/76a96acaede8317f.png", aspect: "3/4", materials: "Engineered LVL, Douglas Fir, Custom Steel Joinery", description: "A complete reframe of a vaulted ceiling, replacing compromised framing with precision-cut engineered timber and exposed fir beams.", scope: "Structural reframing of a vaulted great-room ceiling", duration: "5 Weeks" },
-  { title: "Cedar Deck & Pergola", category: "Decks", image: "/site-assets/9dd489fe344217ff.png", aspect: "3/4", materials: "Western Red Cedar, Hidden Fasteners", description: "A spacious backyard deck with a custom cedar pergola, built for longevity and seamless outdoor living.", scope: "Multi-tier deck with integrated cedar pergola", duration: "3 Weeks" },
-  { title: "Crown Moulding & Trim", category: "Interior", image: "/site-assets/3ec039348be6ff5b.png", aspect: "4/3", materials: "Primed MDF, Solid Oak Accents", description: "Crisp mitered crown and base trim throughout the home, with solid oak accents at openings and transitions.", scope: "Whole-home crown, base, and casing installation", duration: "2 Weeks" },
-  { title: "Walnut Live-Edge Table", category: "Custom Builds", image: "/site-assets/ebcd63dbc1a6540e.png", aspect: "3/4", materials: "Black Walnut, Hand-Rubbed Oil Finish", description: "A furniture-grade live-edge walnut table, hand-finished with dovetailed base joinery.", scope: "Bespoke dining table from a single live-edge slab", duration: "4 Weeks" },
-  { title: "Kitchen Renovation", category: "Renovations", image: "/site-assets/6e9119e130799143.png", aspect: "4/3", materials: "White Oak Cabinetry, Stone Counters", description: "A full kitchen renovation featuring custom white oak cabinetry, precise trim, and integrated detail work.", scope: "Full kitchen remodel with custom cabinetry", duration: "6 Weeks" },
-  { title: "Whole-Home Exterior Trim", category: "Exterior", image: "/site-assets/2f1d4afd7235a23a.png", aspect: "4/3", materials: "Cellular PVC, Cedar Fascia", description: "A complete exterior trim package with weather-resistant PVC detailing and cedar fascia accents.", scope: "Exterior fascia, soffit, and window trim package", duration: "3 Weeks" },
+const SERVICE_ICONS = [
+  <><path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83z" /><path d="M2 12a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 12" /><path d="M2 17a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 17" /></>,
+  <><path d="m14.622 17.897-10.68-2.913" /><path d="M18.376 2.622a1 1 0 1 1 3.002 3.002L17.36 9.643a.5.5 0 0 0 0 .707l.944.944a2.41 2.41 0 0 1 0 3.408l-.944.944a.5.5 0 0 1-.707 0L8.354 7.348a.5.5 0 0 1 0-.707l.944-.944a2.41 2.41 0 0 1 3.408 0l.944.944a.5.5 0 0 0 .707 0z" /><path d="M9 8c-1.804 2.71-3.97 3.46-6.583 3.948a.507.507 0 0 0-.302.819l7.32 8.883a1 1 0 0 0 1.185.204C12.735 20.405 16 16.792 16 15" /></>,
+  <><path d="M10 10v.2A3 3 0 0 1 8.9 16H5a3 3 0 0 1-1-5.8V10a3 3 0 0 1 6 0Z" /><path d="M7 16v6" /><path d="M13 19v3" /><path d="M12 19h8.3a1 1 0 0 0 .7-1.7L18 14h.3a1 1 0 0 0 .7-1.7L16 9h.2a1 1 0 0 0 .8-1.7L13 3l-1.4 1.5" /></>,
+  <><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8" /><path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" /></>,
+  <><path d="m15 12-8.373 8.373a1 1 0 1 1-3-3L12 9" /><path d="m18 15 4-4" /><path d="m21.5 11.5-1.914-1.914A2 2 0 0 1 19 8.172V7l-2.26-2.26a6 6 0 0 0-4.202-1.756L9 2.96l.92.82A6.18 6.18 0 0 1 12 8.4V10l2 2h1.172a2 2 0 0 1 1.414.586L18.5 14.5" /></>,
+  <><path d="M21.3 15.3a2.4 2.4 0 0 1 0 3.4l-2.6 2.6a2.4 2.4 0 0 1-3.4 0L2.7 8.7a2.41 2.41 0 0 1 0-3.4l2.6-2.6a2.41 2.41 0 0 1 3.4 0Z" /><path d="m14.5 12.5 2-2" /><path d="m11.5 9.5 2-2" /><path d="m8.5 6.5 2-2" /><path d="m17.5 15.5 2-2" /></>,
+  <><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z" /><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2" /><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2" /><path d="M10 6h4" /><path d="M10 10h4" /><path d="M10 14h4" /><path d="M10 18h4" /></>,
+  <><path d="M13 4h3a2 2 0 0 1 2 2v14" /><path d="M2 20h3" /><path d="M13 20h9" /><path d="M10 12v.01" /><path d="M13 4.562v16.157a1 1 0 0 1-1.242.97L5 20V5.562a2 2 0 0 1 1.515-1.94l4-1A2 2 0 0 1 13 4.561Z" /></>,
+  <><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" /></>,
 ];
-
-const REVIEWS = [
-  { quote: "Core Carpentry completely transformed our basement. Professional, punctual, and the quality exceeded our expectations. We couldn't be happier.", name: "Sarah M.", location: "Reseda, CA" },
-  { quote: "We hired Core Carpentry for a new backyard deck and the craftsmanship was outstanding. Everything was completed on schedule.", name: "Michael R.", location: "Pasadena, CA" },
-  { quote: "Excellent communication from start to finish. Every detail was completed perfectly.", name: "Jennifer L.", location: "Los Angeles, CA" },
-  { quote: "Our trim and finishing work looks incredible. The attention to detail really shows.", name: "David P.", location: "Highland Park, CA" },
-];
-
-const PROJECT_TYPES = ["Framing", "Deck", "Renovation", "Trim & Moulding", "Custom Woodworking", "Repair"];
 
 function clamp(value: number) {
   return Math.min(1, Math.max(0, value));
