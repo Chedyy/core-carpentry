@@ -49,7 +49,7 @@ export const ABOUT = {
     "Clean job sites",
     "Reliable scheduling",
     "Local Fairfield County crew",
-    "Licensed & insured in CT",
+    "Customer satisfaction",
     "Pride in every project",
   ],
 };
