@@ -230,12 +230,10 @@ export const WHY_US = {
   ],
 };
 
-// SAMPLE REVIEWS — written as placeholders, not copied from Google.
-// Replace with real Google reviews (and the real rating) before going live.
 export const GOOGLE_RATING = {
   score: "5.0",
   stars: 5,
-  label: "Based on Google Reviews",
+  label: "Based on Google Reviews · 20+ more on Google Reviews",
 };
 
 export type GoogleReview = {
@@ -247,22 +245,22 @@ export type GoogleReview = {
 
 export const googleReviews: GoogleReview[] = [
   {
-    author: "Laura K.",
+    author: "Кувалда Мощная",
     location: "Stamford, CT",
     rating: 5,
-    text: "Wood Core built floor-to-ceiling built-ins around our fireplace and they look like they came with the house. Every reveal is even and every shelf is dead level — real precision work.",
+    text: "I really appreciate the quality of the work. This Guy clearly knows what he's doing, and everything looks great. I would definitely recommend his service.",
   },
   {
-    author: "James T.",
+    author: "luke I.",
     location: "Greenwich, CT",
     rating: 5,
-    text: "Communication was outstanding. We got a clear scope and price up front, daily updates during the job, and they finished our deck and pergola the exact week they promised.",
+    text: "Alex was fantastic from the quoting process all the way through completion of installing the cabinets and shelves on our chimney renovation project. He’s very personable and easy to work with, and his attention to detail is second to none. He’s a true perfectionist who clearly takes pride in his work and goes above and beyond to make sure everything is done right. Highly recommend!",
   },
   {
     author: "Priya S.",
     location: "Darien, CT",
     rating: 5,
-    text: "The crown moulding and wainscoting in our dining room are flawless. You can't find a gap anywhere. True craftsmen who clearly take pride in their work.",
+    text: "Alex installed the doors in our home, and we couldn’t be happier that we chose him! He did an amazing job — everything was done quickly, professionally, and with great attention to detail.\n\nFor any future home improvement projects, this is definitely the company we’ll be calling. Thank you again for the excellent work! Highly recommended!",
   },
   {
     author: "Mark D.",
