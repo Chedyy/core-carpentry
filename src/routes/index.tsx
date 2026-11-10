@@ -25,7 +25,7 @@ function Index() {
   return (
     <>
       <style>{capturedCSS}</style>
-      <div id="root">
+      <div id="root" suppressHydrationWarning>
         <ImportedCursor />
         <ImportedHeader />
         <main>
@@ -40,8 +40,8 @@ function Index() {
           <ImportedSectionRequestAFreeEstimate />
         </main>
         <ImportedFooter />
-        <div className={"fixed top-0 flex w-full flex-col-reverse p-4 \x73m:\x74op-auto \x73m:\x66lex-col [max-height:100vh] [z-index:100] [@media(min-width:640px)]:[bottom:0px] [@media(min-width:640px)]:[right:0px] [@media(min-width:768px)]:max-w-[420px]"}>
-          <div className={"fixed top-0 flex w-full flex-col-reverse p-4 \x73m:\x74op-auto \x73m:\x66lex-col [max-height:100vh] [z-index:100] [@media(min-width:640px)]:[bottom:0px] [@media(min-width:640px)]:[right:0px] [@media(min-width:768px)]:max-w-[420px]"} />
+        <div suppressHydrationWarning className={"fixed top-0 flex w-full flex-col-reverse p-4 \x73m:\x74op-auto \x73m:\x66lex-col [max-height:100vh] [z-index:100] [@media(min-width:640px)]:[bottom:0px] [@media(min-width:640px)]:[right:0px] [@media(min-width:768px)]:max-w-[420px]"}>
+          <div suppressHydrationWarning className={"fixed top-0 flex w-full flex-col-reverse p-4 \x73m:\x74op-auto \x73m:\x66lex-col [max-height:100vh] [z-index:100] [@media(min-width:640px)]:[bottom:0px] [@media(min-width:640px)]:[right:0px] [@media(min-width:768px)]:max-w-[420px]"} />
         </div>
       </div>
     </>
@@ -121,7 +121,7 @@ function ImportedHeader() {
   ];
   return (
     <>
-    <header className={"fixed top-0 left-0 right-0 z-[200] transition-all \x64uration-500 bg-transparent \x70y-6"} style={{ transform: "none" }} data-site-import-scroll-header={"{\"desktop\":{\"added\":[\"bg-[#0F0F0F]/90\",\"backdrop-blur-md\",\"border-b\",\"border-white/5\",\"py-3\"],\"removed\":[\"bg-transparent\",\"py-6\"],\"threshold\":648},\"mobile\":{\"added\":[\"bg-[#0F0F0F]/90\",\"backdrop-blur-md\",\"border-b\",\"border-white/5\",\"py-3\"],\"removed\":[\"bg-transparent\",\"py-6\"],\"threshold\":633}}"}>
+    <header suppressHydrationWarning className={"fixed top-0 left-0 right-0 z-[200] transition-all \x64uration-500 bg-transparent \x70y-6"} style={{ transform: "none" }} data-site-import-scroll-header={"{\"desktop\":{\"added\":[\"bg-[#0F0F0F]/90\",\"backdrop-blur-md\",\"border-b\",\"border-white/5\",\"py-3\"],\"removed\":[\"bg-transparent\",\"py-6\"],\"threshold\":648},\"mobile\":{\"added\":[\"bg-[#0F0F0F]/90\",\"backdrop-blur-md\",\"border-b\",\"border-white/5\",\"py-3\"],\"removed\":[\"bg-transparent\",\"py-6\"],\"threshold\":633}}"}>
       <div className={"\x6dx-auto flex max-w-[1400px] items-center justify-between \x70x-[\x36vw]"}>
         <a className={"flex items-center gap-2.5 \x74ext-[#\x469F9F7]"} href="#top">
           <span className={"plus-mark \x74ext-[#\x4298B5F] \x73cale-125"} />
@@ -762,7 +762,7 @@ function ImportedSectionRequestAFreeEstimate() {
 
 function ImportedFooter() {
   return (
-    <footer className={"relative \x62g-[#\x30F0F0F] grain \x74ext-[#\x469F9F7]"}>
+        <footer suppressHydrationWarning className={"relative \x62g-[#\x30F0F0F] grain \x74ext-[#\x469F9F7]"}>
       <div className={"\x6dx-auto max-w-[1400px] \x70x-[\x36vw] \x70y-16 \x6dd:\x70y-24"}>
         <div className="grid [gap:3rem] [@media(min-width:768px)]:[grid-template-columns:repeat(3,minmax(0px,1fr))]">
           <div>
