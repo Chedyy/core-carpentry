@@ -179,7 +179,7 @@ function ImportedSectionBuiltWithPrecisionCrafted() {
   return (
     <section ref={hero.ref} className={"relative h-screen w-full \x62g-[#\x30F0F0F] grain [&]:min-h-[640px] [overflow:hidden]"} id="top">
       <div className="absolute [inset:0px]" style={{ transform: progress > 0 ? `translateY(${22 * progress}%)` : "none" }}>
-        <img className={"h-full w-full [&]:object-cover"} src="/site-assets/76a96acaede8317f.png" alt="Custom-framed vaulted wood ceiling" />
+        <img className={"h-full w-full [&]:object-cover"} src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9SbBC_DhCf-otMDw98qKr0ifle5km15r_a7DSPuXUtQ58eyeBNJK7HQzQM6IwTcG9iTvG1L8i5mvSkYSIrq3GwMl5BOIQ6yOz6hyqMoNZtbRr0-BMRqH9MP4kQR08hziqVtjGVjdvPkuyLb=s1360-w1360-h1020-rw" alt="Custom Adirondack outdoor seating" />
       </div>
       <div className={"absolute transition-all \x64uration-200 [animation-duration:0.2s] [inset:0px]"} style={{ background: `radial-gradient(circle at ${pointer.active ? pointer.px : 50}% ${pointer.active ? pointer.py : 40}%, rgba(255, 255, 255, 0.16), rgba(15, 15, 15, 0.55) 38%, rgba(15, 15, 15, 0.94) 100%)` }} />
       <span className={"absolute rounded-full \x62g-[#\x4298B5F]/\x340 [bottom:0px] left-[46.6944%] [animation:15.3307s_linear_2.06403s_infinite_normal_none_running_float-up]"} style={{ width: "3.49241px", height: "3.49241px" }} />
