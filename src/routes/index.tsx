@@ -230,7 +230,7 @@ function ImportedSectionACommitmentToThe() {
       <div className={"\x6dx-auto grid max-w-[1400px] gap-14 \x70x-[\x36vw] \x6dd:\x67ap-20 [@media(min-width:768px)]:items-center [@media(min-width:768px)]:[grid-template-columns:repeat(2,minmax(0px,1fr))]"}>
         <div className="relative">
           <div className="relative [overflow:hidden]" style={{ transform: "translateY(-6.48647%)" }} data-site-import-responsive="61">
-<img className={"w-full [&]:aspect-[4/5] [&]:object-cover"} src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9SbBC_DhCf-otMDw98qKr0ifle5km15r_a7DSPuXUtQ58eyeBNJK7HQzQM6IwTcG9iTvG1L8i5mvSkYSIrq3GwMl5BOIQ6yOz6hyqMoNZtbRr0-BMRqH9MP4kQR08hziqVtjGVjdvPkuyLb=s1360-w1360-h1020-rw" alt="Wood Core Carpentry craftsmanship" />          </div>
+<img className={"w-full [&]:aspect-[4/5] [&]:object-cover"} src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9S9PitMvZw-3iSFCC8oaBo6xkDqG_nPeBFsr6uMkL53zGW1qySPQH4bD723U45SN8TEa1_3uhxN2u_7vUIWKRzYHzfR3n9hTj3oSBG5SeDp394809sx9uKLP_TWq1pFcUhdTRlrTMJjsjuR=s1360-w1360-h1020-rw" alt="Wood Core Carpentry craftsmanship" />          </div>
           <div className={"absolute -top-3 -left-3 plus-mark \x74ext-[#\x4298B5F] \x73cale-150"} />
           <div className={"absolute -bottom-3 -right-3 plus-mark \x74ext-[#\x4298B5F] \x73cale-150"} />
           <div className={"absolute -bottom-6 right-6 \x62g-[#\x30F0F0F] \x70x-6 \x70y-4 grain"}>
