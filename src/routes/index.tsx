@@ -2,7 +2,7 @@ import type { CSSProperties } from "react";
 import { useEffect, useRef, useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import capturedCSS from "../styles/site.css?raw";
-import { ABOUT, BUSINESS, CTA, ESTIMATE_FORM, HERO, PROJECT_FILTERS, PROJECTS, PROJECT_TYPES, REVIEWS, SEO, SERVICES, SERVICES_INTRO, WHY_US, type Project } from "@/data/mockData";
+import { ABOUT, BUSINESS, CTA, ESTIMATE_FORM, HERO, PROJECT_FILTERS, PROJECTS, GOOGLE_RATING, googleReviews, PROJECT_TYPES, SEO, SERVICES, SERVICES_INTRO, WHY_US, type Project } from "@/data/mockData";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -498,90 +498,48 @@ function ImportedSectionTheStandardIsThe() {
   );
 }
 
-function ImportedSection() {
-  const [reviewIndex, setReviewIndex] = useState(0);
-  const review = REVIEWS[reviewIndex] ?? REVIEWS[0]!;
-  useEffect(() => {
-    const timer = window.setTimeout(() => setReviewIndex((index) => (index + 1) % REVIEWS.length), 6000);
-    return () => window.clearTimeout(timer);
-  }, [reviewIndex]);
+const STAR_PATH = "M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z";
+
+function ReviewStars({ count, size = 16 }: { count: number; size?: number }) {
   return (
-    <section className={"relative \x62g-[#\x30F0F0F] grain \x70y-24 \x6dd:\x70y-36 \x74ext-[#\x469F9F7] [overflow:hidden]"} id="reviews">
-      <div className={"absolute h-72 w-72 rounded-full \x62g-[#\x4298B5F]/\x35 \x62lur-3xl [filter:var(--tw-blur)_var(--tw-brightness)_var(--tw-contrast)_var(--tw-grayscale)_var(--tw-hue-rotate)_var(--tw-invert)_var(--tw-saturate)_var(--tw-sepia)_var(--tw-drop-shadow)] [left:-5rem] [top:33.3333%]"} />
-      <div className={"absolute h-72 w-72 rounded-full \x62g-[#\x4298B5F]/\x35 \x62lur-3xl [bottom:25%] [filter:var(--tw-blur)_var(--tw-brightness)_var(--tw-contrast)_var(--tw-grayscale)_var(--tw-hue-rotate)_var(--tw-invert)_var(--tw-saturate)_var(--tw-sepia)_var(--tw-drop-shadow)] [right:-5rem]"} />
-      <div className={"\x6dx-auto \x70x-[\x36vw] [&]:text-center [max-width:56rem]"}>
-        <div data-reveal="">
-          <span className={"label-tech \x74ext-[#\x4298B5F] flex items-center [&]:justify-center [gap:0.75rem]"}><span className={"h-px w-8 \x62g-[#\x4298B5F]"} /> Client Reviews</span>
-        </div>
-        <div className={"relative mt-10 min-h-[260px] \x6dd:\x6din-h-[\x3220px]"} data-site-import-desktop-variant="">
-          <div className={"absolute flex flex-col items-center [&]:justify-center [inset:0px] animate-in fade-in slide-in-from-right-8 duration-500"} key={reviewIndex} style={{ opacity: "1", transform: "none" }}>
-            <div className="flex mb-6 [gap:0.25rem]">
-              <svg className={"\x74ext-[#\x4298B5F] [fill:rgb(185,139,95)]"} xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z" />
-              </svg>
-              <svg className={"\x74ext-[#\x4298B5F] [fill:rgb(185,139,95)]"} xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z" />
-              </svg>
-              <svg className={"\x74ext-[#\x4298B5F] [fill:rgb(185,139,95)]"} xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z" />
-              </svg>
-              <svg className={"\x74ext-[#\x4298B5F] [fill:rgb(185,139,95)]"} xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z" />
-              </svg>
-              <svg className={"\x74ext-[#\x4298B5F] [fill:rgb(185,139,95)]"} xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z" />
-              </svg>
-            </div>
-            <p className={"font-heading \x74ext-2xl \x6dd:\x74ext-3xl \x66ont-medium \x6ceading-snug \x74racking-tight [max-width:42rem]"}>“{review.quote}”</p>
-            <div className="mt-7">
-              <p className={"label-tech \x74ext-[#\x4298B5F]"}>— {review.name}</p>
-              <p className={"mt-1.5 \x74ext-sm \x74ext-[#\x469F9F7]/\x340"}>{review.location}</p>
+    <div className="flex [gap:0.25rem]" role="img" aria-label={`${count} out of 5 stars`}>
+      {Array.from({ length: 5 }, (_, index) => (
+        <svg key={index} className={index < count ? "text-[#B98B5F] [fill:#B98B5F]" : "text-white/20 [fill:none]"} xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+          <path d={STAR_PATH} />
+        </svg>
+      ))}
+    </div>
+  );
+}
+
+function ImportedSection() {
+  return (
+    <section className={"relative bg-[#0F0F0F] grain py-24 md:py-36 text-[#F9F9F7] [overflow:hidden]"} id="reviews">
+      <div className={"absolute h-72 w-72 rounded-full bg-[#B98B5F]/5 blur-3xl [left:-5rem] [top:33.3333%]"} />
+      <div className={"absolute h-72 w-72 rounded-full bg-[#B98B5F]/5 blur-3xl [bottom:25%] [right:-5rem]"} />
+      <div className={"relative mx-auto px-[6vw] [max-width:80rem]"}>
+        <div className="text-center" data-reveal="">
+          <span className={"label-tech text-[#B98B5F] flex items-center justify-center [gap:0.75rem]"}><span className={"h-px w-8 bg-[#B98B5F]"} /> Client Reviews</span>
+          <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center sm:gap-5">
+            <span className="font-heading text-5xl md:text-6xl font-semibold tracking-tight">{GOOGLE_RATING.score}</span>
+            <div className="flex flex-col items-center gap-2 sm:items-start">
+              <ReviewStars count={GOOGLE_RATING.stars} size={22} />
+              <span className="label-tech text-[#F9F9F7]/60">{GOOGLE_RATING.label}</span>
             </div>
           </div>
         </div>
-        <div className={"relative mt-10 min-h-[260px] \x6dd:\x6din-h-[\x3220px]"} style={{ "--site-import-responsive-display": "block" } as CSSProperties} data-site-import-mobile-variant="">
-          <div className={"absolute flex flex-col items-center [&]:justify-center [inset:0px] animate-in fade-in slide-in-from-right-8 duration-500"} key={reviewIndex} style={{ opacity: "1", transform: "none" }}>
-            <div className="flex mb-6 [gap:0.25rem]">
-              <svg className={"\x74ext-[#\x4298B5F] [fill:rgb(185,139,95)]"} xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z" />
-              </svg>
-              <svg className={"\x74ext-[#\x4298B5F] [fill:rgb(185,139,95)]"} xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z" />
-              </svg>
-              <svg className={"\x74ext-[#\x4298B5F] [fill:rgb(185,139,95)]"} xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z" />
-              </svg>
-              <svg className={"\x74ext-[#\x4298B5F] [fill:rgb(185,139,95)]"} xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z" />
-              </svg>
-              <svg className={"\x74ext-[#\x4298B5F] [fill:rgb(185,139,95)]"} xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z" />
-              </svg>
-            </div>
-            <p className={"font-heading \x74ext-2xl \x6dd:\x74ext-3xl \x66ont-medium \x6ceading-snug \x74racking-tight [max-width:42rem]"}>“{review.quote}”</p>
-            <div className="mt-7">
-              <p className={"label-tech \x74ext-[#\x4298B5F]"}>— {review.name}</p>
-              <p className={"mt-1.5 \x74ext-sm \x74ext-[#\x469F9F7]/\x340"}>{review.location}</p>
-            </div>
-          </div>
-        </div>
-        <div className={"mt-10 flex items-center [&]:justify-center [gap:1.5rem]"}>
-          <button className={"flex h-11 w-11 items-center \x62order \x62order-white/\x315 \x74ext-[#\x469F9F7]/\x370 \x68over:\x62order-[#\x4298B5F] \x68over:\x74ext-[#\x4298B5F] transition-colors [&]:justify-center"} aria-label="Previous" onClick={() => setReviewIndex((index) => (index - 1 + REVIEWS.length) % REVIEWS.length)}>
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="m15 18-6-6 6-6" />
-            </svg>
-          </button>
-          <div className="flex [gap:0.5rem]">
-            {REVIEWS.map((item, index) => (
-              <button key={item.name} className={index === reviewIndex ? "h-1.5 transition-all \x64uration-300 w-8 \x62g-[#\x4298B5F]" : "h-1.5 transition-all \x64uration-300 w-1.5 \x62g-white/\x320"} aria-label={`Review ${index + 1}`} aria-current={index === reviewIndex} onClick={() => setReviewIndex(index)} />
-            ))}
-          </div>
-          <button className={"flex h-11 w-11 items-center \x62order \x62order-white/\x315 \x74ext-[#\x469F9F7]/\x370 \x68over:\x62order-[#\x4298B5F] \x68over:\x74ext-[#\x4298B5F] transition-colors [&]:justify-center"} aria-label="Next" onClick={() => setReviewIndex((index) => (index + 1) % REVIEWS.length)}>
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="m9 18 6-6-6-6" />
-            </svg>
-          </button>
-        </div>
+        <ul className="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+          {googleReviews.map((item) => (
+            <li key={item.author} className="flex flex-col border border-white/10 bg-white/[0.02] p-7 md:p-8 transition-colors duration-300 hover:border-[#B98B5F]/40" data-reveal="">
+              <ReviewStars count={item.rating} />
+              <p className="mt-5 flex-1 text-[15px] leading-relaxed text-[#F9F9F7]/80">“{item.text}”</p>
+              <div className="mt-7 border-t border-white/10 pt-5">
+                <p className="label-tech text-[#B98B5F]">{item.author}</p>
+                <p className="mt-1.5 text-sm text-[#F9F9F7]/40">{item.location}</p>
+              </div>
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
   );
