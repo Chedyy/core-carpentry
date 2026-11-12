@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 
-const MINIMUM_DISPLAY_MS = 560;
-const MAXIMUM_DISPLAY_MS = 1200;
-const EXIT_TRANSITION_MS = 520;
+const MINIMUM_DISPLAY_MS = 900;
+const MAXIMUM_DISPLAY_MS = 1800;
+const EXIT_TRANSITION_MS = 900;
 
 export function InitialLoadingScreen() {
   const [phase, setPhase] = useState<"loading" | "exiting" | "hidden">("loading");
