@@ -203,8 +203,20 @@ function ImportedSectionBuiltWithPrecisionCrafted() {
       <div className={"relative flex h-full flex-col pb-[14vh] \x70x-[\x36vw] [&]:justify-end [z-index:10]"} style={{ opacity: Math.max(0, 1 - progress / 0.85), transform: progress > 0 ? `translateY(${40 * progress}%)` : "none" }}>
         <span className={"label-tech \x74ext-[#\x4298B5F] mb-6 flex items-center [gap:0.75rem]"} style={{ opacity: "1", transform: "none" }}><span className={"h-px w-10 \x62g-[#\x4298B5F]"} /> {HERO.eyebrow}</span>
         <h1 className={"display-heading \x74ext-[#\x469F9F7] text-[2rem] \x73m:\x74ext-5xl \x6dd:\x74ext-6xl \x6cg:\x74ext-7xl \x78l:\x74ext-[\x35rem] \x6ceading-[\x31.\x302] \x74racking-tight [max-width:56rem]"}>
-          <span className="block" style={{ opacity: "1", transform: "none" }}>{HERO.headlineLead}</span>
-          <span className={"block \x74ext-[#\x4298B5F]"} style={{ opacity: "1", transform: "none" }}>{HERO.headlineAccent}</span>
+          {[HERO.headlineLead, HERO.headlineAccent].map((line, lineIndex) => (
+            <span key={lineIndex} aria-hidden="true" className={`block hero-title-line${lineIndex === 1 ? " \x74ext-[#\x4298B5F]" : ""}`}>
+              {Array.from(line).map((character, index) =>
+                character === " " ? (
+                  <span key={index}> </span>
+                ) : (
+                  <span key={index} className="hero-title-letter" style={{ animationDelay: `${(lineIndex * 38 + index) * 38}ms` }}>
+                    {character}
+                  </span>
+                ),
+              )}
+            </span>
+          ))}
+          <span className="sr-only">{HERO.headlineLead} {HERO.headlineAccent}</span>
         </h1>
         <p className={"mt-8 \x74ext-[#\x469F9F7]/\x365 \x74ext-base \x6dd:\x74ext-lg \x6ceading-relaxed [max-width:36rem]"} style={{ opacity: "1" }}>{HERO.subheadline}</p>
         <div className={"mt-9 flex flex-col \x73m:\x66lex-row [gap:1rem]"} style={{ opacity: "1", transform: "none" }}>
