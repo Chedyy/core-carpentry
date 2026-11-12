@@ -215,7 +215,7 @@
 }
 
 .initial-loading-screen[data-exiting="true"] {
-  animation: loading-screen-fade-out 1500ms ease-in-out forwards;
+  animation: loading-screen-fade-out 1800ms ease-in-out forwards;
   pointer-events: none;
 }
 
@@ -284,14 +284,5 @@
 @media (prefers-reduced-motion: reduce) {
   .initial-loading-content {
     animation: none;
-  }
-
-  .initial-loading-progress span {
-    animation: none;
-    transform: translateX(115%);
-  }
-
-  .initial-loading-screen[data-exiting="true"] {
-    animation-duration: 1ms;
   }
 }
