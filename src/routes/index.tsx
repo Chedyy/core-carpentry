@@ -359,7 +359,7 @@ function ImportedSectionFeaturedProjects() {
               <div className={"absolute \x62g-gradient-to-t \x66rom-[#\x30F0F0F]/\x385 \x76ia-[#\x30F0F0F]/\x310 \x74o-transparent opacity-80 \x74ransition-opacity \x64uration-500 \x67roup-hover:\x6fpacity-95 [inset:0px] [transition-property:opacity] [transition-timing-function:cubic-bezier(0.4,0,0.2,1)]"} />
               <div className={"absolute flex flex-col p-6 [&]:justify-end [inset:0px]"}>
                 <span className={"label-tech \x74ext-[#\x4298B5F]"}>{project.category}</span>
-                <h3 className={"mt-2 font-heading \x74ext-xl \x66ont-bold \x74ext-[#\x469F9F7]"}>{project.title}</h3>
+                <h3 className={"project-title-typewriter mt-2 font-heading \x74ext-xl \x66ont-bold \x74ext-[#\x469F9F7]"}>{project.title}</h3>
                 <div className={"mt-3 max-h-0 opacity-0 transition-all \x64uration-500 \x67roup-hover:\x6dax-h-24 \x67roup-hover:\x6fpacity-100 [overflow:hidden]"}>
                   <p className={"\x74ext-xs \x74ext-[#\x469F9F7]/\x370 \x6ceading-relaxed"}>{project.materials}</p>
                 </div>

@@ -2250,6 +2250,19 @@ body { background-color: hsl(var(--background)); font-family: var(--font-body); 
 @media (pointer:fine) {
   .cursor-crosshair.is-hover { width: 52px; height: 52px; }
 }
+@keyframes project-title-typewriter {
+  from { clip-path: inset(0 100% 0 0); }
+  to { clip-path: inset(0 0 0 0); }
+}
+
+.project-title-typewriter {
+  animation: project-title-typewriter 1.6s steps(32, end) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-title-typewriter { animation: none; }
+}
+
 @keyframes site-scroll-cue {
   0%, 100% { transform: translateY(0px); }
   50% { transform: translateY(8px); }

@@ -66,6 +66,14 @@ const REAL_PROJECT_IMAGES = {
   gate: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/unnamed%20%283%29-qg0sbm7KhgkTpeHMgu9dxszPAmPubF.webp",
   entryway:
     "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/unnamed%20%282%29-awMfHnXg3xU3hmrQFIUzHhoFtriiP0.webp",
+  exteriorHome:
+    "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/c413a343-replacement-image-1-IYXSm5ruorofNASqqr2fSXnx07fCta.png",
+  woodworking:
+    "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/c413a343-replacement-image-2-0W8LhjoyWPAYIeCoVhEZqZlqWU9QVS.jpg",
+  workshop:
+    "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/c413a343-replacement-image-3-wnVGSWua3HtYT60cHnmfCToOGxCbQA.jpg",
+  basement:
+    "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/c413a343-replacement-image-4-1Yh7BtordRWo2lrauKa3YOtuF8vsUk.jpg",
 } as const;
 
 export const SERVICES = [
@@ -88,14 +96,14 @@ export const SERVICES = [
     title: "Custom Decks & Pergolas",
     description:
       "Composite and natural wood decks and pergolas engineered to stand up to Connecticut winters.",
-    image: REAL_PROJECT_IMAGES.gate,
+    image: REAL_PROJECT_IMAGES.woodworking,
   },
   {
     number: "04",
     title: "Home Renovations",
     description:
       "Full interior, kitchen, and basement remodels managed end-to-end with honest timelines.",
-    image: REAL_PROJECT_IMAGES.kitchen,
+    image: REAL_PROJECT_IMAGES.exteriorHome,
   },
   {
     number: "05",
@@ -115,7 +123,7 @@ export const SERVICES = [
     title: "Basement Finishing",
     description:
       "Transforming lower levels into warm, finished living spaces — framing, trim, and detail work.",
-    image: REAL_PROJECT_IMAGES.kitchen,
+    image: REAL_PROJECT_IMAGES.workshop,
   },
   {
     number: "08",
@@ -129,7 +137,7 @@ export const SERVICES = [
     title: "General Carpentry Repairs",
     description:
       "Rot repairs, structural fixes, and deck repair handled with the same care as a new build.",
-    image: REAL_PROJECT_IMAGES.entryway,
+    image: REAL_PROJECT_IMAGES.basement,
   },
 ];
 
@@ -196,6 +204,50 @@ export const PROJECTS: Project[] = [
       "A bright entryway finished with a clean stair detail, oak handrails, and balanced steel balusters.",
     scope: "Stair trim and entry finish work",
     duration: "2 Weeks",
+  },
+  {
+    title: "Colonial Exterior — Fairfield County",
+    category: "Exterior",
+    image: REAL_PROJECT_IMAGES.exteriorHome,
+    aspect: "3/4",
+    materials: "Exterior Siding, Window and Door Trim, Entry Details",
+    description:
+      "A substantial colonial home with carefully finished exterior details and a welcoming entry.",
+    scope: "Residential exterior carpentry",
+    duration: "Completed Project",
+  },
+  {
+    title: "Custom Woodworking — Workshop",
+    category: "Custom Builds",
+    image: REAL_PROJECT_IMAGES.woodworking,
+    aspect: "4/3",
+    materials: "Hardwood, Hand Planes, Traditional Woodworking Tools",
+    description:
+      "A close-up of traditional hand-tool woodworking and careful hardwood craftsmanship.",
+    scope: "Custom woodworking",
+    duration: "In Progress",
+  },
+  {
+    title: "Handcrafted Woodwork — Workshop",
+    category: "Custom Builds",
+    image: REAL_PROJECT_IMAGES.workshop,
+    aspect: "4/3",
+    materials: "Hardwood, Hand Planes, Traditional Woodworking Tools",
+    description:
+      "A second view of fine woodworking tools and material preparation for a custom build.",
+    scope: "Custom woodworking",
+    duration: "In Progress",
+  },
+  {
+    title: "Finished Basement — Fairfield County",
+    category: "Renovations",
+    image: REAL_PROJECT_IMAGES.basement,
+    aspect: "4/3",
+    materials: "Finished Flooring, Recessed Lighting, Built-In Kitchen",
+    description:
+      "A spacious finished basement combining comfortable living space with a practical kitchenette.",
+    scope: "Basement finishing and renovation",
+    duration: "Completed Project",
   },
 ];
 
