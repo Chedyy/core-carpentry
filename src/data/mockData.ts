@@ -74,6 +74,10 @@ const REAL_PROJECT_IMAGES = {
     "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/c413a343-replacement-image-3-wnVGSWua3HtYT60cHnmfCToOGxCbQA.jpg",
   basement:
     "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/c413a343-replacement-image-4-1Yh7BtordRWo2lrauKa3YOtuF8vsUk.jpg",
+  basementLounge:
+    "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/5576f5aa-replacement-image-1-uyKXXbny5gsqTTRaN0xQDgwaxyDAec.jpg",
+  handPlaning:
+    "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/5576f5aa-replacement-image-2-KP5qqEFkPSX37haHI37LmxqIXdolT4.png",
 } as const;
 
 export const SERVICES = [
@@ -123,7 +127,7 @@ export const SERVICES = [
     title: "Basement Finishing",
     description:
       "Transforming lower levels into warm, finished living spaces — framing, trim, and detail work.",
-    image: REAL_PROJECT_IMAGES.workshop,
+    image: REAL_PROJECT_IMAGES.basementLounge,
   },
   {
     number: "08",
@@ -137,7 +141,7 @@ export const SERVICES = [
     title: "General Carpentry Repairs",
     description:
       "Rot repairs, structural fixes, and deck repair handled with the same care as a new build.",
-    image: REAL_PROJECT_IMAGES.basement,
+    image: REAL_PROJECT_IMAGES.handPlaning,
   },
 ];
 
@@ -248,6 +252,28 @@ export const PROJECTS: Project[] = [
       "A spacious finished basement combining comfortable living space with a practical kitchenette.",
     scope: "Basement finishing and renovation",
     duration: "Completed Project",
+  },
+  {
+    title: "Basement Bar & Lounge — Fairfield County",
+    category: "Renovations",
+    image: REAL_PROJECT_IMAGES.basementLounge,
+    aspect: "4/3",
+    materials: "Vinyl Plank Flooring, Recessed Lighting, Custom Wet Bar Cabinetry",
+    description:
+      "A finished basement lounge with a sectional seating area, recessed lighting, and a custom wet bar.",
+    scope: "Basement finishing and wet bar build-out",
+    duration: "Completed Project",
+  },
+  {
+    title: "Hand-Planed Walnut — Workshop",
+    category: "Custom Builds",
+    image: REAL_PROJECT_IMAGES.handPlaning,
+    aspect: "4/3",
+    materials: "Walnut, Hand Planes, Traditional Woodworking Tools",
+    description:
+      "Hand-planing a walnut board to a clean, flat surface, with fresh shavings and careful joinery preparation.",
+    scope: "Custom woodworking",
+    duration: "In Progress",
   },
 ];
 
