@@ -25,7 +25,7 @@ function Index() {
   return (
     <>
       <style>{capturedCSS}</style>
-      <div id="root">
+      <div id="root" suppressHydrationWarning>
         <ImportedCursor />
         <ImportedHeader />
         <main>
@@ -40,8 +40,8 @@ function Index() {
           <ImportedSectionRequestAFreeEstimate />
         </main>
         <ImportedFooter />
-        <div className={"fixed top-0 flex w-full flex-col-reverse p-4 \x73m:\x74op-auto \x73m:\x66lex-col [max-height:100vh] [z-index:100] [@media(min-width:640px)]:[bottom:0px] [@media(min-width:640px)]:[right:0px] [@media(min-width:768px)]:max-w-[420px]"}>
-          <div className={"fixed top-0 flex w-full flex-col-reverse p-4 \x73m:\x74op-auto \x73m:\x66lex-col [max-height:100vh] [z-index:100] [@media(min-width:640px)]:[bottom:0px] [@media(min-width:640px)]:[right:0px] [@media(min-width:768px)]:max-w-[420px]"} />
+        <div suppressHydrationWarning className={"fixed top-0 flex w-full flex-col-reverse p-4 \x73m:\x74op-auto \x73m:\x66lex-col [max-height:100vh] [z-index:100] [@media(min-width:640px)]:[bottom:0px] [@media(min-width:640px)]:[right:0px] [@media(min-width:768px)]:max-w-[420px]"}>
+          <div suppressHydrationWarning className={"fixed top-0 flex w-full flex-col-reverse p-4 \x73m:\x74op-auto \x73m:\x66lex-col [max-height:100vh] [z-index:100] [@media(min-width:640px)]:[bottom:0px] [@media(min-width:640px)]:[right:0px] [@media(min-width:768px)]:max-w-[420px]"} />
         </div>
       </div>
     </>
@@ -121,7 +121,7 @@ function ImportedHeader() {
   ];
   return (
     <>
-    <header className={"fixed top-0 left-0 right-0 z-[200] transition-all \x64uration-500 bg-transparent \x70y-6"} style={{ transform: "none" }} data-site-import-scroll-header={"{\"desktop\":{\"added\":[\"bg-[#0F0F0F]/90\",\"backdrop-blur-md\",\"border-b\",\"border-white/5\",\"py-3\"],\"removed\":[\"bg-transparent\",\"py-6\"],\"threshold\":648},\"mobile\":{\"added\":[\"bg-[#0F0F0F]/90\",\"backdrop-blur-md\",\"border-b\",\"border-white/5\",\"py-3\"],\"removed\":[\"bg-transparent\",\"py-6\"],\"threshold\":633}}"}>
+    <header suppressHydrationWarning className={"fixed top-0 left-0 right-0 z-[200] transition-all \x64uration-500 bg-transparent \x70y-6"} style={{ transform: "none" }} data-site-import-scroll-header={"{\"desktop\":{\"added\":[\"bg-[#0F0F0F]/90\",\"backdrop-blur-md\",\"border-b\",\"border-white/5\",\"py-3\"],\"removed\":[\"bg-transparent\",\"py-6\"],\"threshold\":648},\"mobile\":{\"added\":[\"bg-[#0F0F0F]/90\",\"backdrop-blur-md\",\"border-b\",\"border-white/5\",\"py-3\"],\"removed\":[\"bg-transparent\",\"py-6\"],\"threshold\":633}}"}>
       <div className={"\x6dx-auto flex max-w-[1400px] items-center justify-between \x70x-[\x36vw]"}>
         <a className={"flex items-center gap-2.5 \x74ext-[#\x469F9F7]"} href="#top">
           <span className={"plus-mark \x74ext-[#\x4298B5F] \x73cale-125"} />
@@ -203,8 +203,20 @@ function ImportedSectionBuiltWithPrecisionCrafted() {
       <div className={"relative flex h-full flex-col pb-[14vh] \x70x-[\x36vw] [&]:justify-end [z-index:10]"} style={{ opacity: Math.max(0, 1 - progress / 0.85), transform: progress > 0 ? `translateY(${40 * progress}%)` : "none" }}>
         <span className={"label-tech \x74ext-[#\x4298B5F] mb-6 flex items-center [gap:0.75rem]"} style={{ opacity: "1", transform: "none" }}><span className={"h-px w-10 \x62g-[#\x4298B5F]"} /> {HERO.eyebrow}</span>
         <h1 className={"display-heading \x74ext-[#\x469F9F7] text-[2rem] \x73m:\x74ext-5xl \x6dd:\x74ext-6xl \x6cg:\x74ext-7xl \x78l:\x74ext-[\x35rem] \x6ceading-[\x31.\x302] \x74racking-tight [max-width:56rem]"}>
-          <span className="block" style={{ opacity: "1", transform: "none" }}>{HERO.headlineLead}</span>
-          <span className={"block \x74ext-[#\x4298B5F]"} style={{ opacity: "1", transform: "none" }}>{HERO.headlineAccent}</span>
+          {[HERO.headlineLead, HERO.headlineAccent].map((line, lineIndex) => (
+            <span key={lineIndex} aria-hidden="true" className={`block hero-title-line${lineIndex === 1 ? " \x74ext-[#\x4298B5F]" : ""}`}>
+              {Array.from(line).map((character, index) =>
+                character === " " ? (
+                  <span key={index}> </span>
+                ) : (
+                  <span key={index} className="hero-title-letter" style={{ animationDelay: `${(lineIndex * 38 + index) * 38}ms` }}>
+                    {character}
+                  </span>
+                ),
+              )}
+            </span>
+          ))}
+          <span className="sr-only">{HERO.headlineLead} {HERO.headlineAccent}</span>
         </h1>
         <p className={"mt-8 \x74ext-[#\x469F9F7]/\x365 \x74ext-base \x6dd:\x74ext-lg \x6ceading-relaxed [max-width:36rem]"} style={{ opacity: "1" }}>{HERO.subheadline}</p>
         <div className={"mt-9 flex flex-col \x73m:\x66lex-row [gap:1rem]"} style={{ opacity: "1", transform: "none" }}>
@@ -359,7 +371,7 @@ function ImportedSectionFeaturedProjects() {
               <div className={"absolute \x62g-gradient-to-t \x66rom-[#\x30F0F0F]/\x385 \x76ia-[#\x30F0F0F]/\x310 \x74o-transparent opacity-80 \x74ransition-opacity \x64uration-500 \x67roup-hover:\x6fpacity-95 [inset:0px] [transition-property:opacity] [transition-timing-function:cubic-bezier(0.4,0,0.2,1)]"} />
               <div className={"absolute flex flex-col p-6 [&]:justify-end [inset:0px]"}>
                 <span className={"label-tech \x74ext-[#\x4298B5F]"}>{project.category}</span>
-                <h3 className={"mt-2 font-heading \x74ext-xl \x66ont-bold \x74ext-[#\x469F9F7]"}>{project.title}</h3>
+                <h3 className={"project-title-typewriter mt-2 font-heading \x74ext-xl \x66ont-bold \x74ext-[#\x469F9F7]"}>{project.title}</h3>
                 <div className={"mt-3 max-h-0 opacity-0 transition-all \x64uration-500 \x67roup-hover:\x6dax-h-24 \x67roup-hover:\x6fpacity-100 [overflow:hidden]"}>
                   <p className={"\x74ext-xs \x74ext-[#\x469F9F7]/\x370 \x6ceading-relaxed"}>{project.materials}</p>
                 </div>
@@ -762,7 +774,7 @@ function ImportedSectionRequestAFreeEstimate() {
 
 function ImportedFooter() {
   return (
-    <footer className={"relative \x62g-[#\x30F0F0F] grain \x74ext-[#\x469F9F7]"}>
+        <footer suppressHydrationWarning className={"relative \x62g-[#\x30F0F0F] grain \x74ext-[#\x469F9F7]"}>
       <div className={"\x6dx-auto max-w-[1400px] \x70x-[\x36vw] \x70y-16 \x6dd:\x70y-24"}>
         <div className="grid [gap:3rem] [@media(min-width:768px)]:[grid-template-columns:repeat(3,minmax(0px,1fr))]">
           <div>
