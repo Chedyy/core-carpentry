@@ -68,16 +68,20 @@ const REAL_PROJECT_IMAGES = {
     "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/unnamed%20%282%29-awMfHnXg3xU3hmrQFIUzHhoFtriiP0.webp",
   exteriorHome:
     "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/c413a343-replacement-image-1-IYXSm5ruorofNASqqr2fSXnx07fCta.png",
-  woodworking:
-    "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/c413a343-replacement-image-2-0W8LhjoyWPAYIeCoVhEZqZlqWU9QVS.jpg",
-  workshop:
-    "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/c413a343-replacement-image-3-wnVGSWua3HtYT60cHnmfCToOGxCbQA.jpg",
   basement:
     "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/c413a343-replacement-image-4-1Yh7BtordRWo2lrauKa3YOtuF8vsUk.jpg",
   basementLounge:
     "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/5576f5aa-replacement-image-1-uyKXXbny5gsqTTRaN0xQDgwaxyDAec.jpg",
   handPlaning:
     "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/5576f5aa-replacement-image-2-KP5qqEFkPSX37haHI37LmxqIXdolT4.png",
+  lumberLayout:
+    "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/a3861e61-replacement-image-1-YBJK0BfF0k85BBZXG7F377Fx5tVs2m.jpg",
+  finishCarpentry:
+    "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/a3861e61-replacement-image-2-gW4InYeuu3r0eZXP1gFjnRMn9UADWm.jpg",
+  twilightDeck:
+    "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/a3861e61-replacement-image-3.png-2W78gIHPX6BqmAUFN4lMKhMRFJePL2.jpeg",
+  craftsmanPlaning:
+    "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/a3861e61-replacement-image-4-28KtknYDKkAHnrlv353HRZuOWxDeG4.png",
 } as const;
 
 export const SERVICES = [
@@ -86,21 +90,21 @@ export const SERVICES = [
     title: "Residential Framing",
     description:
       "Structural framing for walls, additions, and load-bearing changes — built square, plumb, and true.",
-    image: REAL_PROJECT_IMAGES.entryway,
+    image: REAL_PROJECT_IMAGES.lumberLayout,
   },
   {
     number: "02",
     title: "Finish Carpentry",
     description:
       "Custom trim, crown moulding, and baseboards fitted with clean joinery and seamless transitions.",
-    image: REAL_PROJECT_IMAGES.livingRoom,
+    image: REAL_PROJECT_IMAGES.finishCarpentry,
   },
   {
     number: "03",
     title: "Custom Decks & Pergolas",
     description:
       "Composite and natural wood decks and pergolas engineered to stand up to Connecticut winters.",
-    image: REAL_PROJECT_IMAGES.woodworking,
+    image: REAL_PROJECT_IMAGES.twilightDeck,
   },
   {
     number: "04",
@@ -120,7 +124,7 @@ export const SERVICES = [
     title: "Custom Woodworking",
     description:
       "Bespoke built-ins, mantels, and live-edge tables crafted to your exact specifications.",
-    image: REAL_PROJECT_IMAGES.livingRoom,
+    image: REAL_PROJECT_IMAGES.craftsmanPlaning,
   },
   {
     number: "07",
@@ -223,7 +227,7 @@ export const PROJECTS: Project[] = [
   {
     title: "Custom Woodworking — Workshop",
     category: "Custom Builds",
-    image: REAL_PROJECT_IMAGES.woodworking,
+    image: REAL_PROJECT_IMAGES.finishCarpentry,
     aspect: "4/3",
     materials: "Hardwood, Hand Planes, Traditional Woodworking Tools",
     description:
@@ -234,11 +238,11 @@ export const PROJECTS: Project[] = [
   {
     title: "Handcrafted Woodwork — Workshop",
     category: "Custom Builds",
-    image: REAL_PROJECT_IMAGES.workshop,
+    image: REAL_PROJECT_IMAGES.craftsmanPlaning,
     aspect: "4/3",
-    materials: "Hardwood, Hand Planes, Traditional Woodworking Tools",
+    materials: "Walnut, Hand Planes, Traditional Woodworking Tools",
     description:
-      "A second view of fine woodworking tools and material preparation for a custom build.",
+      "A craftsperson hand-planes a hardwood board to prepare it for a custom build.",
     scope: "Custom woodworking",
     duration: "In Progress",
   },
@@ -265,15 +269,26 @@ export const PROJECTS: Project[] = [
     duration: "Completed Project",
   },
   {
-    title: "Hand-Planed Walnut — Workshop",
+    title: "Timber Layout — Stamford",
     category: "Custom Builds",
-    image: REAL_PROJECT_IMAGES.handPlaning,
+    image: REAL_PROJECT_IMAGES.lumberLayout,
     aspect: "4/3",
-    materials: "Walnut, Hand Planes, Traditional Woodworking Tools",
+    materials: "Dimensional Lumber, Measuring Tape, Carpenter's Pencil",
     description:
-      "Hand-planing a walnut board to a clean, flat surface, with fresh shavings and careful joinery preparation.",
-    scope: "Custom woodworking",
+      "A carpenter measures and marks timber before a precise custom carpentry cut.",
+    scope: "Custom carpentry layout and preparation",
     duration: "In Progress",
+  },
+  {
+    title: "Twilight Deck — Fairfield County",
+    category: "Decks",
+    image: REAL_PROJECT_IMAGES.twilightDeck,
+    aspect: "3/4",
+    materials: "Natural Wood Decking, Exterior Lighting, Metal Railings",
+    description:
+      "A spacious deck with warm step lighting, clean railing details, and an evening view.",
+    scope: "Custom deck build",
+    duration: "Completed Project",
   },
 ];
 
