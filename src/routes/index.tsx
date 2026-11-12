@@ -691,20 +691,22 @@ function ImportedSectionRequestAFreeEstimate() {
           <div data-reveal="">
             <h2 className={"display-heading mt-5 \x74ext-3xl \x6dd:\x74ext-5xl"}>{ESTIMATE_FORM.heading}</h2>
           </div>
-          <form className={"mt-8 \x73pace-y-5"} data-reveal="" onSubmit={(event) => event.preventDefault()}>
+          <form action="https://formspree.io/f/mwloknjo" method="POST" className={"mt-8 \x73pace-y-5"} data-reveal="">
+            <input type="hidden" name="_subject" value="New quote request — Wood Core Carpentry" />
+            <input type="hidden" name="project_type" value={projectType ?? "Not selected"} />
             <div className={"grid \x73m:\x67rid-cols-2 [gap:1.25rem]"}>
               <label className="block">
                 <span className={"label-tech \x74ext-[#\x469F9F7]/\x350 mb-2 block"}>Name</span>
-                <input className="cc-input [transition:border-color_0.3s]" required placeholder={ESTIMATE_FORM.namePlaceholder} value={form.name} onChange={update("name")} />
+                <input className="cc-input [transition:border-color_0.3s]" type="text" name="name" required placeholder={ESTIMATE_FORM.namePlaceholder} value={form.name} onChange={update("name")} />
               </label>
               <label className="block">
                 <span className={"label-tech \x74ext-[#\x469F9F7]/\x350 mb-2 block"}>Phone</span>
-                <input className="cc-input [transition:border-color_0.3s]" placeholder={ESTIMATE_FORM.phonePlaceholder} value={form.phone} onChange={update("phone")} />
+                <input className="cc-input [transition:border-color_0.3s]" type="tel" name="phone" placeholder={ESTIMATE_FORM.phonePlaceholder} value={form.phone} onChange={update("phone")} />
               </label>
             </div>
             <label className="block">
               <span className={"label-tech \x74ext-[#\x469F9F7]/\x350 mb-2 block"}>Email</span>
-              <input className="cc-input [transition:border-color_0.3s]" required type="email" placeholder={ESTIMATE_FORM.emailPlaceholder} value={form.email} onChange={update("email")} />
+              <input className="cc-input [transition:border-color_0.3s]" required type="email" name="email" placeholder={ESTIMATE_FORM.emailPlaceholder} value={form.email} onChange={update("email")} />
             </label>
             <label className="block">
               <span className={"label-tech \x74ext-[#\x469F9F7]/\x350 mb-2 block"}>Project Type</span>
@@ -716,7 +718,7 @@ function ImportedSectionRequestAFreeEstimate() {
             </label>
             <label className="block">
               <span className={"label-tech \x74ext-[#\x469F9F7]/\x350 mb-2 block"}>Project Details</span>
-              <textarea className={"cc-input [&]:resize-none [transition:border-color_0.3s]"} required rows={3} placeholder={ESTIMATE_FORM.detailsPlaceholder} value={form.details} onChange={update("details")} />
+              <textarea className={"cc-input [&]:resize-none [transition:border-color_0.3s]"} required name="project_details" rows={3} placeholder={ESTIMATE_FORM.detailsPlaceholder} value={form.details} onChange={update("details")} />
             </label>
             <div className="pt-2">
               <div className={"mb-3 h-1 w-full \x62g-white/\x310 [overflow:hidden]"}>
