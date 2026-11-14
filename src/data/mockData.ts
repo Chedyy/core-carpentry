@@ -63,7 +63,7 @@ const REAL_PROJECT_IMAGES = {
     "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/unnamed%20%284%29-A5Q2ohBAImUxxbMqNpb3CiHYIu9Kgt.webp",
   kitchen:
     "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/unnamed%20%285%29-18QWQH79o0QRIX6io39hbEkRM17aon.webp",
-  gate: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/unnamed%20%283%29-qg0sbm7KhgkTpeHMgu9dxszPAmPubF.webp",
+  gate: "/service-gate-replacement.jpg",
   entryway:
     "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/unnamed%20%282%29-awMfHnXg3xU3hmrQFIUzHhoFtriiP0.webp",
   exteriorHome:
