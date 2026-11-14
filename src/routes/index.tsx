@@ -209,15 +209,7 @@ function ImportedSectionBuiltWithPrecisionCrafted() {
                 character === " " ? (
                   <span key={index}> </span>
                 ) : (
-                  <span
-                    key={index}
-                    className={
-                      lineIndex === 0 && line.endsWith("Carpentry") && index >= line.length - "Carpentry".length
-                        ? "hero-title-letter text-[#B98B5F]"
-                        : "hero-title-letter"
-                    }
-                    style={{ animationDelay: `${(lineIndex * 38 + index) * 38}ms` }}
-                  >
+                  <span key={index} className="hero-title-letter" style={{ animationDelay: `${(lineIndex * 38 + index) * 38}ms` }}>
                     {character}
                   </span>
                 ),
